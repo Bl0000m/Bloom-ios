@@ -16,7 +16,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-    guard let _ = (scene as? UIWindowScene) else { return }
+    guard let windowScene = (scene as? UIWindowScene) else { return }
+    
+    window = UIWindow(windowScene: windowScene)
+    
+    // Создаем TabBarController
+    let tabBarController = UITabBarController()
+    
+    // Создаем экземпляры контроллеров для вкладок
+    let homeVC = MainScreenViewController()
+    let searchVC = UIViewController()
+    let menuVC = UIViewController()
+    let bagVC = UIViewController()
+    let profileVC = UIViewController()
+    
+    // Задаем заголовки и иконки для вкладок
+    homeVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home"), tag: 0)
+    searchVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "search"), tag: 1)
+    menuVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "menu"), tag: 2)
+    bagVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "bag"), tag: 3)
+    profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "user"), tag: 4)
+    
+    
+    // Настроим контроллеры вкладок
+    tabBarController.viewControllers = [homeVC, searchVC, menuVC, bagVC, profileVC]
+    
+    tabBarController.tabBar.tintColor = .black // Цвет активных вкладок
+    tabBarController.tabBar.barTintColor = .white // Цвет фона таб-бара
+   // tabBarController.tabBar.isTranslucent = false
+    // Устанавливаем TabBarController как корневой контроллер
+    window?.rootViewController = tabBarController
+    window?.makeKeyAndVisible()
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
