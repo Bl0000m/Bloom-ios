@@ -154,23 +154,13 @@ extension MainScreenViewController: UICollectionViewDelegateFlowLayout {
 
       let offsetY = scrollView.contentOffset.y + scrollView.frame.height / 2
       
-      if abs(offsetY - cellCenter) < 50 { // Если центр ячейки близок к центру экрана
-        // Устанавливаем новый логотип в зависимости от текущей ячейки
-        if indexPath.row % 2 == 0 {
-          icon.image = blackIcon
-        } else {
-          icon.image = whiteIcon
-        }
-        break
-      }
-      
-      if abs(offsetY - cellBottom) < 50 {
-        if indexPath.row % 2 == 0 {
-          icon.image = blackIcon
-        } else {
-          icon.image = whiteIcon
-        }
-        break
+      let isNearCellCenter = abs(offsetY - cellCenter) < 50 // Близость к центру ячейки
+      let isNearCellBottom = abs(offsetY - cellBottom) < 50 // Близость к нижней границе ячейки
+
+      if isNearCellCenter || isNearCellBottom {
+          // Устанавливаем логотип в зависимости от индекса ячейки (чётный или нечётный)
+          icon.image = (indexPath.row % 2 == 0) ? blackIcon : whiteIcon
+          break
       }
     }
   }
