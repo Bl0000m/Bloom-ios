@@ -28,7 +28,7 @@ class MainScreenCell: UICollectionViewCell {
     return view
   }()
   
-  lazy var searchButton: UIButton = {
+  let searchButton: UIButton = {
     let button = UIButton()
     button.setTitle("ПОИСК", for: .normal)
     button.setTitleColor(.black, for: .normal)
@@ -148,8 +148,8 @@ class MainScreenCell: UICollectionViewCell {
     couruselImg.image = UIImage(named: image)
   }
   
-  func configureSearchBtn(indexPath: IndexPath) {
-    switch indexPath.row {
+  func configureSearchBtn(indexPath: Int) {
+    switch indexPath {
     case 0:
       searchView.layer.borderColor = UIColor.black.cgColor
       searchButton.setTitleColor(.black, for: .normal)

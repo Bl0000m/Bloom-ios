@@ -8,6 +8,7 @@ class MainScreenViewController: UIViewController {
   
   private var timer: Timer?
   private var currentIndex: Int = 0
+  let isScrolling = false
   
   private let icon: UIImageView = {
     let icon = UIImageView()
@@ -79,6 +80,18 @@ class MainScreenViewController: UIViewController {
     stopAutoScroll()
   }
   
+  private func hideElements(in cell: MainScreenCell) {
+    cell.searchView.isHidden = true
+    cell.searchButton.isHidden = true
+    cell.couruselImg.isHidden = true
+  }
+  
+  private func showElements(in cell: MainScreenCell) {
+    cell.searchView.isHidden = false
+    cell.searchButton.isHidden = false
+    cell.couruselImg.isHidden = false
+  }
+  
   private func setConstraints() {
     NSLayoutConstraint.activate([
       mainScreenCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -105,10 +118,16 @@ extension MainScreenViewController: UICollectionViewDataSource {
       return UICollectionViewCell()
     }
     
+    if isScrolling {
+      hideElements(in: cell)
+    } else {
+      showElements(in: cell)
+    }
+    
     let data = viewModel.dataArray[indexPath.row]
     
     cell.configure(screenImg: data.imageUrl, image: data.categoryName)
-    cell.configureSearchBtn(indexPath: indexPath)
+    cell.configureSearchBtn(indexPath: indexPath.row)
     return cell
   }
 }
@@ -162,9 +181,7 @@ extension MainScreenViewController: UICollectionViewDelegateFlowLayout {
     
     for cell in visibleCells {
       guard let iconCell = cell as? MainScreenCell else { continue }
-      iconCell.searchButton.isHidden = true
-      iconCell.searchView.isHidden = true
-      iconCell.couruselImg.isHidden = true
+      hideElements(in: iconCell)
     }
   }
   
@@ -173,26 +190,7 @@ extension MainScreenViewController: UICollectionViewDelegateFlowLayout {
     
     for cell in visibleCells {
       guard let iconCell = cell as? MainScreenCell else { continue }
-      iconCell.searchButton.isHidden = false
-      iconCell.searchView.isHidden = false
-      iconCell.couruselImg.isHidden = false
+      showElements(in: iconCell)
     }
-  }
-}
-
-
-class VerticalLabel: UILabel {
-  
-  override var text: String? {
-    didSet {
-      self.setVerticalText()
-    }
-  }
-  
-  private func setVerticalText() {
-    guard let text = self.text else { return }
-    let verticalText = text.map { String($0) }.joined(separator: "\n")
-    self.numberOfLines = 0
-    self.text = verticalText
   }
 }
