@@ -1,6 +1,11 @@
 import Foundation
 
-class MainScreenViewModel {
+protocol MainScreenViewModelProtocol {
+  var dataArray: [MainScreenModel] { get set }
+  func fetchData(completion: @escaping () -> Void)
+}
+
+class MainScreenViewModel: MainScreenViewModelProtocol {
   var dataArray: [MainScreenModel] = []
   private let apiManager = ApiManager()
   

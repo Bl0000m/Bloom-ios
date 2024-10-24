@@ -2,7 +2,7 @@ import UIKit
 
 class MainScreenViewController: UIViewController {
 
-  private let viewModel = MainScreenViewModel()
+  private var viewModel: MainScreenViewModelProtocol
   let blackIcon = UIImage(named: "logo1")
   let whiteIcon = UIImage(named: "logo2")
   
@@ -36,6 +36,15 @@ class MainScreenViewController: UIViewController {
     startAutoScroll()
   }
 
+  init(viewModel: MainScreenViewModelProtocol) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
   private func fetchData() {
     viewModel.fetchData { [weak self] in
       DispatchQueue.main.async {

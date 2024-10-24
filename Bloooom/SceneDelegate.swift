@@ -6,46 +6,31 @@
 //
 
 import UIKit
+import Swinject
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
+  var coordinator: Coordinator?
+  let container = Container()
 
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-    // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-    // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+    
     guard let windowScene = (scene as? UIWindowScene) else { return }
     
     window = UIWindow(windowScene: windowScene)
     
-    // Создаем TabBarController
-    let tabBarController = UITabBarController()
+    // Регистрируем зависимости через внешний класс
+    TabBarAssembly.registerDependencies(in: container)
     
-    // Создаем экземпляры контроллеров для вкладок
-    let homeVC = MainScreenViewController()
-    let searchVC = UIViewController()
-    let menuVC = UIViewController()
-    let bagVC = UIViewController()
-    let profileVC = UIViewController()
+    // Инициализируем TabBarCoordinator
+    let tabBarCoordinator = TabBarCoordinator(container: container)
+    coordinator = tabBarCoordinator
+    tabBarCoordinator.start()
     
-    // Задаем заголовки и иконки для вкладок
-    homeVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home"), tag: 0)
-    searchVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "search"), tag: 1)
-    menuVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "menu"), tag: 2)
-    bagVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "bag"), tag: 3)
-    profileVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "user"), tag: 4)
-    
-    
-    // Настроим контроллеры вкладок
-    tabBarController.viewControllers = [homeVC, searchVC, menuVC, bagVC, profileVC]
-    
-    tabBarController.tabBar.tintColor = .black // Цвет активных вкладок
-    tabBarController.tabBar.barTintColor = .white // Цвет фона таб-бара
-   // tabBarController.tabBar.isTranslucent = false
-    // Устанавливаем TabBarController как корневой контроллер
-    window?.rootViewController = tabBarController
+    // Устанавливаем rootViewController
+    window?.rootViewController = tabBarCoordinator.tabBarController
     window?.makeKeyAndVisible()
   }
 

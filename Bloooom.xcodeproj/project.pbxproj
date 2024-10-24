@@ -10,16 +10,31 @@
 		EB0E8A7E2CAE3074005839FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0E8A7D2CAE3074005839FA /* AppDelegate.swift */; };
 		EB0E8A802CAE3074005839FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0E8A7F2CAE3074005839FA /* SceneDelegate.swift */; };
 		EB0E8A822CAE3074005839FA /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0E8A812CAE3074005839FA /* MainScreenViewController.swift */; };
-		EB0E8A852CAE3074005839FA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A842CAE3074005839FA /* Base */; };
 		EB0E8A872CAE3076005839FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A862CAE3076005839FA /* Assets.xcassets */; };
 		EB0E8A8A2CAE3076005839FA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A892CAE3076005839FA /* Base */; };
 		EB0E8A972CAF7C76005839FA /* MainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0E8A962CAF7C76005839FA /* MainScreenCell.swift */; };
 		EB0E8A9C2CAF8109005839FA /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A982CAF8109005839FA /* 1.png */; };
 		EB0E8A9E2CAF8109005839FA /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A9A2CAF8109005839FA /* 3.png */; };
 		EB0E8A9F2CAF8109005839FA /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A9B2CAF8109005839FA /* 4.png */; };
+		EB6A5ADE2CCA1C9800422156 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */; };
+		EB6A5AE02CCA1CB800422156 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */; };
+		EB6A5AE22CCA1CEA00422156 /* CreateAccountAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5AE12CCA1CEA00422156 /* CreateAccountAssembly.swift */; };
+		EB6A5AE42CCA1D2A00422156 /* CreateAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5AE32CCA1D2A00422156 /* CreateAccountCoordinator.swift */; };
 		EB7C3FE32CBCC93B00A0DD13 /* MainScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE22CBCC93B00A0DD13 /* MainScreenModel.swift */; };
 		EB7C3FE52CBCCAB000A0DD13 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE42CBCCAB000A0DD13 /* MainScreenViewModel.swift */; };
 		EB7C3FE72CBCCE3700A0DD13 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE62CBCCE3700A0DD13 /* ApiManager.swift */; };
+		EBA30FB42CC695B200038973 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FB32CC695B200038973 /* SignInViewController.swift */; };
+		EBA30FBC2CC77F2B00038973 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EBA30FBB2CC77F2B00038973 /* Kingfisher */; };
+		EBA30FBF2CC7802A00038973 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = EBA30FBE2CC7802A00038973 /* Swinject */; };
+		EBA30FC22CC7810F00038973 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FC12CC7810F00038973 /* MainScreenCoordinator.swift */; };
+		EBA30FC42CC7816000038973 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FC32CC7816000038973 /* Coordinator.swift */; };
+		EBA30FC72CC7825700038973 /* MainScreenModuleAssemble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FC62CC7825700038973 /* MainScreenModuleAssemble.swift */; };
+		EBA30FC92CC789EF00038973 /* TabBarAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FC82CC789EF00038973 /* TabBarAssembly.swift */; };
+		EBA30FCB2CC78B6E00038973 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FCA2CC78B6E00038973 /* TabBarCoordinator.swift */; };
+		EBA30FCF2CC79A1900038973 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FCE2CC79A1900038973 /* UIExtensions.swift */; };
+		EBA30FD12CC7A62400038973 /* SignInAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FD02CC7A62400038973 /* SignInAssembly.swift */; };
+		EBA30FD32CC7A67D00038973 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FD22CC7A67D00038973 /* SignInViewModel.swift */; };
+		EBA30FD52CC7A7C300038973 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FD42CC7A7C300038973 /* SignInCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +42,6 @@
 		EB0E8A7D2CAE3074005839FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB0E8A7F2CAE3074005839FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EB0E8A812CAE3074005839FA /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
-		EB0E8A842CAE3074005839FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EB0E8A862CAE3076005839FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB0E8A892CAE3076005839FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB0E8A8B2CAE3076005839FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,9 +49,23 @@
 		EB0E8A982CAF8109005839FA /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.png; path = ../../1.png; sourceTree = "<group>"; };
 		EB0E8A9A2CAF8109005839FA /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = ../../3.png; sourceTree = "<group>"; };
 		EB0E8A9B2CAF8109005839FA /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 4.png; path = ../../4.png; sourceTree = "<group>"; };
+		EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
+		EB6A5AE12CCA1CEA00422156 /* CreateAccountAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountAssembly.swift; sourceTree = "<group>"; };
+		EB6A5AE32CCA1D2A00422156 /* CreateAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountCoordinator.swift; sourceTree = "<group>"; };
 		EB7C3FE22CBCC93B00A0DD13 /* MainScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModel.swift; sourceTree = "<group>"; };
 		EB7C3FE42CBCCAB000A0DD13 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		EB7C3FE62CBCCE3700A0DD13 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		EBA30FB32CC695B200038973 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		EBA30FC12CC7810F00038973 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
+		EBA30FC32CC7816000038973 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		EBA30FC62CC7825700038973 /* MainScreenModuleAssemble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModuleAssemble.swift; sourceTree = "<group>"; };
+		EBA30FC82CC789EF00038973 /* TabBarAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAssembly.swift; sourceTree = "<group>"; };
+		EBA30FCA2CC78B6E00038973 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		EBA30FCE2CC79A1900038973 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		EBA30FD02CC7A62400038973 /* SignInAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAssembly.swift; sourceTree = "<group>"; };
+		EBA30FD22CC7A67D00038973 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		EBA30FD42CC7A7C300038973 /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBA30FBC2CC77F2B00038973 /* Kingfisher in Frameworks */,
+				EBA30FBF2CC7802A00038973 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,10 +100,14 @@
 		EB0E8A7C2CAE3074005839FA /* Bloooom */ = {
 			isa = PBXGroup;
 			children = (
+				EB6A5AD92CCA1C7000422156 /* CreateAccountModule */,
+				EBA30FCD2CC7988D00038973 /* Extensions */,
+				EBA30FC52CC7823800038973 /* Assembly */,
+				EBA30FC02CC7804500038973 /* AppCoordinator */,
+				EBA30FAF2CC6957700038973 /* SignInModule */,
 				EB0E8A912CAE37CE005839FA /* MainScreenModule */,
 				EB0E8A7D2CAE3074005839FA /* AppDelegate.swift */,
 				EB0E8A7F2CAE3074005839FA /* SceneDelegate.swift */,
-				EB0E8A832CAE3074005839FA /* Main.storyboard */,
 				EB0E8A862CAE3076005839FA /* Assets.xcassets */,
 				EB0E8A982CAF8109005839FA /* 1.png */,
 				EB0E8A9A2CAF8109005839FA /* 3.png */,
@@ -128,6 +162,103 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		EB6A5AD92CCA1C7000422156 /* CreateAccountModule */ = {
+			isa = PBXGroup;
+			children = (
+				EB6A5ADC2CCA1C8700422156 /* View */,
+				EB6A5ADB2CCA1C8100422156 /* ViewModel */,
+				EB6A5ADA2CCA1C7D00422156 /* Model */,
+			);
+			path = CreateAccountModule;
+			sourceTree = "<group>";
+		};
+		EB6A5ADA2CCA1C7D00422156 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EB6A5ADB2CCA1C8100422156 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EB6A5ADC2CCA1C8700422156 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EBA30FAF2CC6957700038973 /* SignInModule */ = {
+			isa = PBXGroup;
+			children = (
+				EBA30FB22CC6959400038973 /* View */,
+				EBA30FB12CC6958E00038973 /* ViewModel */,
+				EBA30FB02CC6958900038973 /* Model */,
+			);
+			path = SignInModule;
+			sourceTree = "<group>";
+		};
+		EBA30FB02CC6958900038973 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EBA30FB12CC6958E00038973 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EBA30FD22CC7A67D00038973 /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EBA30FB22CC6959400038973 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBA30FB32CC695B200038973 /* SignInViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EBA30FC02CC7804500038973 /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				EBA30FC12CC7810F00038973 /* MainScreenCoordinator.swift */,
+				EBA30FC32CC7816000038973 /* Coordinator.swift */,
+				EBA30FCA2CC78B6E00038973 /* TabBarCoordinator.swift */,
+				EBA30FD42CC7A7C300038973 /* SignInCoordinator.swift */,
+				EB6A5AE32CCA1D2A00422156 /* CreateAccountCoordinator.swift */,
+			);
+			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		EBA30FC52CC7823800038973 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				EBA30FC62CC7825700038973 /* MainScreenModuleAssemble.swift */,
+				EBA30FC82CC789EF00038973 /* TabBarAssembly.swift */,
+				EBA30FD02CC7A62400038973 /* SignInAssembly.swift */,
+				EB6A5AE12CCA1CEA00422156 /* CreateAccountAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		EBA30FCD2CC7988D00038973 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EBA30FCE2CC79A1900038973 /* UIExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,6 +275,10 @@
 			dependencies = (
 			);
 			name = Bloooom;
+			packageProductDependencies = (
+				EBA30FBB2CC77F2B00038973 /* Kingfisher */,
+				EBA30FBE2CC7802A00038973 /* Swinject */,
+			);
 			productName = Bloooom;
 			productReference = EB0E8A7A2CAE3074005839FA /* Bloooom.app */;
 			productType = "com.apple.product-type.application";
@@ -172,6 +307,10 @@
 				Base,
 			);
 			mainGroup = EB0E8A712CAE3074005839FA;
+			packageReferences = (
+				EBA30FBA2CC77F2B00038973 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				EBA30FBD2CC7802A00038973 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			productRefGroup = EB0E8A7B2CAE3074005839FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -191,7 +330,6 @@
 				EB0E8A9C2CAF8109005839FA /* 1.png in Resources */,
 				EB0E8A9E2CAF8109005839FA /* 3.png in Resources */,
 				EB0E8A8A2CAE3076005839FA /* Base in Resources */,
-				EB0E8A852CAE3074005839FA /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,10 +341,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB0E8A972CAF7C76005839FA /* MainScreenCell.swift in Sources */,
+				EBA30FCF2CC79A1900038973 /* UIExtensions.swift in Sources */,
+				EBA30FC72CC7825700038973 /* MainScreenModuleAssemble.swift in Sources */,
 				EB0E8A822CAE3074005839FA /* MainScreenViewController.swift in Sources */,
+				EBA30FC42CC7816000038973 /* Coordinator.swift in Sources */,
+				EB6A5AE42CCA1D2A00422156 /* CreateAccountCoordinator.swift in Sources */,
+				EBA30FD12CC7A62400038973 /* SignInAssembly.swift in Sources */,
+				EB6A5ADE2CCA1C9800422156 /* CreateAccountViewController.swift in Sources */,
+				EB6A5AE22CCA1CEA00422156 /* CreateAccountAssembly.swift in Sources */,
+				EBA30FB42CC695B200038973 /* SignInViewController.swift in Sources */,
 				EB7C3FE32CBCC93B00A0DD13 /* MainScreenModel.swift in Sources */,
+				EBA30FCB2CC78B6E00038973 /* TabBarCoordinator.swift in Sources */,
+				EBA30FD52CC7A7C300038973 /* SignInCoordinator.swift in Sources */,
 				EB7C3FE72CBCCE3700A0DD13 /* ApiManager.swift in Sources */,
+				EBA30FC92CC789EF00038973 /* TabBarAssembly.swift in Sources */,
 				EB0E8A7E2CAE3074005839FA /* AppDelegate.swift in Sources */,
+				EB6A5AE02CCA1CB800422156 /* CreateAccountViewModel.swift in Sources */,
+				EBA30FC22CC7810F00038973 /* MainScreenCoordinator.swift in Sources */,
+				EBA30FD32CC7A67D00038973 /* SignInViewModel.swift in Sources */,
 				EB0E8A802CAE3074005839FA /* SceneDelegate.swift in Sources */,
 				EB7C3FE52CBCCAB000A0DD13 /* MainScreenViewModel.swift in Sources */,
 			);
@@ -215,14 +367,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EB0E8A832CAE3074005839FA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EB0E8A842CAE3074005839FA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EB0E8A882CAE3076005839FA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -365,7 +509,6 @@
 				INFOPLIST_FILE = Bloooom/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -393,7 +536,6 @@
 				INFOPLIST_FILE = Bloooom/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -431,6 +573,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EBA30FBA2CC77F2B00038973 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.0;
+			};
+		};
+		EBA30FBD2CC7802A00038973 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EBA30FBB2CC77F2B00038973 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBA30FBA2CC77F2B00038973 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		EBA30FBE2CC7802A00038973 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBA30FBD2CC7802A00038973 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB0E8A722CAE3074005839FA /* Project object */;
 }
