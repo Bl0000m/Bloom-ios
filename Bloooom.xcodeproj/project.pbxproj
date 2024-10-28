@@ -34,6 +34,8 @@
 		EB7C3FE32CBCC93B00A0DD13 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE22CBCC93B00A0DD13 /* HomeModel.swift */; };
 		EB7C3FE52CBCCAB000A0DD13 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE42CBCCAB000A0DD13 /* HomeViewModel.swift */; };
 		EB7C3FE72CBCCE3700A0DD13 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE62CBCCE3700A0DD13 /* ApiManager.swift */; };
+		EB89A07C2CCF7DAF00E95A68 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89A07B2CCF7DAF00E95A68 /* UITextField+Extension.swift */; };
+		EB89A07E2CCF810400E95A68 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89A07D2CCF810400E95A68 /* SeparatorLine.swift */; };
 		EBA30FB42CC695B200038973 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FB32CC695B200038973 /* SignInViewController.swift */; };
 		EBA30FBC2CC77F2B00038973 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EBA30FBB2CC77F2B00038973 /* Kingfisher */; };
 		EBA30FBF2CC7802A00038973 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = EBA30FBE2CC7802A00038973 /* Swinject */; };
@@ -73,6 +75,8 @@
 		EB7C3FE22CBCC93B00A0DD13 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		EB7C3FE42CBCCAB000A0DD13 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		EB7C3FE62CBCCE3700A0DD13 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		EB89A07B2CCF7DAF00E95A68 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		EB89A07D2CCF810400E95A68 /* SeparatorLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
 		EBA30FB32CC695B200038973 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		EBA30FC12CC7810F00038973 /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
 		EBA30FCA2CC78B6E00038973 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 				12DB9D682CCD296E000C6AD1 /* UIStackView.swift */,
 				12DB9D6A2CCD2976000C6AD1 /* UIButton.swift */,
 				12DB9D6C2CCD297F000C6AD1 /* UILabel.swift */,
+				EB89A07B2CCF7DAF00E95A68 /* UITextField+Extension.swift */,
+				EB89A07D2CCF810400E95A68 /* SeparatorLine.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 				EB0E8A822CAE3074005839FA /* HomeViewController.swift in Sources */,
 				12BF36322CCD176400247D74 /* BasketViewModel.swift in Sources */,
 				12DB9D6D2CCD297F000C6AD1 /* UILabel.swift in Sources */,
+				EB89A07E2CCF810400E95A68 /* SeparatorLine.swift in Sources */,
 				12BF36402CCD225E00247D74 /* SearchViewController.swift in Sources */,
 				12BF36412CCD225E00247D74 /* SearchViewModel.swift in Sources */,
 				12BF36422CCD225E00247D74 /* SearchViewCoordinator.swift in Sources */,
@@ -354,6 +361,7 @@
 				EBA30FB42CC695B200038973 /* SignInViewController.swift in Sources */,
 				EB7C3FE32CBCC93B00A0DD13 /* HomeModel.swift in Sources */,
 				EBA30FCB2CC78B6E00038973 /* MainTabBarCoordinator.swift in Sources */,
+				EB89A07C2CCF7DAF00E95A68 /* UITextField+Extension.swift in Sources */,
 				EB7A884B2CCB2B6100D60C24 /* AppCoordinator.swift in Sources */,
 				12BF362E2CCD170C00247D74 /* BasketViewController.swift in Sources */,
 				EBA30FD52CC7A7C300038973 /* ProfileCoordinator.swift in Sources */,

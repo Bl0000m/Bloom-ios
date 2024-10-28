@@ -11,54 +11,13 @@ final class SignInViewController: UIViewController {
     }()
     
     private let entryLabel = UILabel(text: "ВОЙТИ В АККАУНТ")
-    
-    private let emailTextField: UITextField = {
-        let emailTF = UITextField()
-        let placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
-            .font: UIFont.systemFont(ofSize: 12)
-        ]
-        let placeHolderText = "ЭЛЕКТРОННАЯ ПОЧТА"
-        emailTF.borderStyle = .none
-        emailTF.attributedPlaceholder = NSAttributedString(string: placeHolderText, attributes: placeholderAttributes)
-        emailTF.keyboardType = .emailAddress
-        emailTF.textColor = .black
-        emailTF.textAlignment = .left
-        emailTF.translatesAutoresizingMaskIntoConstraints = false
-        return emailTF
-    }()
-    
-    private let emailSeperatorLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private let passwordTextField: UITextField = {
-        let passwordTF = UITextField()
-        passwordTF.borderStyle = .none
-        let placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
-            .font: UIFont.systemFont(ofSize: 12)
-        ]
-        let placeHolderText = "ПАРОЛЬ"
-        passwordTF.attributedPlaceholder = NSAttributedString(string: placeHolderText, attributes: placeholderAttributes)
-        passwordTF.textColor = .black
-        passwordTF.textAlignment = .left
-        passwordTF.isSecureTextEntry = true
-        passwordTF.translatesAutoresizingMaskIntoConstraints = false
-        return passwordTF
-    }()
-    
-    private let passwordSeperatorLine: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
+    private let emailTextField = UITextField(placeHolder: "ЭЛЕКТРОННАЯ ПОЧТА", keyboard: .emailAddress)
+    private let emailSeperatorLine = UIView(backgroundColor: .black)
+    private let passwordTextField = UITextField(placeHolder: "ПАРОЛЬ", keyboard: .default)
+    private let passwordSeperatorLine = UIView(backgroundColor: .black)
     private lazy var entryButton = UIButton(title: "ВОЙТИ В АККАУНТ")
+    private let notAccountLabel = UILabel(text: "НЕТ АККАУНТА?")
+    private lazy var createButton = UIButton(title: "СОЗДАТЬ АККАУНТ")
     
     private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
@@ -68,10 +27,6 @@ final class SignInViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    private let notAccountLabel = UILabel(text: "НЕТ АККАУНТА?")
-    
-    private lazy var createButton = UIButton(title: "СОЗДАТЬ АККАУНТ")
     
     override func viewDidLoad() {
         super.viewDidLoad()

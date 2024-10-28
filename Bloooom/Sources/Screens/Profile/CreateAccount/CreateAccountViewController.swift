@@ -3,6 +3,8 @@ import UIKit
 final class CreateAccountViewController: UIViewController {
     private var viewModel: CreateAccountViewModelProtocol
     
+    private let createAccountLabel = UILabel(text: "СОЗДАТЬ АККАУНТ")
+    
     init(viewModel: CreateAccountViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

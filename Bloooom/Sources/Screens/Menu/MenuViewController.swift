@@ -1,10 +1,3 @@
-//
-//  MenuViewController.swift
-//  Bloooom
-//
-//  Created by Ibragim Akaev on 10/26/24.
-//
-
 import UIKit
 
 final class MenuViewController: UIViewController {

@@ -3,9 +3,7 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     private var viewModel: HomeViewModelProtocol
-    let blackIcon = UIImage(named: "logo1")
-    let whiteIcon = UIImage(named: "logo2")
-    
+
     private var timer: Timer?
     private var currentIndex: Int = 0
     let isScrolling = false
@@ -39,7 +37,7 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        startAutoScroll()
         setElementToView()
         setConstraints()
         fetchData()
@@ -49,7 +47,7 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        startAutoScroll()
+        //startAutoScroll()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -179,7 +177,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             
             if isNearCellCenter || isNearCellBottom {
                 // Устанавливаем логотип в зависимости от индекса ячейки (чётный или нечётный)
-                icon.image = (indexPath.row % 2 == 0) ? blackIcon : whiteIcon
+                icon.image = (indexPath.row % 2 == 0) ? UIImage(named: "logo1") : UIImage(named: "logo2")
                 break
             }
         }
