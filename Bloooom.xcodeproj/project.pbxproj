@@ -31,6 +31,7 @@
 		EB4F2C7B2CD1D47F00ECB7B1 /* FormViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7A2CD1D47F00ECB7B1 /* FormViewContent.swift */; };
 		EB4F2C7D2CD1D4A100ECB7B1 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7C2CD1D4A100ECB7B1 /* FormViewController.swift */; };
 		EB4F2C7F2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7E2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift */; };
+		EB4F2C822CD1E33700ECB7B1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EB4F2C812CD1E33700ECB7B1 /* Kingfisher */; };
 		EB6A5ADE2CCA1C9800422156 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */; };
 		EB6A5AE02CCA1CB800422156 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */; };
 		EB7A88492CCB2AEE00D60C24 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7A88482CCB2AEE00D60C24 /* Coordinator.swift */; };
@@ -42,8 +43,6 @@
 		EB89A07C2CCF7DAF00E95A68 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89A07B2CCF7DAF00E95A68 /* UITextField+Extension.swift */; };
 		EB89A07E2CCF810400E95A68 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89A07D2CCF810400E95A68 /* SeparatorLine.swift */; };
 		EBA30FB42CC695B200038973 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FB32CC695B200038973 /* SignInViewController.swift */; };
-		EBA30FBC2CC77F2B00038973 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EBA30FBB2CC77F2B00038973 /* Kingfisher */; };
-		EBA30FBF2CC7802A00038973 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = EBA30FBE2CC7802A00038973 /* Swinject */; };
 		EBA30FC22CC7810F00038973 /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FC12CC7810F00038973 /* HomeViewCoordinator.swift */; };
 		EBA30FCB2CC78B6E00038973 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FCA2CC78B6E00038973 /* MainTabBarCoordinator.swift */; };
 		EBA30FD32CC7A67D00038973 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FD22CC7A67D00038973 /* SignInViewModel.swift */; };
@@ -99,8 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBA30FBC2CC77F2B00038973 /* Kingfisher in Frameworks */,
-				EBA30FBF2CC7802A00038973 /* Swinject in Frameworks */,
+				EB4F2C822CD1E33700ECB7B1 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,8 +313,7 @@
 			);
 			name = Bloooom;
 			packageProductDependencies = (
-				EBA30FBB2CC77F2B00038973 /* Kingfisher */,
-				EBA30FBE2CC7802A00038973 /* Swinject */,
+				EB4F2C812CD1E33700ECB7B1 /* Kingfisher */,
 			);
 			productName = Bloooom;
 			productReference = EB0E8A7A2CAE3074005839FA /* Bloooom.app */;
@@ -347,8 +344,7 @@
 			);
 			mainGroup = EB0E8A712CAE3074005839FA;
 			packageReferences = (
-				EBA30FBA2CC77F2B00038973 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				EBA30FBD2CC7802A00038973 /* XCRemoteSwiftPackageReference "Swinject" */,
+				EB4F2C802CD1E33700ECB7B1 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = EB0E8A7B2CAE3074005839FA /* Products */;
 			projectDirPath = "";
@@ -627,7 +623,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EBA30FBA2CC77F2B00038973 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		EB4F2C802CD1E33700ECB7B1 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -635,26 +631,13 @@
 				minimumVersion = 8.1.0;
 			};
 		};
-		EBA30FBD2CC7802A00038973 /* XCRemoteSwiftPackageReference "Swinject" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Swinject/Swinject.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.9.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EBA30FBB2CC77F2B00038973 /* Kingfisher */ = {
+		EB4F2C812CD1E33700ECB7B1 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EBA30FBA2CC77F2B00038973 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = EB4F2C802CD1E33700ECB7B1 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		EBA30FBE2CC7802A00038973 /* Swinject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EBA30FBD2CC7802A00038973 /* XCRemoteSwiftPackageReference "Swinject" */;
-			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
