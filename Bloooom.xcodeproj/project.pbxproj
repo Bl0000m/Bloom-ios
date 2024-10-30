@@ -26,6 +26,11 @@
 		EB0E8A872CAE3076005839FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A862CAE3076005839FA /* Assets.xcassets */; };
 		EB0E8A8A2CAE3076005839FA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A892CAE3076005839FA /* Base */; };
 		EB0E8A972CAF7C76005839FA /* MainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0E8A962CAF7C76005839FA /* MainScreenCell.swift */; };
+		EB4F2C762CD1D40D00ECB7B1 /* VerificationViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C752CD1D40D00ECB7B1 /* VerificationViewContent.swift */; };
+		EB4F2C782CD1D45000ECB7B1 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C772CD1D45000ECB7B1 /* VerificationViewController.swift */; };
+		EB4F2C7B2CD1D47F00ECB7B1 /* FormViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7A2CD1D47F00ECB7B1 /* FormViewContent.swift */; };
+		EB4F2C7D2CD1D4A100ECB7B1 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7C2CD1D4A100ECB7B1 /* FormViewController.swift */; };
+		EB4F2C7F2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7E2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift */; };
 		EB6A5ADE2CCA1C9800422156 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */; };
 		EB6A5AE02CCA1CB800422156 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */; };
 		EB7A88492CCB2AEE00D60C24 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7A88482CCB2AEE00D60C24 /* Coordinator.swift */; };
@@ -67,6 +72,11 @@
 		EB0E8A892CAE3076005839FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB0E8A8B2CAE3076005839FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB0E8A962CAF7C76005839FA /* MainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCell.swift; sourceTree = "<group>"; };
+		EB4F2C752CD1D40D00ECB7B1 /* VerificationViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewContent.swift; sourceTree = "<group>"; };
+		EB4F2C772CD1D45000ECB7B1 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		EB4F2C7A2CD1D47F00ECB7B1 /* FormViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewContent.swift; sourceTree = "<group>"; };
+		EB4F2C7C2CD1D4A100ECB7B1 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		EB4F2C7E2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountCoordinator.swift; sourceTree = "<group>"; };
 		EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		EB7A88482CCB2AEE00D60C24 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -217,11 +227,30 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		EB4F2C742CD1D3E200ECB7B1 /* VerifyContent */ = {
+			isa = PBXGroup;
+			children = (
+				EB4F2C752CD1D40D00ECB7B1 /* VerificationViewContent.swift */,
+				EB4F2C772CD1D45000ECB7B1 /* VerificationViewController.swift */,
+			);
+			path = VerifyContent;
+			sourceTree = "<group>";
+		};
+		EB4F2C792CD1D46A00ECB7B1 /* FormModule */ = {
+			isa = PBXGroup;
+			children = (
+				EB4F2C7A2CD1D47F00ECB7B1 /* FormViewContent.swift */,
+				EB4F2C7C2CD1D4A100ECB7B1 /* FormViewController.swift */,
+			);
+			path = FormModule;
+			sourceTree = "<group>";
+		};
 		EB6A5AD92CCA1C7000422156 /* CreateAccount */ = {
 			isa = PBXGroup;
 			children = (
 				EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */,
 				EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */,
+				EB4F2C7E2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift */,
 			);
 			path = CreateAccount;
 			sourceTree = "<group>";
@@ -239,6 +268,8 @@
 		EBA30FAF2CC6957700038973 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EB4F2C792CD1D46A00ECB7B1 /* FormModule */,
+				EB4F2C742CD1D3E200ECB7B1 /* VerifyContent */,
 				12DB9D652CCD2672000C6AD1 /* SignIn */,
 				EB6A5AD92CCA1C7000422156 /* CreateAccount */,
 				EBA30FD42CC7A7C300038973 /* ProfileCoordinator.swift */,
@@ -345,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB4F2C7F2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift in Sources */,
 				EB0E8A972CAF7C76005839FA /* MainScreenCell.swift in Sources */,
 				12DB9D692CCD296E000C6AD1 /* UIStackView.swift in Sources */,
 				12BF363B2CCD1C6E00247D74 /* TabView.swift in Sources */,
@@ -356,13 +388,17 @@
 				12BF36402CCD225E00247D74 /* SearchViewController.swift in Sources */,
 				12BF36412CCD225E00247D74 /* SearchViewModel.swift in Sources */,
 				12BF36422CCD225E00247D74 /* SearchViewCoordinator.swift in Sources */,
+				EB4F2C7B2CD1D47F00ECB7B1 /* FormViewContent.swift in Sources */,
 				12BF36302CCD175100247D74 /* BasketViewCoordinator.swift in Sources */,
 				EB6A5ADE2CCA1C9800422156 /* CreateAccountViewController.swift in Sources */,
 				EBA30FB42CC695B200038973 /* SignInViewController.swift in Sources */,
+				EB4F2C782CD1D45000ECB7B1 /* VerificationViewController.swift in Sources */,
 				EB7C3FE32CBCC93B00A0DD13 /* HomeModel.swift in Sources */,
 				EBA30FCB2CC78B6E00038973 /* MainTabBarCoordinator.swift in Sources */,
+				EB4F2C7D2CD1D4A100ECB7B1 /* FormViewController.swift in Sources */,
 				EB89A07C2CCF7DAF00E95A68 /* UITextField+Extension.swift in Sources */,
 				EB7A884B2CCB2B6100D60C24 /* AppCoordinator.swift in Sources */,
+				EB4F2C762CD1D40D00ECB7B1 /* VerificationViewContent.swift in Sources */,
 				12BF362E2CCD170C00247D74 /* BasketViewController.swift in Sources */,
 				EBA30FD52CC7A7C300038973 /* ProfileCoordinator.swift in Sources */,
 				EB7C3FE72CBCCE3700A0DD13 /* ApiManager.swift in Sources */,

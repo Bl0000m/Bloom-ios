@@ -3,9 +3,9 @@ import UIKit
 extension UIStackView {
     
     convenience init(
-        axis: NSLayoutConstraint.Axis = .vertical,
-        distribution: UIStackView.Distribution = .fillEqually,
-        alignment: UIStackView.Alignment = .leading,
+        axis: NSLayoutConstraint.Axis,
+        distribution: UIStackView.Distribution,
+        alignment: UIStackView.Alignment,
         spacing: CGFloat
     ) {
         self.init()

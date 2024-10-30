@@ -16,5 +16,13 @@ extension UIButton {
         self.titleLabel?.font = .systemFont(ofSize: font)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    convenience init(
+        btnImage: String
+    ) {
+        self.init()
+        self.setImage(UIImage(named: btnImage), for: .normal)
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
 }
 
