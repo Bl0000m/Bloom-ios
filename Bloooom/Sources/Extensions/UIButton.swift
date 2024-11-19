@@ -24,5 +24,13 @@ extension UIButton {
         self.setImage(UIImage(named: btnImage), for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    convenience init(text: String, textColor: UIColor, font: CGFloat) {
+        self.init()
+        self.setTitle(text, for: .normal)
+        self.setTitleColor(textColor, for: .normal)
+        self.titleLabel?.font = .systemFont(ofSize: font, weight: .regular)
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
 }
 

@@ -29,14 +29,7 @@ final class ProfileCoordinator: Coordinator {
     }
     
     private func newPasswordCreation() {
-        let newPasswordCreation = FormViewController(
-            model: .newPasswordCreation,
-            buttonAction: { [weak self] in
-                self?.verifyPassword()
-            },
-            backButtonAction: { [weak self] in
-                self?.navigationController.popViewController(animated: true)
-            })
+        let newPasswordCreation = UIViewController()
         navigationController.pushViewController(newPasswordCreation, animated: true)
     }
     
@@ -63,17 +56,24 @@ final class ProfileCoordinator: Coordinator {
     }
     
     func forgotPasswordTapped() {
-        let forgotViewController = FormViewController(
-            model: .passwordReset,
-            buttonAction: { [weak self] in
-                self?.moveToVerifyEmail()
-            },
-            backButtonAction: { [weak self] in
-                self?.navigationController.popViewController(animated: true)
-            })
-        
-        navigationController.pushViewController(forgotViewController, animated: true)
+        let coordinator = ForgotPinPasswordCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
     
-    func moveToAccount() {}
+    func moveToAccount() {
+        let successView = VerificationViewController(
+            model: .success) { [weak self] in
+                let coordinator = MainTabBarCoordinator()
+                self?.childCoordinators.append(coordinator)
+                coordinator.start()
+                
+                self?.navigationController.pushViewController(
+                    coordinator.tabBarController,
+                    animated: true
+                )
+            }
+        successView.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(successView, animated: true)
+    }
 }

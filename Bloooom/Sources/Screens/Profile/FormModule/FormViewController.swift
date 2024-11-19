@@ -6,12 +6,12 @@ class FormViewController: UIViewController {
     var buttonAction: (() -> Void)?
     var backButtonAction: (() -> Void)?
     
-    private lazy var stackView = UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .leading, spacing: 8)
-    private lazy var backButton = UIButton(btnImage: "btnLeft")
-    private lazy var mainTitle = UILabel(text: "", font: 16, alignment: .left)
-    private lazy var mainSubTitle = UILabel(text: "", font: 12, alignment: .left)
-    private lazy var textField = UITextField(placeHolder: "", keyboard: .default)
-    private lazy var seperatorLine = UIView(backgroundColor: .black)
+    private let stackView = UIStackView(axis: .vertical, distribution: .fillEqually, alignment: .leading, spacing: 8)
+    private let backButton = UIButton(btnImage: "btnLeft")
+    private let mainTitle = UILabel(text: "", font: 16, alignment: .left, textColor: .lightGray)
+    private let mainSubTitle = UILabel(text: "", font: 12, alignment: .left, textColor: .lightGray)
+    private let textField = UITextField(placeHolder: "", keyboard: .default)
+    private let seperatorLine = UIView(backgroundColor: .lightGray)
     private lazy var confirmButton = UIButton(title: "")
     
     override func viewDidLoad() {
@@ -19,11 +19,16 @@ class FormViewController: UIViewController {
         setupUI()
         setupActionButton()
         view.backgroundColor = .white
+        textField.font = .systemFont(ofSize: 12, weight: .regular)
         configure(model: model)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    init(model: FormViewContent, buttonAction: (() -> Void)?, backButtonAction: (() -> Void)?) {
+    init(
+        model: FormViewContent,
+        buttonAction: (() -> Void)?,
+        backButtonAction: (() -> Void)?
+    ) {
         self.model = model
         self.buttonAction = buttonAction
         self.backButtonAction = backButtonAction
@@ -56,7 +61,7 @@ class FormViewController: UIViewController {
             textField.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 40),
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            textField.heightAnchor.constraint(equalToConstant: 45)
+            textField.heightAnchor.constraint(equalToConstant: 42)
         ])
         
         NSLayoutConstraint.activate([
@@ -73,7 +78,7 @@ class FormViewController: UIViewController {
             confirmButton.heightAnchor.constraint(equalToConstant: 32)
         ])
     }
-    
+
     private func setupActionButton() {
         confirmButton.addTarget(self, action: #selector(tapAction), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(toBackAction), for: .touchUpInside)

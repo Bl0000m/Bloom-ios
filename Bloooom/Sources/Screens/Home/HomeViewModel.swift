@@ -8,7 +8,7 @@ protocol HomeViewModelProtocol {
 }
 
 final class HomeViewModel: HomeViewModelProtocol {
-    private let apiManager = ApiManager()
+    private let apiManager = HomeApiManager()
     
     var mainScreenCoordinator: HomeViewCoordinator
     var dataArray: [HomeModel] = []

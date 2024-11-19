@@ -3,7 +3,6 @@ import UIKit
 final class CreateAccountCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     let navigationController: UINavigationController
-    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -28,15 +27,14 @@ final class CreateAccountCoordinator: Coordinator {
         navigationController.popViewController(animated: true)
     }
     
-    func moveToCreateAccount() {
-        let createViewController = FormViewController(
-            model: .emailVerification,
-            buttonAction: { [weak self] in
-                self?.moveToMainPage()
-            },
-            backButtonAction: { [weak self] in
-                self?.navigationController.popViewController(animated: true)
-            })
-        navigationController.pushViewController(createViewController, animated: true)
+    func moveToCreateAccount(email: String) {
+        let coordinator = VerificationUserCoordinator(navigationController: navigationController, email: email)
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+    
+    func startCountrySelectionFlow(delegate: CountrySelectionDelegate) {
+        let countriesCodeVC = CountriesCoordinator(navigationController: navigationController, delegate: delegate)
+        countriesCodeVC.start()
     }
 }

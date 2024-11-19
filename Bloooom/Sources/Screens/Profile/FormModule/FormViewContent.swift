@@ -9,17 +9,6 @@ struct FormViewContent {
     let keyboardType: UIKeyboardType
     let isSecure: Bool
     
-    static var emailConfirmation: FormViewContent {
-        return FormViewContent(
-            title: "ПОДТВЕРДИТЕ ЭЛЕКТРОННЫЙ АДРЕС",
-            subtitle: "Мы отправили вам письмо с 4-значным кодом",
-            placeholder: "ВВЕДИТЕ КОД",
-            actionButtonTitle: "ПОДТВЕРДИТЬ",
-            keyboardType: .numberPad,
-            isSecure: false
-        )
-    }
-    
     static var passwordReset: FormViewContent {
         return FormViewContent(
             title: "ЗАБЫЛИ ПАРОЛЬ",
@@ -42,14 +31,14 @@ struct FormViewContent {
         )
     }
     
-    static var newPasswordCreation: FormViewContent {
-        return FormViewContent(
-            title: "ПРИДУМАЙТЕ НОВЫЙ ПАРОЛЬ",
-            subtitle: "Убедитесь, что он отличается от предыдущих\nдля безопасности",
-            placeholder: "ВВЕДИТЕ ПАРОЛЬ",
-            actionButtonTitle: "ПОДТВЕРДИТЬ",
-            keyboardType: .default,
-            isSecure: true
-        )
-    }
+//    static var newPasswordCreation: FormViewContent {
+//        return FormViewContent(
+//            title: "ПРИДУМАЙТЕ НОВЫЙ ПАРОЛЬ",
+//            subtitle: "Убедитесь, что он отличается от предыдущих\nдля безопасности",
+//            placeholder: "ВВЕДИТЕ ПАРОЛЬ",
+//            actionButtonTitle: "ПОДТВЕРДИТЬ",
+//            keyboardType: .default,
+//            isSecure: true
+//        )
+//    }
 }

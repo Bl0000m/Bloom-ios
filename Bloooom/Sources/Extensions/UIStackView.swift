@@ -15,5 +15,14 @@ extension UIStackView {
         self.spacing = spacing
         self.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    func addSubviews(_ subviews: [UIView]) {
+        subviews.forEach(addArrangedSubview)
+    }
+    
+    func addArrangedSubviews(_ subviews: UIView...) {
+        subviews.forEach(addArrangedSubview)
+    }
 }
+
 
