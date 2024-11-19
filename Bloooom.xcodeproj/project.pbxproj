@@ -31,7 +31,7 @@
 		EB4F2C7B2CD1D47F00ECB7B1 /* FormViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7A2CD1D47F00ECB7B1 /* FormViewContent.swift */; };
 		EB4F2C7D2CD1D4A100ECB7B1 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7C2CD1D4A100ECB7B1 /* FormViewController.swift */; };
 		EB4F2C7F2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7E2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift */; };
-		EB4F2C822CD1E33700ECB7B1 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EB4F2C812CD1E33700ECB7B1 /* Kingfisher */; };
+		EB4F2C842CD1FD6200ECB7B1 /* CreateAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C832CD1FD6100ECB7B1 /* CreateAccountModel.swift */; };
 		EB6A5ADE2CCA1C9800422156 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */; };
 		EB6A5AE02CCA1CB800422156 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */; };
 		EB7A88492CCB2AEE00D60C24 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7A88482CCB2AEE00D60C24 /* Coordinator.swift */; };
@@ -39,7 +39,18 @@
 		EB7A88512CCB2FC700D60C24 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7A88502CCB2FC700D60C24 /* MainTabBarController.swift */; };
 		EB7C3FE32CBCC93B00A0DD13 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE22CBCC93B00A0DD13 /* HomeModel.swift */; };
 		EB7C3FE52CBCCAB000A0DD13 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE42CBCCAB000A0DD13 /* HomeViewModel.swift */; };
-		EB7C3FE72CBCCE3700A0DD13 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE62CBCCE3700A0DD13 /* ApiManager.swift */; };
+		EB7C3FE72CBCCE3700A0DD13 /* HomeApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7C3FE62CBCCE3700A0DD13 /* HomeApiManager.swift */; };
+		EB8001BE2CD4B354003B6563 /* UserAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001BD2CD4B354003B6563 /* UserAPIManager.swift */; };
+		EB8001C02CD88CC0003B6563 /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001BF2CD88CC0003B6563 /* SignInModel.swift */; };
+		EB8001C22CDBCF31003B6563 /* CreateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001C12CDBCF31003B6563 /* CreateUserModel.swift */; };
+		EB8001C42CDCB58F003B6563 /* PhoneExtensions.json in Resources */ = {isa = PBXBuildFile; fileRef = EB8001C32CDCB58F003B6563 /* PhoneExtensions.json */; };
+		EB8001C62CDE28E1003B6563 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001C52CDE28E1003B6563 /* KeychainHelper.swift */; };
+		EB8001CB2CE19706003B6563 /* CountriesCodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001CA2CE19705003B6563 /* CountriesCodesViewController.swift */; };
+		EB8001CE2CE1999A003B6563 /* CountriesCodesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001CD2CE1999A003B6563 /* CountriesCodesCell.swift */; };
+		EB8001D02CE19BFA003B6563 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001CF2CE19BFA003B6563 /* Countries.swift */; };
+		EB8001D22CE1A59C003B6563 /* CountriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001D12CE1A59C003B6563 /* CountriesViewModel.swift */; };
+		EB8001D52CE1A6C4003B6563 /* CountriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001D42CE1A6C4003B6563 /* CountriesCoordinator.swift */; };
+		EB8001D72CE1CDF3003B6563 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8001D62CE1CDF3003B6563 /* Account.swift */; };
 		EB89A07C2CCF7DAF00E95A68 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89A07B2CCF7DAF00E95A68 /* UITextField+Extension.swift */; };
 		EB89A07E2CCF810400E95A68 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB89A07D2CCF810400E95A68 /* SeparatorLine.swift */; };
 		EBA30FB42CC695B200038973 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FB32CC695B200038973 /* SignInViewController.swift */; };
@@ -47,6 +58,35 @@
 		EBA30FCB2CC78B6E00038973 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FCA2CC78B6E00038973 /* MainTabBarCoordinator.swift */; };
 		EBA30FD32CC7A67D00038973 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FD22CC7A67D00038973 /* SignInViewModel.swift */; };
 		EBA30FD52CC7A7C300038973 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FD42CC7A7C300038973 /* ProfileCoordinator.swift */; };
+		EBB9C29A2CE70A7700E6E880 /* ResetCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2992CE70A7700E6E880 /* ResetCodeResponse.swift */; };
+		EBB9C29D2CE71E4500E6E880 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C29C2CE71E4500E6E880 /* KeychainManager.swift */; };
+		EBB9C29F2CE71E8C00E6E880 /* CreatePinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C29E2CE71E8C00E6E880 /* CreatePinViewModel.swift */; };
+		EBB9C2A12CE71FA000E6E880 /* CreatePinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2A02CE71FA000E6E880 /* CreatePinViewController.swift */; };
+		EBB9C2A32CE7272E00E6E880 /* CreatePinCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2A22CE7272E00E6E880 /* CreatePinCoordinator.swift */; };
+		EBB9C2A52CE7D2DB00E6E880 /* PinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2A42CE7D2DB00E6E880 /* PinsView.swift */; };
+		EBB9C2A82CE7DC0800E6E880 /* FaceIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2A72CE7DC0800E6E880 /* FaceIDViewController.swift */; };
+		EBB9C2AA2CE7DC1D00E6E880 /* FaceIDViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2A92CE7DC1D00E6E880 /* FaceIDViewModel.swift */; };
+		EBB9C2AC2CE7DC3000E6E880 /* FaceIDCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2AB2CE7DC3000E6E880 /* FaceIDCoordinator.swift */; };
+		EBB9C2AF2CE7E8E600E6E880 /* PincodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2AE2CE7E8E600E6E880 /* PincodeViewController.swift */; };
+		EBB9C2B12CE7E8F600E6E880 /* PincodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2B02CE7E8F600E6E880 /* PincodeViewModel.swift */; };
+		EBB9C2B32CE7E90500E6E880 /* PincodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2B22CE7E90500E6E880 /* PincodeCoordinator.swift */; };
+		EBB9C2B52CE9A00100E6E880 /* KeypadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2B42CE9A00100E6E880 /* KeypadView.swift */; };
+		EBB9C2B82CEA668200E6E880 /* ForgotPinPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2B72CEA668200E6E880 /* ForgotPinPasswordViewController.swift */; };
+		EBB9C2BA2CEA669200E6E880 /* ForgotPinPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2B92CEA669200E6E880 /* ForgotPinPasswordViewModel.swift */; };
+		EBB9C2BC2CEA679B00E6E880 /* ForgotPinPasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2BB2CEA679B00E6E880 /* ForgotPinPasswordCoordinator.swift */; };
+		EBB9C2BF2CEC6E0D00E6E880 /* ConfirmPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2BE2CEC6E0D00E6E880 /* ConfirmPasswordViewController.swift */; };
+		EBB9C2C12CEC6E1C00E6E880 /* ConfirmPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2C02CEC6E1C00E6E880 /* ConfirmPasswordViewModel.swift */; };
+		EBB9C2C32CEC6E2C00E6E880 /* ConfrimPasswordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2C22CEC6E2C00E6E880 /* ConfrimPasswordCoordinator.swift */; };
+		EBB9C2C52CEC6E3600E6E880 /* ConfirmPasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2C42CEC6E3600E6E880 /* ConfirmPasswordModel.swift */; };
+		EBB9C2C82CEC906700E6E880 /* CheckEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2C72CEC906700E6E880 /* CheckEmailViewController.swift */; };
+		EBB9C2CA2CEC908000E6E880 /* CheckEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2C92CEC908000E6E880 /* CheckEmailViewModel.swift */; };
+		EBB9C2CC2CEC909500E6E880 /* CheckEmailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2CB2CEC909500E6E880 /* CheckEmailCoordinator.swift */; };
+		EBB9C2CF2CECC97300E6E880 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EBB9C2CE2CECC97300E6E880 /* Kingfisher */; };
+		EBB9C2D22CECC97D00E6E880 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EBB9C2D12CECC97D00E6E880 /* KeychainSwift */; };
+		EBBC1D022CE4DCD30048E6A9 /* VerificationUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC1D012CE4DCD30048E6A9 /* VerificationUserViewController.swift */; };
+		EBBC1D042CE4DCF20048E6A9 /* VerificationUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC1D032CE4DCF20048E6A9 /* VerificationUserViewModel.swift */; };
+		EBBC1D062CE4E0730048E6A9 /* VerificationUserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC1D052CE4E0730048E6A9 /* VerificationUserCoordinator.swift */; };
+		EBBC1D082CE5EDDD0048E6A9 /* ConfirmCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC1D072CE5EDDC0048E6A9 /* ConfirmCodeRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +116,7 @@
 		EB4F2C7A2CD1D47F00ECB7B1 /* FormViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewContent.swift; sourceTree = "<group>"; };
 		EB4F2C7C2CD1D4A100ECB7B1 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		EB4F2C7E2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountCoordinator.swift; sourceTree = "<group>"; };
+		EB4F2C832CD1FD6100ECB7B1 /* CreateAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountModel.swift; sourceTree = "<group>"; };
 		EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		EB7A88482CCB2AEE00D60C24 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -83,7 +124,18 @@
 		EB7A88502CCB2FC700D60C24 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EB7C3FE22CBCC93B00A0DD13 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		EB7C3FE42CBCCAB000A0DD13 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		EB7C3FE62CBCCE3700A0DD13 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		EB7C3FE62CBCCE3700A0DD13 /* HomeApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeApiManager.swift; sourceTree = "<group>"; };
+		EB8001BD2CD4B354003B6563 /* UserAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIManager.swift; sourceTree = "<group>"; };
+		EB8001BF2CD88CC0003B6563 /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
+		EB8001C12CDBCF31003B6563 /* CreateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserModel.swift; sourceTree = "<group>"; };
+		EB8001C32CDCB58F003B6563 /* PhoneExtensions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = PhoneExtensions.json; path = ../../../../Downloads/PhoneExtensions.json; sourceTree = "<group>"; };
+		EB8001C52CDE28E1003B6563 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		EB8001CA2CE19705003B6563 /* CountriesCodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesCodesViewController.swift; sourceTree = "<group>"; };
+		EB8001CD2CE1999A003B6563 /* CountriesCodesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesCodesCell.swift; sourceTree = "<group>"; };
+		EB8001CF2CE19BFA003B6563 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		EB8001D12CE1A59C003B6563 /* CountriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewModel.swift; sourceTree = "<group>"; };
+		EB8001D42CE1A6C4003B6563 /* CountriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesCoordinator.swift; sourceTree = "<group>"; };
+		EB8001D62CE1CDF3003B6563 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		EB89A07B2CCF7DAF00E95A68 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		EB89A07D2CCF810400E95A68 /* SeparatorLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorLine.swift; sourceTree = "<group>"; };
 		EBA30FB32CC695B200038973 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +143,33 @@
 		EBA30FCA2CC78B6E00038973 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		EBA30FD22CC7A67D00038973 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		EBA30FD42CC7A7C300038973 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		EBB9C2992CE70A7700E6E880 /* ResetCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetCodeResponse.swift; sourceTree = "<group>"; };
+		EBB9C29C2CE71E4500E6E880 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		EBB9C29E2CE71E8C00E6E880 /* CreatePinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePinViewModel.swift; sourceTree = "<group>"; };
+		EBB9C2A02CE71FA000E6E880 /* CreatePinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePinViewController.swift; sourceTree = "<group>"; };
+		EBB9C2A22CE7272E00E6E880 /* CreatePinCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePinCoordinator.swift; sourceTree = "<group>"; };
+		EBB9C2A42CE7D2DB00E6E880 /* PinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinsView.swift; sourceTree = "<group>"; };
+		EBB9C2A72CE7DC0800E6E880 /* FaceIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDViewController.swift; sourceTree = "<group>"; };
+		EBB9C2A92CE7DC1D00E6E880 /* FaceIDViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDViewModel.swift; sourceTree = "<group>"; };
+		EBB9C2AB2CE7DC3000E6E880 /* FaceIDCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDCoordinator.swift; sourceTree = "<group>"; };
+		EBB9C2AE2CE7E8E600E6E880 /* PincodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeViewController.swift; sourceTree = "<group>"; };
+		EBB9C2B02CE7E8F600E6E880 /* PincodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeViewModel.swift; sourceTree = "<group>"; };
+		EBB9C2B22CE7E90500E6E880 /* PincodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeCoordinator.swift; sourceTree = "<group>"; };
+		EBB9C2B42CE9A00100E6E880 /* KeypadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadView.swift; sourceTree = "<group>"; };
+		EBB9C2B72CEA668200E6E880 /* ForgotPinPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPinPasswordViewController.swift; sourceTree = "<group>"; };
+		EBB9C2B92CEA669200E6E880 /* ForgotPinPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPinPasswordViewModel.swift; sourceTree = "<group>"; };
+		EBB9C2BB2CEA679B00E6E880 /* ForgotPinPasswordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPinPasswordCoordinator.swift; sourceTree = "<group>"; };
+		EBB9C2BE2CEC6E0D00E6E880 /* ConfirmPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewController.swift; sourceTree = "<group>"; };
+		EBB9C2C02CEC6E1C00E6E880 /* ConfirmPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewModel.swift; sourceTree = "<group>"; };
+		EBB9C2C22CEC6E2C00E6E880 /* ConfrimPasswordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfrimPasswordCoordinator.swift; sourceTree = "<group>"; };
+		EBB9C2C42CEC6E3600E6E880 /* ConfirmPasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordModel.swift; sourceTree = "<group>"; };
+		EBB9C2C72CEC906700E6E880 /* CheckEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailViewController.swift; sourceTree = "<group>"; };
+		EBB9C2C92CEC908000E6E880 /* CheckEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailViewModel.swift; sourceTree = "<group>"; };
+		EBB9C2CB2CEC909500E6E880 /* CheckEmailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailCoordinator.swift; sourceTree = "<group>"; };
+		EBBC1D012CE4DCD30048E6A9 /* VerificationUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationUserViewController.swift; sourceTree = "<group>"; };
+		EBBC1D032CE4DCF20048E6A9 /* VerificationUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationUserViewModel.swift; sourceTree = "<group>"; };
+		EBBC1D052CE4E0730048E6A9 /* VerificationUserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationUserCoordinator.swift; sourceTree = "<group>"; };
+		EBBC1D072CE5EDDC0048E6A9 /* ConfirmCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmCodeRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +177,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB4F2C822CD1E33700ECB7B1 /* Kingfisher in Frameworks */,
+				EBB9C2D22CECC97D00E6E880 /* KeychainSwift in Frameworks */,
+				EBB9C2CF2CECC97300E6E880 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +233,7 @@
 			children = (
 				EBA30FD22CC7A67D00038973 /* SignInViewModel.swift */,
 				EBA30FB32CC695B200038973 /* SignInViewController.swift */,
+				EB8001BF2CD88CC0003B6563 /* SignInModel.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -162,6 +243,7 @@
 			children = (
 				EB0E8A862CAE3076005839FA /* Assets.xcassets */,
 				EB0E8A882CAE3076005839FA /* LaunchScreen.storyboard */,
+				EB8001C32CDCB58F003B6563 /* PhoneExtensions.json */,
 				EB0E8A8B2CAE3076005839FA /* Info.plist */,
 			);
 			path = Resources;
@@ -174,8 +256,8 @@
 				12BF362B2CCD13BB00247D74 /* Screens */,
 				EBA30FCD2CC7988D00038973 /* Extensions */,
 				EB0E8A7D2CAE3074005839FA /* AppDelegate.swift */,
-				EB7C3FE62CBCCE3700A0DD13 /* ApiManager.swift */,
 				EB0E8A7F2CAE3074005839FA /* SceneDelegate.swift */,
+				EB8001BD2CD4B354003B6563 /* UserAPIManager.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -208,6 +290,7 @@
 		EB0E8A912CAE37CE005839FA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EB7C3FE62CBCCE3700A0DD13 /* HomeApiManager.swift */,
 				EB0E8A812CAE3074005839FA /* HomeViewController.swift */,
 				EB7C3FE42CBCCAB000A0DD13 /* HomeViewModel.swift */,
 				EB7C3FE22CBCC93B00A0DD13 /* HomeModel.swift */,
@@ -249,6 +332,10 @@
 				EB6A5ADF2CCA1CB800422156 /* CreateAccountViewModel.swift */,
 				EB6A5ADD2CCA1C9800422156 /* CreateAccountViewController.swift */,
 				EB4F2C7E2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift */,
+				EB4F2C832CD1FD6100ECB7B1 /* CreateAccountModel.swift */,
+				EB8001C12CDBCF31003B6563 /* CreateUserModel.swift */,
+				EB8001CC2CE19979003B6563 /* CountriesView */,
+				EB8001D62CE1CDF3003B6563 /* Account.swift */,
 			);
 			path = CreateAccount;
 			sourceTree = "<group>";
@@ -263,9 +350,28 @@
 			path = MainTabBar;
 			sourceTree = "<group>";
 		};
+		EB8001CC2CE19979003B6563 /* CountriesView */ = {
+			isa = PBXGroup;
+			children = (
+				EB8001CA2CE19705003B6563 /* CountriesCodesViewController.swift */,
+				EB8001CD2CE1999A003B6563 /* CountriesCodesCell.swift */,
+				EB8001CF2CE19BFA003B6563 /* Countries.swift */,
+				EB8001D12CE1A59C003B6563 /* CountriesViewModel.swift */,
+				EB8001D42CE1A6C4003B6563 /* CountriesCoordinator.swift */,
+			);
+			path = CountriesView;
+			sourceTree = "<group>";
+		};
 		EBA30FAF2CC6957700038973 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EBB9C2C62CEC905200E6E880 /* CheckEmailModule */,
+				EBB9C2BD2CEC6DF400E6E880 /* ConfirmPasswordModule */,
+				EBB9C2B62CEA665A00E6E880 /* ForgotPinPasswordModule */,
+				EBB9C2AD2CE7E8BC00E6E880 /* PincodeModule */,
+				EBB9C2A62CE7DBEE00E6E880 /* FaceIDModule */,
+				EBB9C29B2CE71DD600E6E880 /* CreatePincodeModule */,
+				EBBC1CFE2CE4DC7E0048E6A9 /* VerificationModule */,
 				EB4F2C792CD1D46A00ECB7B1 /* FormModule */,
 				EB4F2C742CD1D3E200ECB7B1 /* VerifyContent */,
 				12DB9D652CCD2672000C6AD1 /* SignIn */,
@@ -292,8 +398,85 @@
 				12DB9D6C2CCD297F000C6AD1 /* UILabel.swift */,
 				EB89A07B2CCF7DAF00E95A68 /* UITextField+Extension.swift */,
 				EB89A07D2CCF810400E95A68 /* SeparatorLine.swift */,
+				EB8001C52CDE28E1003B6563 /* KeychainHelper.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EBB9C29B2CE71DD600E6E880 /* CreatePincodeModule */ = {
+			isa = PBXGroup;
+			children = (
+				EBB9C29C2CE71E4500E6E880 /* KeychainManager.swift */,
+				EBB9C29E2CE71E8C00E6E880 /* CreatePinViewModel.swift */,
+				EBB9C2A02CE71FA000E6E880 /* CreatePinViewController.swift */,
+				EBB9C2A22CE7272E00E6E880 /* CreatePinCoordinator.swift */,
+				EBB9C2A42CE7D2DB00E6E880 /* PinsView.swift */,
+				EBB9C2B42CE9A00100E6E880 /* KeypadView.swift */,
+			);
+			path = CreatePincodeModule;
+			sourceTree = "<group>";
+		};
+		EBB9C2A62CE7DBEE00E6E880 /* FaceIDModule */ = {
+			isa = PBXGroup;
+			children = (
+				EBB9C2A72CE7DC0800E6E880 /* FaceIDViewController.swift */,
+				EBB9C2A92CE7DC1D00E6E880 /* FaceIDViewModel.swift */,
+				EBB9C2AB2CE7DC3000E6E880 /* FaceIDCoordinator.swift */,
+			);
+			path = FaceIDModule;
+			sourceTree = "<group>";
+		};
+		EBB9C2AD2CE7E8BC00E6E880 /* PincodeModule */ = {
+			isa = PBXGroup;
+			children = (
+				EBB9C2AE2CE7E8E600E6E880 /* PincodeViewController.swift */,
+				EBB9C2B02CE7E8F600E6E880 /* PincodeViewModel.swift */,
+				EBB9C2B22CE7E90500E6E880 /* PincodeCoordinator.swift */,
+			);
+			path = PincodeModule;
+			sourceTree = "<group>";
+		};
+		EBB9C2B62CEA665A00E6E880 /* ForgotPinPasswordModule */ = {
+			isa = PBXGroup;
+			children = (
+				EBB9C2B72CEA668200E6E880 /* ForgotPinPasswordViewController.swift */,
+				EBB9C2B92CEA669200E6E880 /* ForgotPinPasswordViewModel.swift */,
+				EBB9C2BB2CEA679B00E6E880 /* ForgotPinPasswordCoordinator.swift */,
+			);
+			path = ForgotPinPasswordModule;
+			sourceTree = "<group>";
+		};
+		EBB9C2BD2CEC6DF400E6E880 /* ConfirmPasswordModule */ = {
+			isa = PBXGroup;
+			children = (
+				EBB9C2BE2CEC6E0D00E6E880 /* ConfirmPasswordViewController.swift */,
+				EBB9C2C02CEC6E1C00E6E880 /* ConfirmPasswordViewModel.swift */,
+				EBB9C2C22CEC6E2C00E6E880 /* ConfrimPasswordCoordinator.swift */,
+				EBB9C2C42CEC6E3600E6E880 /* ConfirmPasswordModel.swift */,
+			);
+			path = ConfirmPasswordModule;
+			sourceTree = "<group>";
+		};
+		EBB9C2C62CEC905200E6E880 /* CheckEmailModule */ = {
+			isa = PBXGroup;
+			children = (
+				EBB9C2C72CEC906700E6E880 /* CheckEmailViewController.swift */,
+				EBB9C2C92CEC908000E6E880 /* CheckEmailViewModel.swift */,
+				EBB9C2CB2CEC909500E6E880 /* CheckEmailCoordinator.swift */,
+			);
+			path = CheckEmailModule;
+			sourceTree = "<group>";
+		};
+		EBBC1CFE2CE4DC7E0048E6A9 /* VerificationModule */ = {
+			isa = PBXGroup;
+			children = (
+				EBBC1D012CE4DCD30048E6A9 /* VerificationUserViewController.swift */,
+				EBBC1D032CE4DCF20048E6A9 /* VerificationUserViewModel.swift */,
+				EBBC1D052CE4E0730048E6A9 /* VerificationUserCoordinator.swift */,
+				EBBC1D072CE5EDDC0048E6A9 /* ConfirmCodeRequest.swift */,
+				EBB9C2992CE70A7700E6E880 /* ResetCodeResponse.swift */,
+			);
+			path = VerificationModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,7 +496,8 @@
 			);
 			name = Bloooom;
 			packageProductDependencies = (
-				EB4F2C812CD1E33700ECB7B1 /* Kingfisher */,
+				EBB9C2CE2CECC97300E6E880 /* Kingfisher */,
+				EBB9C2D12CECC97D00E6E880 /* KeychainSwift */,
 			);
 			productName = Bloooom;
 			productReference = EB0E8A7A2CAE3074005839FA /* Bloooom.app */;
@@ -344,7 +528,8 @@
 			);
 			mainGroup = EB0E8A712CAE3074005839FA;
 			packageReferences = (
-				EB4F2C802CD1E33700ECB7B1 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				EBB9C2CD2CECC97300E6E880 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				EBB9C2D02CECC97D00E6E880 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = EB0E8A7B2CAE3074005839FA /* Products */;
 			projectDirPath = "";
@@ -362,6 +547,7 @@
 			files = (
 				EB0E8A872CAE3076005839FA /* Assets.xcassets in Resources */,
 				EB0E8A8A2CAE3076005839FA /* Base in Resources */,
+				EB8001C42CDCB58F003B6563 /* PhoneExtensions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,42 +559,80 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB4F2C7F2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift in Sources */,
+				EBB9C2B52CE9A00100E6E880 /* KeypadView.swift in Sources */,
 				EB0E8A972CAF7C76005839FA /* MainScreenCell.swift in Sources */,
 				12DB9D692CCD296E000C6AD1 /* UIStackView.swift in Sources */,
 				12BF363B2CCD1C6E00247D74 /* TabView.swift in Sources */,
 				EB7A88512CCB2FC700D60C24 /* MainTabBarController.swift in Sources */,
+				EBB9C2AC2CE7DC3000E6E880 /* FaceIDCoordinator.swift in Sources */,
+				EB8001D72CE1CDF3003B6563 /* Account.swift in Sources */,
+				EBB9C2CA2CEC908000E6E880 /* CheckEmailViewModel.swift in Sources */,
+				EBB9C2C12CEC6E1C00E6E880 /* ConfirmPasswordViewModel.swift in Sources */,
 				EB0E8A822CAE3074005839FA /* HomeViewController.swift in Sources */,
 				12BF36322CCD176400247D74 /* BasketViewModel.swift in Sources */,
 				12DB9D6D2CCD297F000C6AD1 /* UILabel.swift in Sources */,
 				EB89A07E2CCF810400E95A68 /* SeparatorLine.swift in Sources */,
+				EBB9C2BC2CEA679B00E6E880 /* ForgotPinPasswordCoordinator.swift in Sources */,
 				12BF36402CCD225E00247D74 /* SearchViewController.swift in Sources */,
 				12BF36412CCD225E00247D74 /* SearchViewModel.swift in Sources */,
 				12BF36422CCD225E00247D74 /* SearchViewCoordinator.swift in Sources */,
+				EBB9C29D2CE71E4500E6E880 /* KeychainManager.swift in Sources */,
 				EB4F2C7B2CD1D47F00ECB7B1 /* FormViewContent.swift in Sources */,
+				EBB9C2AA2CE7DC1D00E6E880 /* FaceIDViewModel.swift in Sources */,
+				EBB9C2A32CE7272E00E6E880 /* CreatePinCoordinator.swift in Sources */,
+				EBB9C29F2CE71E8C00E6E880 /* CreatePinViewModel.swift in Sources */,
+				EB8001D02CE19BFA003B6563 /* Countries.swift in Sources */,
+				EBB9C2B12CE7E8F600E6E880 /* PincodeViewModel.swift in Sources */,
+				EBBC1D062CE4E0730048E6A9 /* VerificationUserCoordinator.swift in Sources */,
+				EBB9C2CC2CEC909500E6E880 /* CheckEmailCoordinator.swift in Sources */,
+				EBB9C2C32CEC6E2C00E6E880 /* ConfrimPasswordCoordinator.swift in Sources */,
 				12BF36302CCD175100247D74 /* BasketViewCoordinator.swift in Sources */,
 				EB6A5ADE2CCA1C9800422156 /* CreateAccountViewController.swift in Sources */,
 				EBA30FB42CC695B200038973 /* SignInViewController.swift in Sources */,
 				EB4F2C782CD1D45000ECB7B1 /* VerificationViewController.swift in Sources */,
 				EB7C3FE32CBCC93B00A0DD13 /* HomeModel.swift in Sources */,
 				EBA30FCB2CC78B6E00038973 /* MainTabBarCoordinator.swift in Sources */,
+				EBB9C29A2CE70A7700E6E880 /* ResetCodeResponse.swift in Sources */,
 				EB4F2C7D2CD1D4A100ECB7B1 /* FormViewController.swift in Sources */,
 				EB89A07C2CCF7DAF00E95A68 /* UITextField+Extension.swift in Sources */,
+				EBB9C2C82CEC906700E6E880 /* CheckEmailViewController.swift in Sources */,
 				EB7A884B2CCB2B6100D60C24 /* AppCoordinator.swift in Sources */,
+				EBB9C2AF2CE7E8E600E6E880 /* PincodeViewController.swift in Sources */,
 				EB4F2C762CD1D40D00ECB7B1 /* VerificationViewContent.swift in Sources */,
+				EBB9C2BF2CEC6E0D00E6E880 /* ConfirmPasswordViewController.swift in Sources */,
 				12BF362E2CCD170C00247D74 /* BasketViewController.swift in Sources */,
 				EBA30FD52CC7A7C300038973 /* ProfileCoordinator.swift in Sources */,
-				EB7C3FE72CBCCE3700A0DD13 /* ApiManager.swift in Sources */,
+				EB8001C62CDE28E1003B6563 /* KeychainHelper.swift in Sources */,
+				EB7C3FE72CBCCE3700A0DD13 /* HomeApiManager.swift in Sources */,
 				12DB9D6B2CCD2976000C6AD1 /* UIButton.swift in Sources */,
+				EBB9C2BA2CEA669200E6E880 /* ForgotPinPasswordViewModel.swift in Sources */,
+				EBB9C2A12CE71FA000E6E880 /* CreatePinViewController.swift in Sources */,
 				EB0E8A7E2CAE3074005839FA /* AppDelegate.swift in Sources */,
 				EB7A88492CCB2AEE00D60C24 /* Coordinator.swift in Sources */,
+				EBBC1D082CE5EDDD0048E6A9 /* ConfirmCodeRequest.swift in Sources */,
+				EBB9C2B82CEA668200E6E880 /* ForgotPinPasswordViewController.swift in Sources */,
+				EBBC1D042CE4DCF20048E6A9 /* VerificationUserViewModel.swift in Sources */,
+				EB8001C02CD88CC0003B6563 /* SignInModel.swift in Sources */,
 				12DB9D642CCD23E8000C6AD1 /* MenuViewModel.swift in Sources */,
 				EB6A5AE02CCA1CB800422156 /* CreateAccountViewModel.swift in Sources */,
+				EBB9C2A82CE7DC0800E6E880 /* FaceIDViewController.swift in Sources */,
+				EBB9C2C52CEC6E3600E6E880 /* ConfirmPasswordModel.swift in Sources */,
 				12DB9D602CCD23D7000C6AD1 /* MenuViewController.swift in Sources */,
 				EBA30FC22CC7810F00038973 /* HomeViewCoordinator.swift in Sources */,
+				EB8001CB2CE19706003B6563 /* CountriesCodesViewController.swift in Sources */,
+				EBB9C2A52CE7D2DB00E6E880 /* PinsView.swift in Sources */,
+				EB8001D22CE1A59C003B6563 /* CountriesViewModel.swift in Sources */,
 				12DB9D622CCD23E0000C6AD1 /* MenuViewCoordinator.swift in Sources */,
 				EBA30FD32CC7A67D00038973 /* SignInViewModel.swift in Sources */,
 				EB0E8A802CAE3074005839FA /* SceneDelegate.swift in Sources */,
+				EB8001BE2CD4B354003B6563 /* UserAPIManager.swift in Sources */,
+				EBB9C2B32CE7E90500E6E880 /* PincodeCoordinator.swift in Sources */,
+				EB8001C22CDBCF31003B6563 /* CreateUserModel.swift in Sources */,
+				EB8001CE2CE1999A003B6563 /* CountriesCodesCell.swift in Sources */,
+				EB4F2C842CD1FD6200ECB7B1 /* CreateAccountModel.swift in Sources */,
 				EB7C3FE52CBCCAB000A0DD13 /* HomeViewModel.swift in Sources */,
+				EBBC1D022CE4DCD30048E6A9 /* VerificationUserViewController.swift in Sources */,
+				EB8001D52CE1A6C4003B6563 /* CountriesCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +847,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		EB4F2C802CD1E33700ECB7B1 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		EBB9C2CD2CECC97300E6E880 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -631,13 +855,26 @@
 				minimumVersion = 8.1.0;
 			};
 		};
+		EBB9C2D02CECC97D00E6E880 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EB4F2C812CD1E33700ECB7B1 /* Kingfisher */ = {
+		EBB9C2CE2CECC97300E6E880 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EB4F2C802CD1E33700ECB7B1 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = EBB9C2CD2CECC97300E6E880 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		EBB9C2D12CECC97D00E6E880 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EBB9C2D02CECC97D00E6E880 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -6,8 +6,8 @@ class VerificationViewController: UIViewController {
     var buttonAction: (() -> Void)?
     
     private let stackView = UIStackView(axis: .vertical, distribution: .fill, alignment: .center, spacing: 10)
-    private let mainTitle = UILabel(text: "", font: 16, alignment: .center)
-    private let subtitle = UILabel(text: "", font: 12, alignment: .center)
+    private let mainTitle = UILabel(text: "", font: 16, alignment: .center, textColor: .black)
+    private let subtitle = UILabel(text: "", font: 12, alignment: .center, textColor: .lightGray)
     private let image: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -19,9 +19,12 @@ class VerificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        buttonActionTapped()
         configure(model: model)
         subtitle.textColor = .lightGray
         view.backgroundColor = .white
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
     
     init(model: VerificationViewContent, buttonAction: (() -> Void)?) {
@@ -58,6 +61,14 @@ class VerificationViewController: UIViewController {
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             button.heightAnchor.constraint(equalToConstant: 32)
         ])
+    }
+    
+    private func buttonActionTapped() {
+        button.addTarget(self, action: #selector(buttonActionTap), for: .touchUpInside)
+    }
+    
+    @objc private func buttonActionTap() {
+        buttonAction?()
     }
     
     private func configure(model: VerificationViewContent) {

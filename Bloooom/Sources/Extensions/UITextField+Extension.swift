@@ -4,8 +4,8 @@ extension UITextField {
     convenience init(
         placeHolder: String,
         placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.black,
-            .font: UIFont.systemFont(ofSize: 12)
+            .foregroundColor: UIColor.lightGray,
+            .font: UIFont.systemFont(ofSize: 12, weight: .regular)
         ],
         keyboard: UIKeyboardType,
         textColor: UIColor = .black,
