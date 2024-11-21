@@ -2,6 +2,7 @@ import UIKit
 
 final class SignInViewController: UIViewController {
     private var viewModel: SignInViewModelProtocol
+    var isPasswordVisible = false
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
@@ -11,17 +12,20 @@ final class SignInViewController: UIViewController {
     }()
     
     private let entryLabel = UILabel(text: "ВОЙТИ В АККАУНТ", font: 16, textColor: .black)
-    private let emailLabel = UILabel(text: "ЭЛЕКТРОННАЯ ПОЧТА", font: 12, textColor: .lightGray)
+    private let emailLabel = UILabel(text: "ЭЛЕКТРОННАЯ ПОЧТА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    private let emailLabel1 = UILabel(text: "ЭЛЕКТРОННАЯ ПОЧТА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let emailTextField = UITextField(placeHolder: "", keyboard: .emailAddress)
-    private let emailSeperatorLine = UIView(backgroundColor: .lightGray)
+    private let emailSeperatorLine = UIView(backgroundColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let emailErrorLabel = UILabel(text: "", font: 8, alignment: .left, textColor: .red)
-    private let passwordLabel = UILabel(text: "ПАРОЛЬ", font: 12, textColor: .lightGray)
+    private let passwordLabel = UILabel(text: "ПАРОЛЬ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    private let passwordLabel1 = UILabel(text: "ПАРОЛЬ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let passwordTextField = UITextField(placeHolder: "", keyboard: .default)
-    private let passwordSeperatorLine = UIView(backgroundColor: .lightGray)
+    private let passwordSeperatorLine = UIView(backgroundColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let passwordErrorLabel = UILabel(text: "", font: 8, alignment: .left, textColor: .red)
     private lazy var entryButton = UIButton(title: "ВОЙТИ В АККАУНТ")
     private let notAccountLabel = UILabel(text: "НЕТ АККАУНТА?", font: 16, textColor: .black)
     private lazy var createButton = UIButton(title: "СОЗДАТЬ АККАУНТ")
+    private lazy var showPasswordButton = UIButton(btnImage: "openEye")
     
     private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
@@ -37,15 +41,25 @@ final class SignInViewController: UIViewController {
         configureUI()
         configureButtonActions()
         bindViewModel()
+        hideLabels()
+        setupShowPasswordButton()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
         view.backgroundColor = .white
         hidesBottomBarWhenPushed = true
-        emailErrorLabel.isHidden = true
-        passwordErrorLabel.isHidden = true
+        
         passwordTextField.isSecureTextEntry = true
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        emailTextField.autocapitalizationType = .none
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emailErrorLabel.isHidden = true
+        passwordErrorLabel.isHidden = true
+        emailSeperatorLine.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+        passwordSeperatorLine.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
     }
     
     init(viewModel: SignInViewModelProtocol) {
@@ -57,16 +71,38 @@ final class SignInViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setupShowPasswordButton() {
+        showPasswordButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        passwordTextField.rightView = showPasswordButton
+        passwordTextField.rightViewMode = .always
+    }
+    
+    private func hideLabels() {
+        emailLabel.isHidden = true
+        passwordLabel.isHidden = true
+    }
+    
     private func configureButtonActions() {
         backButton.addTarget(self, action: #selector(moveToBack), for: .touchUpInside)
         forgotPasswordButton.addTarget(self, action: #selector(moveToForgotPassword), for: .touchUpInside)
         entryButton.addTarget(self, action: #selector(moveToAccount), for: .touchUpInside)
         createButton.addTarget(self, action: #selector(moveToCreateAccount), for: .touchUpInside)
+        showPasswordButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
     }
     
     private func hideAllErrorLabels() {
         emailErrorLabel.isHidden = true
         passwordErrorLabel.isHidden = true
+    }
+    
+    @objc func togglePasswordVisibility() {
+        isPasswordVisible.toggle()
+        passwordTextField.isSecureTextEntry = !isPasswordVisible
+        
+        let eyeIcon = isPasswordVisible ? "closeEye" : "openEye"
+        if let showPasswordButton = passwordTextField.rightView as? UIButton {
+            showPasswordButton.setImage(UIImage(named: eyeIcon), for: .normal)
+        }
     }
     
     @objc func dismissKeyboard() {
@@ -113,7 +149,7 @@ final class SignInViewController: UIViewController {
     
     private func configureUI() {
         [
-            backButton, entryLabel, emailLabel, emailTextField, emailSeperatorLine, emailErrorLabel, passwordLabel, passwordTextField, passwordSeperatorLine, passwordErrorLabel, forgotPasswordButton, entryButton, notAccountLabel, createButton
+            backButton, entryLabel, emailLabel, emailLabel1, emailTextField, emailSeperatorLine, emailErrorLabel, passwordLabel, passwordLabel1, passwordTextField, passwordSeperatorLine, passwordErrorLabel, forgotPasswordButton, entryButton, notAccountLabel, createButton
         ].forEach { view.addSubview($0) }
         
         NSLayoutConstraint.activate([
@@ -135,10 +171,15 @@ final class SignInViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
+            emailLabel1.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 16),
+            emailLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+        ])
+        
+        NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor),
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            emailTextField.heightAnchor.constraint(equalToConstant: 40)
+            emailTextField.heightAnchor.constraint(equalToConstant: 35)
         ])
         
         NSLayoutConstraint.activate([
@@ -160,10 +201,15 @@ final class SignInViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
+            passwordLabel1.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 16),
+            passwordLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+        ])
+        
+        NSLayoutConstraint.activate([
             passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor),
             passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 40)
+            passwordTextField.heightAnchor.constraint(equalToConstant: 35)
         ])
         
         NSLayoutConstraint.activate([
@@ -193,7 +239,6 @@ final class SignInViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            notAccountLabel.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 120),
             notAccountLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             notAccountLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
@@ -202,6 +247,7 @@ final class SignInViewController: UIViewController {
             createButton.topAnchor.constraint(equalTo: notAccountLabel.bottomAnchor, constant: 20),
             createButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             createButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            createButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -230),
             createButton.heightAnchor.constraint(equalToConstant: 32)
         ])
     }
@@ -222,12 +268,12 @@ extension SignInViewController: UITextFieldDelegate {
             errorText = viewModel.validateEmail(emailTextField.text ?? "")
             emailErrorLabel.text = errorText
             emailErrorLabel.isHidden = (errorText == nil)
-            emailSeperatorLine.backgroundColor = (emailTextField.text?.isEmpty ?? true) ? .red : .lightGray
+            emailSeperatorLine.backgroundColor = (emailTextField.text?.isEmpty ?? true) ? .red : #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
         case passwordTextField:
             errorText = viewModel.validatePassword(passwordTextField.text ?? "")
             passwordErrorLabel.text = errorText
             passwordErrorLabel.isHidden = (errorText == nil)
-            passwordSeperatorLine.backgroundColor = (passwordTextField.text?.isEmpty ?? true) ? .red : .lightGray
+            passwordSeperatorLine.backgroundColor = (passwordTextField.text?.isEmpty ?? true) ? .red : #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
         default:
             break
         }
@@ -252,8 +298,12 @@ extension SignInViewController: UITextFieldDelegate {
         switch textField {
         case emailTextField:
             labelToAnimate = emailLabel
+            emailLabel1.isHidden = true
+            emailLabel.isHidden = false
         case passwordTextField:
             labelToAnimate = passwordLabel
+            passwordLabel1.isHidden = true
+            passwordLabel.isHidden = false
         default:
             break
         }

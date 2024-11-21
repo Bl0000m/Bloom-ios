@@ -23,15 +23,16 @@ class VerificationUserViewController: UIViewController {
     private let confirmCodeDescriptionLabel = UILabel(
         text: "Мы отправили вам письмо с 4-значным кодом",
         font: 12,
-        textColor: .lightGray
+        textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
     )
     
-    private let writeCodeLabel = UILabel(text: "ВВЕДИТЕ КОД", font: 12, textColor: .lightGray)
+    private let writeCodeLabel = UILabel(text: "ВВЕДИТЕ КОД", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    private let writeCodeLabel1 = UILabel(text: "ВВЕДИТЕ КОД", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let writeCodeTextField = UITextField(placeHolder: "", keyboard: .numberPad)
-    private let seperatorLine = UIView(backgroundColor: .lightGray)
+    private let seperatorLine = UIView(backgroundColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     
-    private let resendLabel = UILabel(text: "Отправить повторно через: ", font: 12, textColor: .lightGray)
-    private let timerLabel = UILabel(text: "", font: 12, textColor: .lightGray)
+    private let resendLabel = UILabel(text: "Отправить повторно через: ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    private let timerLabel = UILabel(text: "", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let resendButton = UIButton(text: "Отправить повторно", textColor: .black, font: 12)
     private let resenSeperator = UIView(backgroundColor: .black)
     
@@ -49,6 +50,7 @@ class VerificationUserViewController: UIViewController {
         setupAction()
         writeCodeTextField.delegate = self
         bindViewModel()
+        writeCodeLabel.isHidden = true
     }
     
     init(viewModel: VerificationUserViewModelProtocol, email: String) {
@@ -84,6 +86,7 @@ class VerificationUserViewController: UIViewController {
             backButton,
             stackView,
             writeCodeLabel,
+            writeCodeLabel1,
             writeCodeTextField,
             seperatorLine,
             resentCodeStack,
@@ -113,6 +116,11 @@ class VerificationUserViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
+            writeCodeLabel1.topAnchor.constraint(equalTo: writeCodeLabel.bottomAnchor, constant: 16),
+            writeCodeLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+        ])
+        
+        NSLayoutConstraint.activate([
             writeCodeTextField.topAnchor.constraint(equalTo: writeCodeLabel.bottomAnchor),
             writeCodeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
             writeCodeTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
@@ -129,7 +137,6 @@ class VerificationUserViewController: UIViewController {
         NSLayoutConstraint.activate([
             resentCodeStack.topAnchor.constraint(equalTo: seperatorLine.bottomAnchor, constant: 35),
             resentCodeStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
-            resentCodeStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
             resentCodeStack.heightAnchor.constraint(equalToConstant: 14)
         ])
         
@@ -225,9 +232,23 @@ class VerificationUserViewController: UIViewController {
 
 extension VerificationUserViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.transition(with: writeCodeLabel, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            self.writeCodeLabel.font = .systemFont(ofSize: 8, weight: .regular)
-        }, completion: nil)
+        var labelToAnimate: UILabel?
+        
+        switch textField {
+        case writeCodeTextField:
+            labelToAnimate = writeCodeLabel
+            writeCodeLabel1.isHidden = true
+            writeCodeLabel.isHidden = false
+        default:
+            break
+        }
+        
+        if let label = labelToAnimate {
+            UIView.transition(with: label, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                label.font = .systemFont(ofSize: 8, weight: .regular)
+            }, completion: nil)
+        }
+        
         
     }
 }

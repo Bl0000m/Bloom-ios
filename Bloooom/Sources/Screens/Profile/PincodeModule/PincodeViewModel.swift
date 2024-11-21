@@ -5,6 +5,7 @@ protocol PincodeViewModelProtocol: AnyObject {
     var pinUpdateHandler: ((String) -> Void)? { get set }
     func didPressKey(_ key: String)
     func moveToForgot()
+    func moveToMain()
 }
 
 class PincodeViewModel: PincodeViewModelProtocol {
@@ -38,4 +39,7 @@ class PincodeViewModel: PincodeViewModelProtocol {
         coordinator.goForgotPassword()
     }
     
+    func moveToMain() {
+        coordinator.moveToMain()
+    }
 }

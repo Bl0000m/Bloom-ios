@@ -4,7 +4,7 @@ extension UIButton {
     convenience init(
         title: String,
         setTitleColor: UIColor = .black,
-        borderWidth: CGFloat = 1,
+        borderWidth: CGFloat = 0.5,
         borderColor: UIColor = .black,
         font: CGFloat = 12
     ) {

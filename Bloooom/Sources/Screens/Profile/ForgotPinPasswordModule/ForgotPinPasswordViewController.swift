@@ -11,11 +11,12 @@ class ForgotPinPasswordViewController: UIViewController {
         text: "Пожалуйста, введите ваш электронный адрес\nдля сброса пароля",
         font: 12,
         alignment: .left,
-        textColor: .lightGray
+        textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
     )
-    private let emailLabel = UILabel(text: "ЭЛЕКТРОННАЯ ПОЧТА", font: 12, textColor: .lightGray)
+    private let emailLabel = UILabel(text: "ЭЛЕКТРОННАЯ ПОЧТА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    private let emailLabel1 = UILabel(text: "ЭЛЕКТРОННАЯ ПОЧТА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let emailTextField = UITextField(placeHolder: "", keyboard: .emailAddress)
-    private let seperatorLine = UIView(backgroundColor: .lightGray)
+    private let seperatorLine = UIView(backgroundColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let emailErrorLabel = UILabel(text: "", font: 8, alignment: .left, textColor: .red)
     private lazy var confirmButton = UIButton(title: "ПРОДОЛЖИТЬ")
     
@@ -25,9 +26,10 @@ class ForgotPinPasswordViewController: UIViewController {
         setupActionButton()
         view.backgroundColor = .white
         emailTextField.delegate = self
-        emailTextField.font = .systemFont(ofSize: 12, weight: .regular)
+        emailTextField.autocapitalizationType = .none
         navigationController?.setNavigationBarHidden(true, animated: false)
         emailErrorLabel.isHidden = true
+        emailLabel.isHidden = true
     }
     
     init(viewModel: ForgotPinPasswordViewModelProtocol) {
@@ -44,7 +46,7 @@ class ForgotPinPasswordViewController: UIViewController {
     }
     
     private func setupUI() {
-        [backButton, stackView, emailLabel, emailTextField, seperatorLine, emailErrorLabel, confirmButton].forEach { view.addSubview($0) }
+        [backButton, stackView, emailLabel, emailLabel1, emailTextField, seperatorLine, emailErrorLabel, confirmButton].forEach { view.addSubview($0) }
         [mainTitle, mainSubTitle].forEach { stackView.addArrangedSubview($0) }
         
         NSLayoutConstraint.activate([
@@ -65,12 +67,17 @@ class ForgotPinPasswordViewController: UIViewController {
             emailLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 40),
             emailLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
+        
+        NSLayoutConstraint.activate([
+            emailLabel1.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 16),
+            emailLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+        ])
        
         NSLayoutConstraint.activate([
             emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor),
             emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             emailTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            emailTextField.heightAnchor.constraint(equalToConstant: 42)
+            emailTextField.heightAnchor.constraint(equalToConstant: 35)
         ])
         
         NSLayoutConstraint.activate([
@@ -129,6 +136,8 @@ extension ForgotPinPasswordViewController: UITextFieldDelegate {
         switch textField {
         case emailTextField:
             labelToAnimate = emailLabel
+            emailLabel1.isHidden = true
+            emailLabel.isHidden = false
         default:
             break
         }
@@ -148,7 +157,7 @@ extension ForgotPinPasswordViewController: UITextFieldDelegate {
             errorText = viewModel.validateEmail(emailTextField.text ?? "")
             emailErrorLabel.text = errorText
             emailErrorLabel.isHidden = (errorText == nil)
-            seperatorLine.backgroundColor = (emailTextField.text?.isEmpty ?? true) ? .red : .lightGray
+            seperatorLine.backgroundColor = (emailTextField.text?.isEmpty ?? true) ? .red : #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
         default:
             break
         }

@@ -60,17 +60,17 @@ class CreatePinViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
             backButton.heightAnchor.constraint(equalToConstant: 24),
             backButton.widthAnchor.constraint(equalToConstant: 24),
             
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
             closeButton.heightAnchor.constraint(equalToConstant: 24),
             closeButton.widthAnchor.constraint(equalToConstant: 24),
             
-            usePinLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 33),
+            usePinLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 50),
             usePinLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             createPinCode.topAnchor.constraint(equalTo: usePinLabel.bottomAnchor, constant: 32),
@@ -84,7 +84,7 @@ class CreatePinViewController: UIViewController {
             keypadView.topAnchor.constraint(equalTo: pinsView.bottomAnchor, constant: 44),
             keypadView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             keypadView.widthAnchor.constraint(equalToConstant: 265),
-            keypadView.heightAnchor.constraint(equalToConstant: 327)
+            keypadView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -170)
         ])
     }
     

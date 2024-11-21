@@ -5,10 +5,13 @@ protocol KeychainManagerProtocol {
     func savePin(_ pin: String, for account: String)
     func loadPin(for account: String) -> String?
     func getSavedPin(for key: String) -> String?
+    func handleFirstLaunch()
 }
 
 class KeychainManager: KeychainManagerProtocol {
+    
     static let shared = KeychainManager()
+    private let hasLaunchedKey = "HasLaunchedBefore"
     
     private init() {}
     
@@ -56,6 +59,29 @@ class KeychainManager: KeychainManagerProtocol {
         let status = SecItemCopyMatching(query as CFDictionary, &item)
         guard status == errSecSuccess, let data = item as? Data else { return nil }
         return String(data: data, encoding: .utf8)
+    }
+    
+    func handleFirstLaunch() {
+        if !UserDefaults.standard.bool(forKey: hasLaunchedKey) {
+            deletePin(for: "pinKey")
+            UserDefaults.standard.set(true, forKey: hasLaunchedKey)
+        }
+    }
+    
+    private func deletePin(for account: String) {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: "com.yourapp.pin",
+            kSecAttrAccount as String: account
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        
+        if status == errSecSuccess {
+            print("PIN успешно удален из Keychain.")
+        } else {
+            print("Ошибка при удалении PIN: \(status)")
+        }
     }
 }
 

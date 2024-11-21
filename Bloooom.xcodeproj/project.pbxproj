@@ -83,6 +83,10 @@
 		EBB9C2CC2CEC909500E6E880 /* CheckEmailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2CB2CEC909500E6E880 /* CheckEmailCoordinator.swift */; };
 		EBB9C2CF2CECC97300E6E880 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EBB9C2CE2CECC97300E6E880 /* Kingfisher */; };
 		EBB9C2D22CECC97D00E6E880 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EBB9C2D12CECC97D00E6E880 /* KeychainSwift */; };
+		EBB9C2D52CEDAC6C00E6E880 /* VerifyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2D42CEDAC6C00E6E880 /* VerifyProfileViewController.swift */; };
+		EBB9C2D72CEDAC9D00E6E880 /* VerifyProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2D62CEDAC9D00E6E880 /* VerifyProfileViewModel.swift */; };
+		EBB9C2D92CEDACC200E6E880 /* VerifyProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2D82CEDACC200E6E880 /* VerifyProfileModel.swift */; };
+		EBB9C2DB2CEDACD900E6E880 /* VerifyProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB9C2DA2CEDACD900E6E880 /* VerifyProfileCoordinator.swift */; };
 		EBBC1D022CE4DCD30048E6A9 /* VerificationUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC1D012CE4DCD30048E6A9 /* VerificationUserViewController.swift */; };
 		EBBC1D042CE4DCF20048E6A9 /* VerificationUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC1D032CE4DCF20048E6A9 /* VerificationUserViewModel.swift */; };
 		EBBC1D062CE4E0730048E6A9 /* VerificationUserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBC1D052CE4E0730048E6A9 /* VerificationUserCoordinator.swift */; };
@@ -166,6 +170,10 @@
 		EBB9C2C72CEC906700E6E880 /* CheckEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailViewController.swift; sourceTree = "<group>"; };
 		EBB9C2C92CEC908000E6E880 /* CheckEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailViewModel.swift; sourceTree = "<group>"; };
 		EBB9C2CB2CEC909500E6E880 /* CheckEmailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailCoordinator.swift; sourceTree = "<group>"; };
+		EBB9C2D42CEDAC6C00E6E880 /* VerifyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyProfileViewController.swift; sourceTree = "<group>"; };
+		EBB9C2D62CEDAC9D00E6E880 /* VerifyProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyProfileViewModel.swift; sourceTree = "<group>"; };
+		EBB9C2D82CEDACC200E6E880 /* VerifyProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyProfileModel.swift; sourceTree = "<group>"; };
+		EBB9C2DA2CEDACD900E6E880 /* VerifyProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyProfileCoordinator.swift; sourceTree = "<group>"; };
 		EBBC1D012CE4DCD30048E6A9 /* VerificationUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationUserViewController.swift; sourceTree = "<group>"; };
 		EBBC1D032CE4DCF20048E6A9 /* VerificationUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationUserViewModel.swift; sourceTree = "<group>"; };
 		EBBC1D052CE4E0730048E6A9 /* VerificationUserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationUserCoordinator.swift; sourceTree = "<group>"; };
@@ -365,6 +373,7 @@
 		EBA30FAF2CC6957700038973 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EBB9C2D32CEDAC4700E6E880 /* ProfileModule */,
 				EBB9C2C62CEC905200E6E880 /* CheckEmailModule */,
 				EBB9C2BD2CEC6DF400E6E880 /* ConfirmPasswordModule */,
 				EBB9C2B62CEA665A00E6E880 /* ForgotPinPasswordModule */,
@@ -467,6 +476,17 @@
 			path = CheckEmailModule;
 			sourceTree = "<group>";
 		};
+		EBB9C2D32CEDAC4700E6E880 /* ProfileModule */ = {
+			isa = PBXGroup;
+			children = (
+				EBB9C2D42CEDAC6C00E6E880 /* VerifyProfileViewController.swift */,
+				EBB9C2D62CEDAC9D00E6E880 /* VerifyProfileViewModel.swift */,
+				EBB9C2D82CEDACC200E6E880 /* VerifyProfileModel.swift */,
+				EBB9C2DA2CEDACD900E6E880 /* VerifyProfileCoordinator.swift */,
+			);
+			path = ProfileModule;
+			sourceTree = "<group>";
+		};
 		EBBC1CFE2CE4DC7E0048E6A9 /* VerificationModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,6 +584,7 @@
 				12DB9D692CCD296E000C6AD1 /* UIStackView.swift in Sources */,
 				12BF363B2CCD1C6E00247D74 /* TabView.swift in Sources */,
 				EB7A88512CCB2FC700D60C24 /* MainTabBarController.swift in Sources */,
+				EBB9C2D92CEDACC200E6E880 /* VerifyProfileModel.swift in Sources */,
 				EBB9C2AC2CE7DC3000E6E880 /* FaceIDCoordinator.swift in Sources */,
 				EB8001D72CE1CDF3003B6563 /* Account.swift in Sources */,
 				EBB9C2CA2CEC908000E6E880 /* CheckEmailViewModel.swift in Sources */,
@@ -585,6 +606,7 @@
 				EBB9C2B12CE7E8F600E6E880 /* PincodeViewModel.swift in Sources */,
 				EBBC1D062CE4E0730048E6A9 /* VerificationUserCoordinator.swift in Sources */,
 				EBB9C2CC2CEC909500E6E880 /* CheckEmailCoordinator.swift in Sources */,
+				EBB9C2D52CEDAC6C00E6E880 /* VerifyProfileViewController.swift in Sources */,
 				EBB9C2C32CEC6E2C00E6E880 /* ConfrimPasswordCoordinator.swift in Sources */,
 				12BF36302CCD175100247D74 /* BasketViewCoordinator.swift in Sources */,
 				EB6A5ADE2CCA1C9800422156 /* CreateAccountViewController.swift in Sources */,
@@ -605,6 +627,7 @@
 				EB8001C62CDE28E1003B6563 /* KeychainHelper.swift in Sources */,
 				EB7C3FE72CBCCE3700A0DD13 /* HomeApiManager.swift in Sources */,
 				12DB9D6B2CCD2976000C6AD1 /* UIButton.swift in Sources */,
+				EBB9C2D72CEDAC9D00E6E880 /* VerifyProfileViewModel.swift in Sources */,
 				EBB9C2BA2CEA669200E6E880 /* ForgotPinPasswordViewModel.swift in Sources */,
 				EBB9C2A12CE71FA000E6E880 /* CreatePinViewController.swift in Sources */,
 				EB0E8A7E2CAE3074005839FA /* AppDelegate.swift in Sources */,
@@ -626,6 +649,7 @@
 				EBA30FD32CC7A67D00038973 /* SignInViewModel.swift in Sources */,
 				EB0E8A802CAE3074005839FA /* SceneDelegate.swift in Sources */,
 				EB8001BE2CD4B354003B6563 /* UserAPIManager.swift in Sources */,
+				EBB9C2DB2CEDACD900E6E880 /* VerifyProfileCoordinator.swift in Sources */,
 				EBB9C2B32CE7E90500E6E880 /* PincodeCoordinator.swift in Sources */,
 				EB8001C22CDBCF31003B6563 /* CreateUserModel.swift in Sources */,
 				EB8001CE2CE1999A003B6563 /* CountriesCodesCell.swift in Sources */,

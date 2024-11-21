@@ -4,6 +4,8 @@ class ConfirmPasswordViewController: UIViewController {
 
     private var viewModel: ConfirmPasswordViewModelProtocol
     var email: String
+    var isPasswordVisible = false
+    var isConfirmPasswordVisible = false
     
     private let stackView = UIStackView(
         axis: .vertical,
@@ -17,20 +19,25 @@ class ConfirmPasswordViewController: UIViewController {
     private let descriptionCreateNewPassword = UILabel(
         text: "Убедитесь, что он отличается от предыдущих\nдля безопасности",
         font: 12,
-        textColor: .lightGray
+        textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
     )
     
-    private let passwordLabel = UILabel(text: "ВВЕДИТЕ ПАРОЛЬ", font: 12, textColor: .lightGray)
+    private let passwordLabel = UILabel(text: "ВВЕДИТЕ ПАРОЛЬ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    private let passwordLabel1 = UILabel(text: "ВВЕДИТЕ ПАРОЛЬ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let passwordTF = UITextField(placeHolder: "", keyboard: .default)
-    private let passwordSeperator = UIView(backgroundColor: .lightGray)
+    private let passwordSeperator = UIView(backgroundColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let passwordErrorLabel = UILabel(text: "", font: 8, alignment: .left, textColor: .red)
     
-    private let repeatPasswordLabel = UILabel(text: "ПОВТОРИТЕ ПАРОЛЬ", font: 12, textColor: .lightGray)
+    private let repeatPasswordLabel = UILabel(text: "ПОВТОРИТЕ ПАРОЛЬ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    private let repeatPasswordLabel1 = UILabel(text: "ПОВТОРИТЕ ПАРОЛЬ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let repeatPasswordTF = UITextField(placeHolder: "", keyboard: .default)
-    private let repeatPasswordSeperator = UIView(backgroundColor: .lightGray)
+    private let repeatPasswordSeperator = UIView(backgroundColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let repeatPasswordErrorLabel = UILabel(text: "", font: 8, alignment: .left, textColor: .red)
     
     private let confirmButton = UIButton(title: "ПОДТВЕРДИТЬ")
+    
+    private lazy var showPasswordButton = UIButton(btnImage: "openEye")
+    private lazy var showRepeatPasswordButton = UIButton(btnImage: "openEye")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +47,10 @@ class ConfirmPasswordViewController: UIViewController {
         setupAction()
         setDelegatesTextField()
         hideAllErrorLabels()
+        hideLabels()
+        setupShowPasswordButton()
+        setupTextFieldsSecure()
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }
@@ -59,7 +70,7 @@ class ConfirmPasswordViewController: UIViewController {
     }
     
     private func setupViews() {
-        [backButton, stackView, passwordLabel, passwordTF, passwordSeperator, passwordErrorLabel, repeatPasswordLabel, repeatPasswordTF, repeatPasswordSeperator, repeatPasswordErrorLabel, confirmButton].forEach { view.addSubview($0) }
+        [backButton, stackView, passwordLabel, passwordLabel1, passwordTF, passwordSeperator, passwordErrorLabel, repeatPasswordLabel, repeatPasswordLabel1, repeatPasswordTF, repeatPasswordSeperator, repeatPasswordErrorLabel, confirmButton].forEach { view.addSubview($0) }
         
         [createNewPasswordLabel, descriptionCreateNewPassword].forEach { stackView.addArrangedSubview($0) }
     }
@@ -81,6 +92,11 @@ class ConfirmPasswordViewController: UIViewController {
         NSLayoutConstraint.activate([
             passwordLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 40),
             passwordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21)
+        ])
+        
+        NSLayoutConstraint.activate([
+            passwordLabel1.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 16),
+            passwordLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
         
         NSLayoutConstraint.activate([
@@ -106,6 +122,11 @@ class ConfirmPasswordViewController: UIViewController {
         NSLayoutConstraint.activate([
             repeatPasswordLabel.topAnchor.constraint(equalTo: passwordErrorLabel.bottomAnchor, constant: 5),
             repeatPasswordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21)
+        ])
+        
+        NSLayoutConstraint.activate([
+            repeatPasswordLabel1.topAnchor.constraint(equalTo: repeatPasswordLabel.bottomAnchor, constant: 16),
+            repeatPasswordLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
         
         NSLayoutConstraint.activate([
@@ -136,6 +157,18 @@ class ConfirmPasswordViewController: UIViewController {
         ])
     }
     
+    private func setupTextFieldsSecure() {
+        passwordTF.isSecureTextEntry = true
+        repeatPasswordTF.isSecureTextEntry = true
+        passwordTF.autocorrectionType = .no
+        repeatPasswordTF.autocorrectionType = .no
+    }
+    
+    private func hideLabels() {
+        passwordLabel.isHidden = true
+        repeatPasswordLabel.isHidden = true
+    }
+    
     private func bindViewModel(email: String) {
         viewModel.didCheckEmailSuccess = { [weak self] in
             DispatchQueue.main.async {
@@ -148,8 +181,39 @@ class ConfirmPasswordViewController: UIViewController {
         }
     }
     
+    private func setupShowPasswordButton() {
+        showPasswordButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        showRepeatPasswordButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        passwordTF.rightView = showPasswordButton
+        passwordTF.rightViewMode = .always
+        repeatPasswordTF.rightView = showRepeatPasswordButton
+        repeatPasswordTF.rightViewMode = .always
+    }
+    
     private func setupAction() {
         confirmButton.addTarget(self, action: #selector(moveToSuccess), for: .touchUpInside)
+        showPasswordButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+        showRepeatPasswordButton.addTarget(self, action: #selector(toggleConfirmPasswordVisibility), for: .touchUpInside)
+    }
+    
+    @objc func togglePasswordVisibility() {
+        isPasswordVisible.toggle()
+        passwordTF.isSecureTextEntry = !isPasswordVisible
+        
+        let eyeIcon = isPasswordVisible ? "closeEye" : "openEye"
+        if let eyeButton = passwordTF.rightView as? UIButton {
+            eyeButton.setImage(UIImage(named: eyeIcon), for: .normal)
+        }
+    }
+    
+    @objc func toggleConfirmPasswordVisibility() {
+        isConfirmPasswordVisible.toggle()
+        repeatPasswordTF.isSecureTextEntry = !isConfirmPasswordVisible
+        
+        let eyeIcon = isConfirmPasswordVisible ? "closeEye" : "openEye"
+        if let eyeButton = repeatPasswordTF.rightView as? UIButton {
+            eyeButton.setImage(UIImage(named: eyeIcon), for: .normal)
+        }
     }
     
     @objc private func moveToSuccess() {
@@ -190,12 +254,12 @@ extension ConfirmPasswordViewController: UITextFieldDelegate {
             errorText = viewModel.validatePassword(passwordTF.text ?? "")
             passwordErrorLabel.text = errorText
             passwordErrorLabel.isHidden = (errorText == nil)
-            passwordSeperator.backgroundColor = (passwordTF.text?.isEmpty ?? true) ? .red : .lightGray
+            passwordSeperator.backgroundColor = (passwordTF.text?.isEmpty ?? true) ? .red : #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
         case repeatPasswordTF:
             errorText = viewModel.validateConfirmPassword(passwordTF.text ?? "", repeatPasswordTF.text ?? "")
             repeatPasswordErrorLabel.text = errorText
             repeatPasswordErrorLabel.isHidden = (errorText == nil)
-            repeatPasswordSeperator.backgroundColor = (repeatPasswordTF.text?.isEmpty ?? true) ? .red : .lightGray
+            repeatPasswordSeperator.backgroundColor = (repeatPasswordTF.text?.isEmpty ?? true) ? .red : #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
         default:
             break
         }
@@ -221,8 +285,12 @@ extension ConfirmPasswordViewController: UITextFieldDelegate {
         switch textField {
         case passwordTF:
             labelToAnimate = passwordLabel
+            passwordLabel1.isHidden = true
+            passwordLabel.isHidden = false
         case repeatPasswordTF:
             labelToAnimate = repeatPasswordLabel
+            repeatPasswordLabel1.isHidden = true
+            repeatPasswordLabel.isHidden = false
         default:
             break
         }

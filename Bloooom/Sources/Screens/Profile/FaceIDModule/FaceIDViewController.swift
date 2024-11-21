@@ -55,17 +55,17 @@ class FaceIDViewController: UIViewController {
         [goBackButton, closeButton, faceIdLabel, faceIdImage, useFaceIDLabel, useFaceIdButton].forEach { view.addSubview($0) }
         
         NSLayoutConstraint.activate([
-            goBackButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            goBackButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             goBackButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
             goBackButton.heightAnchor.constraint(equalToConstant: 24),
             goBackButton.widthAnchor.constraint(equalToConstant: 24),
             
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
             closeButton.heightAnchor.constraint(equalToConstant: 24),
             closeButton.widthAnchor.constraint(equalToConstant: 24),
             
-            faceIdLabel.topAnchor.constraint(equalTo: goBackButton.bottomAnchor, constant: 33),
+            faceIdLabel.topAnchor.constraint(equalTo: goBackButton.bottomAnchor, constant: 50),
             faceIdLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             faceIdImage.topAnchor.constraint(equalTo: faceIdLabel.bottomAnchor, constant: 130),

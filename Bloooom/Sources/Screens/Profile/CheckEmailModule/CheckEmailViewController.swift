@@ -17,12 +17,13 @@ class CheckEmailViewController: UIViewController {
     private let confirmCodeDescriptionLabel = UILabel(
         text: "",
         font: 12,
-        textColor: .lightGray
+        textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
     )
     
-    private let writeCodeLabel = UILabel(text: "ВВЕДИТЕ КОД", font: 12, textColor: .lightGray)
+    private let writeCodeLabel = UILabel(text: "ВВЕДИТЕ КОД", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    private let writeCodeLabel1 = UILabel(text: "ВВЕДИТЕ КОД", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     private let writeCodeTextField = UITextField(placeHolder: "", keyboard: .numberPad)
-    private let seperatorLine = UIView(backgroundColor: .lightGray)
+    private let seperatorLine = UIView(backgroundColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     
     private let confirmButton = UIButton(title: "ПОДТВЕРДИТЬ")
     
@@ -34,6 +35,7 @@ class CheckEmailViewController: UIViewController {
         setupAction()
         view.backgroundColor = .white
         writeCodeTextField.delegate = self
+        writeCodeLabel.isHidden = true
         confirmCodeDescriptionLabel.text = "Мы отправили ссылку на \(email)\nВведите 4-значный код, указанный в письме"
     }
     
@@ -48,7 +50,7 @@ class CheckEmailViewController: UIViewController {
     }
     
     private func setupViews() {
-        [backButton, stackView, writeCodeLabel, writeCodeTextField, seperatorLine, confirmButton].forEach { view.addSubview($0) }
+        [backButton, stackView, writeCodeLabel, writeCodeLabel1, writeCodeTextField, seperatorLine, confirmButton].forEach { view.addSubview($0) }
         [confirmCodeLabel, confirmCodeDescriptionLabel].forEach { stackView.addArrangedSubview($0) }
     }
     
@@ -69,6 +71,11 @@ class CheckEmailViewController: UIViewController {
         NSLayoutConstraint.activate([
             writeCodeLabel.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 40),
             writeCodeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21)
+        ])
+        
+        NSLayoutConstraint.activate([
+            writeCodeLabel1.topAnchor.constraint(equalTo: writeCodeLabel.bottomAnchor, constant: 16),
+            writeCodeLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
         
         NSLayoutConstraint.activate([
@@ -129,9 +136,20 @@ class CheckEmailViewController: UIViewController {
 
 extension CheckEmailViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.transition(with: writeCodeLabel, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            self.writeCodeLabel.font = .systemFont(ofSize: 8, weight: .regular)
-        }, completion: nil)
+        var labelToAnimate: UILabel?
         
+        switch textField {
+        case writeCodeTextField:
+            writeCodeLabel1.isHidden = true
+            writeCodeLabel.isHidden = false
+        default:
+            break
+        }
+        
+        if let label = labelToAnimate {
+            UIView.transition(with: label, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                label.font = .systemFont(ofSize: 8, weight: .regular)
+            }, completion: nil)
+        }
     }
 }

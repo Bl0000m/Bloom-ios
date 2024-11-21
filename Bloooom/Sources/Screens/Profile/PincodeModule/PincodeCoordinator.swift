@@ -6,6 +6,7 @@ final class PincodeCoordinator: Coordinator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController.isNavigationBarHidden = true
     }
     
     func start() {
@@ -18,6 +19,17 @@ final class PincodeCoordinator: Coordinator {
         let coordinator = ForgotPinPasswordCoordinator(navigationController: navigationController)
         childCoordinators.append(coordinator)
         coordinator.start()
+    }
+    
+    func moveToMain() {
+        let coordinator = MainTabBarCoordinator()
+        childCoordinators.append(coordinator)
+        coordinator.start()
+        coordinator.tabBarController.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(
+            coordinator.tabBarController,
+            animated: true
+        )
     }
     
 }

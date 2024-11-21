@@ -48,7 +48,7 @@ class PincodeViewController: UIViewController {
     }
     
     private func setupViews() {
-        [backButton, welcomeLabel, entryPincode, pinsView, keypadView, forgotPinPasswordButton].forEach { view.addSubview($0) }
+        [welcomeLabel, entryPincode, pinsView, keypadView, forgotPinPasswordButton].forEach { view.addSubview($0) }
         keypadView.lastRowStack.insertArrangedSubview(faceIDIcon, at: 0)
     }
     
@@ -80,10 +80,8 @@ class PincodeViewController: UIViewController {
             return
         }
 
-        // Преобразуем введённый PIN
         let enteredPin = input
 
-        // Проверяем сохранённый PIN в Keychain
         if let savedPin = KeychainManager.shared.getSavedPin(for: "pinKey") {
             if enteredPin == savedPin {
                 print("Пин-коды совпадают")
@@ -93,6 +91,7 @@ class PincodeViewController: UIViewController {
                 pinsView.confirmPinStackView.isHidden = true
                 pinsView.pinStackView.isHidden = true
                 pinsView.warningPinStackView.isHidden = true
+                moveToMain()
             } else {
                 print("Ошибка: введённый PIN не совпадает с сохранённым")
                 entryPincode.text = "Неверный пин-код. Пожалуйста,\nпопробуйте снова"
@@ -107,17 +106,18 @@ class PincodeViewController: UIViewController {
         }
     }
 
+    private func moveToMain() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.viewModel.moveToMain()
+        }
+    }
+    
     private func setupLayout() {
         pinsView.translatesAutoresizingMaskIntoConstraints = false
         keypadView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
-            backButton.heightAnchor.constraint(equalToConstant: 24),
-            backButton.widthAnchor.constraint(equalToConstant: 24),
-            
-            welcomeLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 33),
+            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             entryPincode.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 32),
@@ -131,11 +131,12 @@ class PincodeViewController: UIViewController {
             keypadView.topAnchor.constraint(equalTo: pinsView.bottomAnchor, constant: 44),
             keypadView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             keypadView.widthAnchor.constraint(equalToConstant: 265),
-            keypadView.heightAnchor.constraint(equalToConstant: 327),
+           // keypadView.heightAnchor.constraint(equalToConstant: 327),
             
             forgotPinPasswordButton.topAnchor.constraint(equalTo: keypadView.bottomAnchor, constant: 35),
             forgotPinPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            forgotPinPasswordButton.heightAnchor.constraint(equalToConstant: 14)
+            forgotPinPasswordButton.heightAnchor.constraint(equalToConstant: 14),
+            forgotPinPasswordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150)
         ])
     }
     
@@ -167,7 +168,6 @@ class PincodeViewController: UIViewController {
             }
         } else {
             if currentIndex >= 0 {
-                // Окрашиваем текущий элемент в черный цвет при добавлении символа
                 if currentIndex < pinStackSubviews.count {
                     pinStackSubviews[currentIndex].backgroundColor = .black
                 }
@@ -180,74 +180,6 @@ class PincodeViewController: UIViewController {
             }
         }
         
-        // Сохранение нового количества символов
         pinsView.previousPinCount = pin.count
     }
-
-//
-//    func updateView(pin: String) {
-//        let pinStackSubviews = pinsView.pinStackView.subviews
-//        let warningPinStackView = pinsView.warningPinStackView.subviews
-//        let successPinStack = pinsView.successPinStack.subviews
-//        
-//        let currentIndex = max(0, pin.count - 1)
-//        let previousPinCount = pinsView.previousPinCount ?? 0
-//        
-//        let isRemovingSymbol = pin.count < previousPinCount
-//        
-//        if isRemovingSymbol {
-//            if previousPinCount > 0 {
-//                let index = previousPinCount - 1
-//                if index >= 0 {
-//                    // Окрашиваем элементы в серый цвет при удалении символа
-//                    if index < pinStackSubviews.count {
-//                        pinStackSubviews[index].backgroundColor = .lightGray
-//                    }
-//                    if index < warningPinStackView.count {
-//                        warningPinStackView[index].backgroundColor = .lightGray
-//                    }
-//                    if index < successPinStack.count {
-//                        successPinStack[index].backgroundColor = .lightGray
-//                    }
-//                }
-//            }
-//        } else {
-//            if currentIndex >= 0 && currentIndex < pinStackSubviews.count {
-//                // Окрашиваем текущий элемент в черный цвет при добавлении символа
-//                pinStackSubviews[currentIndex].backgroundColor = .black
-//
-//            }
-//        }
-//        
-//        // Сохранение нового количества символов
-//        pinsView.previousPinCount = pin.count
-//    }
-
-    
-//    func updateView(pin: String) {
-//        let pinStackSubviews = pinsView.pinStackView.subviews
-//        let warningPinStackView = pinsView.warningPinStackView.subviews
-//        let successPinStack = pinsView.successPinStack.subviews
-//        
-//        let currentIndex = max(0, pin.count - 1)
-//        let previousPinCount = pinsView.previousPinCount ?? 0
-//        
-//        let isRemovingSymbol = pin.count < previousPinCount
-//        
-//        if isRemovingSymbol {
-//             if previousPinCount > 0 {
-//                let index = previousPinCount - 1
-//                if index >= 0 && index < pinStackSubviews.count {
-//                    pinStackSubviews[index].backgroundColor = .lightGray
-//                }
-//            }
-//        } else {
-//            if currentIndex >= 0 && currentIndex < pinStackSubviews.count {
-//                pinStackSubviews[currentIndex].backgroundColor = .black
-//            }
-//        }
-//        // Сохранение нового количества символов
-//        pinsView.previousPinCount = pin.count
-//    }
-
 }
