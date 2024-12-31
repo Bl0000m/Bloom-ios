@@ -69,7 +69,7 @@ class KeypadView: UIView {
         }
         button.setTitle(title, for: .normal)
         button.layer.cornerRadius = 35
-        button.layer.borderWidth = 1
+        button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.black.cgColor
         button.backgroundColor = .white
         button.titleLabel?.font = .systemFont(ofSize: 24, weight: .regular)

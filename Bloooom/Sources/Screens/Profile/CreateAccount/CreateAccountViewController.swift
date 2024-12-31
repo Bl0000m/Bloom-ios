@@ -81,11 +81,13 @@ final class CreateAccountViewController: UIViewController {
         
         passwordTF.autocorrectionType = .no
         passwordTF.isSecureTextEntry = true
-        
+        passwordTF.textContentType = .none
+    
         emailTF.autocapitalizationType = .none
         
         repeatPasswordTF.autocorrectionType = .no
         repeatPasswordTF.isSecureTextEntry = true
+        repeatPasswordTF.textContentType = .none
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -311,13 +313,13 @@ final class CreateAccountViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            entryNameLabel.topAnchor.constraint(equalTo: nameSeparator.bottomAnchor),
+            entryNameLabel.topAnchor.constraint(equalTo: nameSeparator.bottomAnchor, constant: 5),
             entryNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             entryNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
         NSLayoutConstraint.activate([
-            nameErrorLabel.topAnchor.constraint(equalTo: nameSeparator.bottomAnchor, constant: 3),
+            nameErrorLabel.topAnchor.constraint(equalTo: nameSeparator.bottomAnchor, constant: 5),
             nameErrorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             nameErrorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
@@ -353,7 +355,7 @@ final class CreateAccountViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            emailErrorLabel.topAnchor.constraint(equalTo: emailSeparator.bottomAnchor, constant: 3),
+            emailErrorLabel.topAnchor.constraint(equalTo: emailSeparator.bottomAnchor, constant: 5),
             emailErrorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             emailErrorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
@@ -403,7 +405,7 @@ final class CreateAccountViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            phoneNumberErrorLabel.topAnchor.constraint(equalTo: phoneNumberSeperator.bottomAnchor, constant: 3),
+            phoneNumberErrorLabel.topAnchor.constraint(equalTo: phoneNumberSeperator.bottomAnchor, constant: 5),
             phoneNumberErrorLabel.leadingAnchor.constraint(equalTo: intertationalCodeSeperator.trailingAnchor, constant: 5),
             phoneNumberErrorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
@@ -433,7 +435,7 @@ final class CreateAccountViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            entryPassword.topAnchor.constraint(equalTo: passwordSeperator.bottomAnchor, constant: 3),
+            entryPassword.topAnchor.constraint(equalTo: passwordSeperator.bottomAnchor, constant: 5),
             entryPassword.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             entryPassword.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])

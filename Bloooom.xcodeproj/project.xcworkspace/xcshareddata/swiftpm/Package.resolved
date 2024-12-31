@@ -1,6 +1,15 @@
 {
-  "originHash" : "46bfb6fc7037e01234f54ed525a34fdfcb4fe17caaa83c2caf1ad864fd5008e0",
+  "originHash" : "b54167df3637addc4f510cabe4863aeed47a7e33f0805b3348ae17953240a20b",
   "pins" : [
+    {
+      "identity" : "anchoredbottomsheet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/havebeenfitz/anchoredbottomsheet.git",
+      "state" : {
+        "revision" : "d650324c9b94c50964ebaf1bc2fd72747b999e2f",
+        "version" : "1.6.3"
+      }
+    },
     {
       "identity" : "keychain-swift",
       "kind" : "remoteSourceControl",
@@ -17,6 +26,15 @@
       "state" : {
         "revision" : "c0940e241945e6378c01fbd45fd3815579d47ef5",
         "version" : "8.1.0"
+      }
+    },
+    {
+      "identity" : "swiftkeychainwrapper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jrendel/SwiftKeychainWrapper",
+      "state" : {
+        "revision" : "185a3165346a03767101c4f62e9a545a0fe0530f",
+        "version" : "4.0.1"
       }
     }
   ],

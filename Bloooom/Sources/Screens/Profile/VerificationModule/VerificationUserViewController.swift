@@ -117,7 +117,7 @@ class VerificationUserViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             writeCodeLabel1.topAnchor.constraint(equalTo: writeCodeLabel.bottomAnchor, constant: 16),
-            writeCodeLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+            writeCodeLabel1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21)
         ])
         
         NSLayoutConstraint.activate([

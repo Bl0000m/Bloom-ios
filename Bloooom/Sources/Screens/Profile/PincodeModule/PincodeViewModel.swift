@@ -6,6 +6,7 @@ protocol PincodeViewModelProtocol: AnyObject {
     func didPressKey(_ key: String)
     func moveToForgot()
     func moveToMain()
+    func refreshAccessToken(refreshToken: String, completion: @escaping (Result<SignInTokenResponse, Error>) -> Void)
 }
 
 class PincodeViewModel: PincodeViewModelProtocol {
@@ -42,4 +43,9 @@ class PincodeViewModel: PincodeViewModelProtocol {
     func moveToMain() {
         coordinator.moveToMain()
     }
+    
+    func refreshAccessToken(refreshToken: String, completion: @escaping (Result<SignInTokenResponse, Error>) -> Void) {
+        UserAPIManager.shared.refreshAccessToken(refreshToken: refreshToken, completion: completion)
+    }
 }
+

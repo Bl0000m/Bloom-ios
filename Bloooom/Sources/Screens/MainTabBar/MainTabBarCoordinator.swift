@@ -11,7 +11,10 @@ final class MainTabBarCoordinator: Coordinator {
     func start() {
         childCoordinators = [
             HomeViewCoordinator(), SearchViewCoordinator(), MenuViewCoordinator(),
-            BasketViewCoordinator(), ProfileCoordinator()
+            BasketViewCoordinator(), (
+                UserDefaults.standard.string(forKey: "userAccessToken") != nil
+            ) ? VerifyProfileCoordinator() :
+                ProfileCoordinator()
         ]
         
         setupTabControllers()
@@ -32,5 +35,9 @@ final class MainTabBarCoordinator: Coordinator {
             
             return coordinator.navigationController
         }
+    }
+    
+    func checkIfPinCodeExists() -> Bool {
+        return UserDefaults.standard.string(forKey: "pinKey") != nil
     }
 }

@@ -62,9 +62,24 @@ class PincodeViewController: UIViewController {
     private func keypatTappedAction() {
         keypadView.keypadButtonTapped = { [weak self] sender in
             guard let title = sender.currentTitle else { return }
+            
+            // Устанавливаем цвет текста при нажатии
+            sender.setTitleColor(.lightGray, for: .highlighted)
+            
+            // Изменяем цвет границы для состояния .highlighted
+            let originalBorderColor = sender.layer.borderColor // Сохраняем оригинальный цвет
+            sender.layer.borderColor = UIColor.lightGray.cgColor
+            sender.layer.borderWidth = 0.5 // Устанавливаем ширину границы
+            
+            // Возвращаем цвет границы обратно после короткой задержки
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                sender.layer.borderColor = originalBorderColor
+            }
+            
             self?.viewModel.didPressKey(title)
         }
     }
+
     
     private func buttonAction() {
         forgotPinPasswordButton.addTarget(self, action: #selector(onForgotTap), for: .touchUpInside)
@@ -91,6 +106,14 @@ class PincodeViewController: UIViewController {
                 pinsView.confirmPinStackView.isHidden = true
                 pinsView.pinStackView.isHidden = true
                 pinsView.warningPinStackView.isHidden = true
+//                viewModel.refreshAccessToken(refreshToken: UserDefaults.standard.string(forKey: "userRefreshToken")!) { result in
+//                    switch result {
+//                    case .success:
+//                        print("Токен успешно обновлен")
+//                    case .failure(let error):
+//                        print("Ошибка обновления токена: \(error.localizedDescription)")
+//                    }
+//                }
                 moveToMain()
             } else {
                 print("Ошибка: введённый PIN не совпадает с сохранённым")
@@ -154,7 +177,6 @@ class PincodeViewController: UIViewController {
             if previousPinCount > 0 {
                 let index = previousPinCount - 1
                 if index >= 0 {
-                    // Окрашиваем элементы в серый цвет при удалении символа
                     if index < pinStackSubviews.count {
                         pinStackSubviews[index].backgroundColor = .lightGray
                     }

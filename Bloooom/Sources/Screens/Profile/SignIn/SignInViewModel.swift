@@ -56,7 +56,7 @@ final class SignInViewModel: SignInViewModelProtocol {
                 switch result {
                 case .success(let response):
                     print("Response JSON:", response)
-                    self?.didLoginSuccess?()  // Вызов успеха
+                    self?.didLoginSuccess?()
                 case .failure(let error):
                     print("Error:", error.localizedDescription)
                     self?.didLoginFailure?(error.localizedDescription)  // Вызов ошибки

@@ -11,13 +11,17 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        KeychainManager.shared.handleFirstLaunch()
-        if let _ = KeychainManager.shared.getSavedPin(for: "pinKey") {
-            showPincodeScreen()
+        if let _ = UserDefaults.standard.string(forKey: "userAccessToken") {
+            if (KeychainManager.shared.getSavedPin(for: "pinKey") != nil) {
+                showPincodeScreen()
+            } else {
+                showMainScreen()
+            }
         } else {
             showMainScreen()
         }
     }
+
     
     private func showMainScreen() {
         let tabBarCoordinator = MainTabBarCoordinator()

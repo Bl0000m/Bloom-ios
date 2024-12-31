@@ -77,7 +77,7 @@ struct CreateAccountModel: Codable {
     }
 
     private func isValidUsername(_ username: String) -> Bool {
-        let usernameRegex = "^[A-Za-z0-9]+$" // Только буквы и цифры
+        let usernameRegex = "^[A-Za-z0-9]+$"
         let usernamePredicate = NSPredicate(format: "SELF MATCHES %@", usernameRegex)
         return usernamePredicate.evaluate(with: username)
     }

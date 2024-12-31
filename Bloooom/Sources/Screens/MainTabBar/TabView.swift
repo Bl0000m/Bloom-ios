@@ -5,7 +5,7 @@ protocol TabView {
 }
 
 enum Tab: Int {
-    case home, search, menu, basket, profile
+    case home, search, menu, basket, profile, verifyProfile
     
     var image: String {
         switch self {
@@ -14,6 +14,7 @@ enum Tab: Int {
         case .menu: "menu"
         case .basket: "bag"
         case .profile: "user"
+        case .verifyProfile: "user"
         }
     }
 }

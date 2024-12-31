@@ -6,10 +6,12 @@ protocol UserAPIManagerProtocol {
     func loadCountries(completion: @escaping (Result<[Country], Error>) -> Void)
     func confirmCode(email: String, code: String, completion: @escaping (Result<String, Error>) -> Void)
     func resetCode(email: String, completion: @escaping (Result<String, Error>) -> Void)
+    func refreshAccessToken(refreshToken: String, completion: @escaping (Result<SignInTokenResponse, Error>) -> Void)
     func forgotPassword(email: String, newPassword: String, confirmNewPassword: String, completion: @escaping (Result<String, Error>) -> Void)
+    func fetchUserData(bearerToken: String, completion: @escaping (Result<UserData, Error>) -> Void)
 }
 
-class UserAPIManager:  UserAPIManagerProtocol {
+class UserAPIManager: UserAPIManagerProtocol {
     
     private let baseURL = "http://api.bloooom.kz:8443/v1"
     
@@ -50,6 +52,16 @@ class UserAPIManager:  UserAPIManagerProtocol {
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    if let token = json["accessToken"] as? String {
+                        UserDefaults.standard.set(token, forKey: "userAccessToken")
+                        UserDefaults.standard.synchronize()
+                    }
+                    
+                    if let refreshToken = json["refreshToken"] as? String {
+                        UserDefaults.standard.set(refreshToken, forKey: "userRefreshToken")
+                        UserDefaults.standard.synchronize()
+                    }
+                    
                     completion(.success(json))
                 }
             } catch let parsingError {
@@ -74,7 +86,7 @@ class UserAPIManager:  UserAPIManagerProtocol {
             request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
         
-        request.httpBody = parameters // Параметры уже в формате Data
+        request.httpBody = parameters
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -234,4 +246,79 @@ class UserAPIManager:  UserAPIManagerProtocol {
             completion(.success(message))
         }.resume()
     }
+    
+    func refreshAccessToken(refreshToken: String, completion: @escaping (Result<SignInTokenResponse, Error>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/users/refresh") else {
+            completion(.failure(NSError(domain: "AuthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+            return
+        }
+        
+        let requestBody = RefreshAccessTokenRequestBody(refreshToken: refreshToken)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(requestBody)
+            request.httpBody = jsonData
+        } catch {
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(NSError(domain: "AuthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data returned"])))
+                return
+            }
+            
+            do {
+                let decodedResponse = try JSONDecoder().decode(SignInTokenResponse.self, from: data)
+                completion(.success(decodedResponse))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+    
+    func fetchUserData(bearerToken: String, completion: @escaping (Result<UserData, Error>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/users/me") else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
+                return
+            }
+            
+            do {
+                let userData = try JSONDecoder().decode(UserData.self, from: data)
+                completion(.success(userData))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        
+        task.resume()
+    }
 }
+
+
