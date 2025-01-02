@@ -97,13 +97,6 @@ class DetailOrdersService: DetailOrdersServiceProtocol {
             } catch {
                 completion(.failure(error))
             }
-            
-//            do {
-//                let bouquetDetails = try JSONDecoder().decode(BouquetDetailsModel.self, from: data)
-//                completion(.success(bouquetDetails))
-//            } catch {
-//                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Decoding error: \(error.localizedDescription)"])))
-//            }
         }
         
         task.resume()

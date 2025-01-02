@@ -21,8 +21,8 @@ struct BouquetPhotos: Codable {
 struct FlowerVariety: Codable {
     let id: Int
     let name: String
-    let image: String
-    var quantity: Int? = nil
+    var image: String?
+    var quantity: Int
 }
 
 struct AdditionalElement: Codable {

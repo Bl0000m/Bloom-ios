@@ -109,6 +109,10 @@
 		EB91C5B52D22EEAE0016FDE2 /* BouquetDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91C5B42D22EEAE0016FDE2 /* BouquetDetailsModel.swift */; };
 		EB91C5B82D239F410016FDE2 /* AnchoredBottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = EB91C5B72D239F410016FDE2 /* AnchoredBottomSheet */; };
 		EB91C5BB2D23B2A20016FDE2 /* BouquetDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91C5BA2D23B2A20016FDE2 /* BouquetDetailsCell.swift */; };
+		EB91C5BE2D25875C0016FDE2 /* BouquetDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91C5BD2D25875C0016FDE2 /* BouquetDetailsView.swift */; };
+		EB91C5C02D2588A40016FDE2 /* SelectBouquetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91C5BF2D2588A40016FDE2 /* SelectBouquetView.swift */; };
+		EB91C5C22D2588DB0016FDE2 /* CompositionBouquetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91C5C12D2588DB0016FDE2 /* CompositionBouquetCell.swift */; };
+		EB91C5C42D25890A0016FDE2 /* AdditionalElementsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB91C5C32D25890A0016FDE2 /* AdditionalElementsCell.swift */; };
 		EBA30FB42CC695B200038973 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FB32CC695B200038973 /* SignInViewController.swift */; };
 		EBA30FC22CC7810F00038973 /* HomeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FC12CC7810F00038973 /* HomeViewCoordinator.swift */; };
 		EBA30FCB2CC78B6E00038973 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA30FCA2CC78B6E00038973 /* MainTabBarCoordinator.swift */; };
@@ -252,6 +256,10 @@
 		EB91C5B22D22EE9F0016FDE2 /* BouquetDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouquetDetailsViewModel.swift; sourceTree = "<group>"; };
 		EB91C5B42D22EEAE0016FDE2 /* BouquetDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouquetDetailsModel.swift; sourceTree = "<group>"; };
 		EB91C5BA2D23B2A20016FDE2 /* BouquetDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouquetDetailsCell.swift; sourceTree = "<group>"; };
+		EB91C5BD2D25875C0016FDE2 /* BouquetDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouquetDetailsView.swift; sourceTree = "<group>"; };
+		EB91C5BF2D2588A40016FDE2 /* SelectBouquetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBouquetView.swift; sourceTree = "<group>"; };
+		EB91C5C12D2588DB0016FDE2 /* CompositionBouquetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionBouquetCell.swift; sourceTree = "<group>"; };
+		EB91C5C32D25890A0016FDE2 /* AdditionalElementsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalElementsCell.swift; sourceTree = "<group>"; };
 		EBA30FB32CC695B200038973 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		EBA30FC12CC7810F00038973 /* HomeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCoordinator.swift; sourceTree = "<group>"; };
 		EBA30FCA2CC78B6E00038973 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -715,6 +723,7 @@
 		EB91C5AD2D22EE3E0016FDE2 /* BouquetDetails */ = {
 			isa = PBXGroup;
 			children = (
+				EB91C5BC2D2582990016FDE2 /* CustomViews */,
 				EB91C5B92D23B2840016FDE2 /* Cell */,
 				EB91C5AE2D22EE650016FDE2 /* BouquetDetailsViewController.swift */,
 				EB91C5B02D22EE8B0016FDE2 /* BouquetDetailsCoordinator.swift */,
@@ -728,6 +737,25 @@
 			isa = PBXGroup;
 			children = (
 				EB91C5BA2D23B2A20016FDE2 /* BouquetDetailsCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EB91C5BC2D2582990016FDE2 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				EB91C5BD2D25875C0016FDE2 /* BouquetDetailsView.swift */,
+				EB91C5BF2D2588A40016FDE2 /* SelectBouquetView.swift */,
+				EB91C5C52D264FBC0016FDE2 /* Cell */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		EB91C5C52D264FBC0016FDE2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EB91C5C12D2588DB0016FDE2 /* CompositionBouquetCell.swift */,
+				EB91C5C32D25890A0016FDE2 /* AdditionalElementsCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -973,6 +1001,7 @@
 				EB6A57A92CF6DF15007EB060 /* CalendarViewController.swift in Sources */,
 				12BF36322CCD176400247D74 /* BasketViewModel.swift in Sources */,
 				12DB9D6D2CCD297F000C6AD1 /* UILabel.swift in Sources */,
+				EB91C5C02D2588A40016FDE2 /* SelectBouquetView.swift in Sources */,
 				EB89A07E2CCF810400E95A68 /* SeparatorLine.swift in Sources */,
 				EBB9C2BC2CEA679B00E6E880 /* ForgotPinPasswordCoordinator.swift in Sources */,
 				EB91C5902D0992F70016FDE2 /* CenterTransitioningDelegate.swift in Sources */,
@@ -985,6 +1014,7 @@
 				EBB9C29D2CE71E4500E6E880 /* KeychainManager.swift in Sources */,
 				EB4F2C7B2CD1D47F00ECB7B1 /* FormViewContent.swift in Sources */,
 				EB755F1A2CFECC00000AD4B6 /* MonthsViewModel.swift in Sources */,
+				EB91C5C42D25890A0016FDE2 /* AdditionalElementsCell.swift in Sources */,
 				EBB9C2AA2CE7DC1D00E6E880 /* FaceIDViewModel.swift in Sources */,
 				EBB9C2A32CE7272E00E6E880 /* CreatePinCoordinator.swift in Sources */,
 				EBB9C29F2CE71E8C00E6E880 /* CreatePinViewModel.swift in Sources */,
@@ -1028,6 +1058,7 @@
 				EBB9C2BA2CEA669200E6E880 /* ForgotPinPasswordViewModel.swift in Sources */,
 				EBB9C2A12CE71FA000E6E880 /* CreatePinViewController.swift in Sources */,
 				EB6A57A62CF43F11007EB060 /* FooterView.swift in Sources */,
+				EB91C5C22D2588DB0016FDE2 /* CompositionBouquetCell.swift in Sources */,
 				EB0E8A7E2CAE3074005839FA /* AppDelegate.swift in Sources */,
 				EB6A57BF2CFC0C55007EB060 /* APIManager.swift in Sources */,
 				EB755EEF2CFD798D000AD4B6 /* CreateSubscribeViewModel.swift in Sources */,
@@ -1035,6 +1066,7 @@
 				EB7A88492CCB2AEE00D60C24 /* Coordinator.swift in Sources */,
 				EBBC1D082CE5EDDD0048E6A9 /* ConfirmCodeRequest.swift in Sources */,
 				EB6A57AD2CF6DF35007EB060 /* CalendarModel.swift in Sources */,
+				EB91C5BE2D25875C0016FDE2 /* BouquetDetailsView.swift in Sources */,
 				EBB9C2B82CEA668200E6E880 /* ForgotPinPasswordViewController.swift in Sources */,
 				EBBC1D042CE4DCF20048E6A9 /* VerificationUserViewModel.swift in Sources */,
 				EB8001C02CD88CC0003B6563 /* SignInModel.swift in Sources */,
