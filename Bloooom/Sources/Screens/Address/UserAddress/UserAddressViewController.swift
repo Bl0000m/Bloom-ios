@@ -136,7 +136,7 @@ class UserAddressViewController: UIViewController {
     }
     
     @objc private func moveToBack() {
-        
+        viewModel.goBack()
     }
     
     @objc private func moveToAnother() {

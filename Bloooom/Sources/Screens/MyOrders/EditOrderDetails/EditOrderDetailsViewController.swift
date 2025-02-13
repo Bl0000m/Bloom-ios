@@ -88,12 +88,17 @@ class EditOrderDetailsViewController: UIViewController {
         }
         
         continueButton.addTarget(self, action: #selector(goToListOrders), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(moveToListOrders), for: .touchUpInside)
     }
     
     @objc private func goToListOrders() {
         viewModel.goToListOrders()
     }
 
+    @objc private func moveToListOrders() {
+        viewModel.goToListOrders()
+    }
+    
     private func bindViewModel() {
         viewModel.onSubscriptionsFetched = { [weak self] result in
             switch result {

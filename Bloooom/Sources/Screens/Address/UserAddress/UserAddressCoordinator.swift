@@ -23,5 +23,9 @@ final class UserAddressCoordinator: Coordinator {
         coordinator.start()
     }
     
+    func goBack() {
+        navigationController.popViewController(animated: true)
+    }
+    
     
 }

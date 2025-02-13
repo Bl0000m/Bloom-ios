@@ -47,6 +47,11 @@ class AnotherAddressViewController: UIViewController {
     private func setupAction() {
         confirmButton.addTarget(self, action: #selector(sendAddress), for: .touchUpInside)
         userAddressView.internationCodeBtn.addTarget(self, action: #selector(selectedCountryCode), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(moveToBack), for: .touchUpInside)
+    }
+    
+    @objc private func moveToBack() {
+        viewModel.goBack()
     }
     
     @objc private func sendAddress() {
@@ -153,6 +158,11 @@ class AnotherAddressViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
+    
+    @objc private func goBack() {
+        
+    }
+    
     private func setupViews() {
         userAddressView.translatesAutoresizingMaskIntoConstraints = false
         [backButton, mainTitle, userAddressView, confirmButton].forEach { view.addSubview($0) }

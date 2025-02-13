@@ -33,4 +33,8 @@ final class AnotherAddressCoordinator: Coordinator {
             navigationController.popToRootViewController(animated: true)
         }
     }
+    
+    func goBack() {
+        navigationController.popViewController(animated: true)
+    }
 }

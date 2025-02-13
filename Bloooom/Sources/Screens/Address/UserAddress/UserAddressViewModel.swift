@@ -2,6 +2,7 @@ import Foundation
 
 protocol UserAddressViewModelProtocol: AnyObject {
     func moveToAnotherAddress()
+    func goBack()
     func fetchAddresses(id: Int)
     var onAddressUpdated: ((Result<[AnotherAddressModel], Error>) -> Void)? { get set }
     var onAddressError: ((String) -> Void)? { get set }
@@ -35,6 +36,10 @@ class UserAddressViewModel: UserAddressViewModelProtocol {
             }
 
         }
+    }
+    
+    func goBack() {
+        coordinator.goBack()
     }
     
 }

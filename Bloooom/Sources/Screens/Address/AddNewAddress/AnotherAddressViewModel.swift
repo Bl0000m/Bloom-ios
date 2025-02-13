@@ -17,6 +17,7 @@ protocol AnotherAddressViewModelProtocol: AnyObject {
                          lati: Int?,
                          orderId: Int)
     func selectionCountryCode(delegate: CountrySelectionDelegate)
+    func goBack()
     var onAddressUpdated: ((Result<EditOrderDetailsModel, Error>) -> Void)? { get set }
     var onAddressError: ((String) -> Void)? { get set }
     var didSignUpSuccess: (() -> Void)? { get set }
@@ -112,5 +113,9 @@ class AnotherAddressViewModel: AnotherAddressViewModelProtocol {
     
     func moveToDetailOrder() {
         coordinator.goToDetailOrder()
+    }
+    
+    func goBack() {
+        coordinator.goBack()
     }
 }
