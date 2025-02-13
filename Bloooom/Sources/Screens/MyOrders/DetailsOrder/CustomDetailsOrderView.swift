@@ -3,9 +3,10 @@ class CustomDetailsOrderView: UIView {
     
     private var mainTitle: String = ""
     private var image: String = ""
-    private var descTitle: String = ""
+    var descTitle: String = ""
     
     var moveToDetails: (() -> Void)?
+    var moveToAddAdress: (() -> Void)?
     
     private var mainTitleText: UILabel = {
         let label = UILabel()
@@ -78,6 +79,7 @@ class CustomDetailsOrderView: UIView {
     
     @objc func moveToDetail() {
         moveToDetails?()
+        moveToAddAdress?()
     }
     
     private func createIcon(withImageName imageName: String) -> UIImageView {
@@ -141,6 +143,14 @@ class CustomDetailsOrderView: UIView {
             bottomLine.trailingAnchor.constraint(equalTo: mainView.trailingAnchor),
             bottomLine.heightAnchor.constraint(equalToConstant: 0.5)
         ])
+    }
+    
+    func updateDescription(deliveryTime: String) {
+        selectTitleText.text = deliveryTime
+    }
+    
+    func updateAddress(streetName: String) {
+        selectTitleText.text = streetName
     }
 }
 

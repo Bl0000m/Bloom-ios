@@ -27,6 +27,7 @@ class BouquetDetailsViewController: UIViewController {
     }()
     
     private let id: Int
+    private let price: Double
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +36,17 @@ class BouquetDetailsViewController: UIViewController {
         setupLayout()
         bindViewModel()
         setupExtensions()
+        setupActions()
         DispatchQueue.main.async {
             self.bouquetDetilsView.tableView.reloadData()
         }
         view.backgroundColor = .white
     }
     
-    init(viewModel: BouquetDetailsViewModelProtocol, id: Int) {
+    init(viewModel: BouquetDetailsViewModelProtocol, id: Int, price: Double) {
         self.viewModel = viewModel
         self.id = id
+        self.price = price
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -55,7 +58,7 @@ class BouquetDetailsViewController: UIViewController {
         super.viewWillAppear(animated)
         bottomSheetView.didSetupConstraints = true
     }
-    
+  
     private func setupViews() {
         view.addSubview(closeButton)
         view.addSubview(bagButton)
@@ -63,6 +66,17 @@ class BouquetDetailsViewController: UIViewController {
         view.addSubview(bouquetPhotosCollectionView)
         view.addSubview(bottomSheetView)
         bottomSheetView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func setupActions() {
+        closeButton.addTarget(self, action: #selector(moveBack), for: .touchUpInside)
+        bouquetDetilsView.selectFloristAction = { [weak self] in
+            self?.viewModel.moveToFlorists(id: self?.id ?? 0)
+        }
+    }
+    
+    @objc private func moveBack() {
+        viewModel.goBack()
     }
     
     private func setupLayout() {
@@ -116,15 +130,15 @@ class BouquetDetailsViewController: UIViewController {
     }
     
     private func setData(model: BouquetDetailsModel) {
-        bouquetDetilsView.bouquetAutor.text = "Автор: \(model.companyName)"
+        bouquetDetilsView.bouquetAutor.text = "Автор: \(model.author)"
         bouquetDetilsView.compositionBouquetName.text = model.name
-        bouquetDetilsView.compositionBouquetPrice.text = "\(model.price) BLM"
+        bouquetDetilsView.compositionBouquetPrice.text = "\(price) BLM"
         bouquetDetilsView.tableView.reloadData()
     }
     
     private func setupExtensions() {
         bouquetPhotosCollectionView.dataSource = self
-     //   bouquetPhotosCollectionView.delegate = self
+        bouquetPhotosCollectionView.delegate = self
         bouquetDetilsView.tableView.dataSource = self
         bouquetDetilsView.tableView.delegate = self
     }
@@ -135,6 +149,7 @@ class BouquetDetailsViewController: UIViewController {
             case .success(let bouquets):
                 self?.model = bouquets
                 self?.setData(model: bouquets)
+                print("\(self?.model?.branchBouquetInfo)")
                 self?.bouquetPhotosCollectionView.reloadData()
                 print("Инфо Букеты получены: \(bouquets)")
             case .failure(let error):
@@ -160,6 +175,10 @@ extension BouquetDetailsViewController: UICollectionViewDataSource {
         }
         return cell
     }
+}
+
+extension BouquetDetailsViewController: UICollectionViewDelegateFlowLayout {
+   
 }
 
 extension BouquetDetailsViewController: UITableViewDataSource {
@@ -212,7 +231,6 @@ extension BouquetDetailsViewController: UITableViewDelegate {
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         
-        // Устанавливаем текст в зависимости от секции
         switch section {
         case 0:
             titleLabel.text = "СОСТАВ БУКЕТА"

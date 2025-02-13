@@ -26,12 +26,34 @@
 		EB0E8A872CAE3076005839FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A862CAE3076005839FA /* Assets.xcassets */; };
 		EB0E8A8A2CAE3076005839FA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = EB0E8A892CAE3076005839FA /* Base */; };
 		EB0E8A972CAF7C76005839FA /* MainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0E8A962CAF7C76005839FA /* MainScreenCell.swift */; };
+		EB1E10BB2D5C6B3600BA230F /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1E10BA2D5C6B3600BA230F /* AddressService.swift */; };
+		EB255B752D5B0FA500134371 /* EmptyAdressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB255B742D5B0FA500134371 /* EmptyAdressView.swift */; };
+		EB255B782D5B177100134371 /* CustomAdressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB255B772D5B177100134371 /* CustomAdressView.swift */; };
 		EB4F2C762CD1D40D00ECB7B1 /* VerificationViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C752CD1D40D00ECB7B1 /* VerificationViewContent.swift */; };
 		EB4F2C782CD1D45000ECB7B1 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C772CD1D45000ECB7B1 /* VerificationViewController.swift */; };
 		EB4F2C7B2CD1D47F00ECB7B1 /* FormViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7A2CD1D47F00ECB7B1 /* FormViewContent.swift */; };
 		EB4F2C7D2CD1D4A100ECB7B1 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7C2CD1D4A100ECB7B1 /* FormViewController.swift */; };
 		EB4F2C7F2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C7E2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift */; };
 		EB4F2C842CD1FD6200ECB7B1 /* CreateAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4F2C832CD1FD6100ECB7B1 /* CreateAccountModel.swift */; };
+		EB645C932D2A916E000B51BD /* EditOrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645C922D2A916E000B51BD /* EditOrderDetailsViewController.swift */; };
+		EB645C952D2A9181000B51BD /* EditOrderDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645C942D2A9181000B51BD /* EditOrderDetailsCoordinator.swift */; };
+		EB645C972D2A9194000B51BD /* EditOrderDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645C962D2A9194000B51BD /* EditOrderDetailsViewModel.swift */; };
+		EB645C992D2A91A0000B51BD /* EditOrderDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645C982D2A91A0000B51BD /* EditOrderDetailsModel.swift */; };
+		EB645C9B2D2AFC90000B51BD /* EditOrderDetailsCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645C9A2D2AFC90000B51BD /* EditOrderDetailsCustom.swift */; };
+		EB645C9E2D2F06B7000B51BD /* FloristsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645C9D2D2F06B7000B51BD /* FloristsViewController.swift */; };
+		EB645CA02D2F06C7000B51BD /* FloristsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645C9F2D2F06C7000B51BD /* FloristsViewModel.swift */; };
+		EB645CA22D2F06D2000B51BD /* FloristsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CA12D2F06D2000B51BD /* FloristsCoordinator.swift */; };
+		EB645CA42D2F06DC000B51BD /* Florist.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CA32D2F06DC000B51BD /* Florist.swift */; };
+		EB645CA72D2F0832000B51BD /* FloristCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CA62D2F0832000B51BD /* FloristCell.swift */; };
+		EB645CAA2D381485000B51BD /* UserAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CA92D381485000B51BD /* UserAddressViewController.swift */; };
+		EB645CAC2D38149A000B51BD /* UserAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CAB2D381499000B51BD /* UserAddressViewModel.swift */; };
+		EB645CAE2D3814A7000B51BD /* UserAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CAD2D3814A7000B51BD /* UserAddressModel.swift */; };
+		EB645CB02D3814B2000B51BD /* UserAddressCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CAF2D3814B2000B51BD /* UserAddressCoordinator.swift */; };
+		EB645CB32D38C0B5000B51BD /* UserAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CB22D38C0B5000B51BD /* UserAddressCell.swift */; };
+		EB645CB72D38ECBE000B51BD /* AnotherAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CB62D38ECBE000B51BD /* AnotherAddressViewController.swift */; };
+		EB645CB92D38ECCF000B51BD /* AnotherAddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CB82D38ECCF000B51BD /* AnotherAddressViewModel.swift */; };
+		EB645CBB2D38ECDA000B51BD /* AnotherAddressCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CBA2D38ECDA000B51BD /* AnotherAddressCoordinator.swift */; };
+		EB645CBD2D38ECE4000B51BD /* AnotherAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB645CBC2D38ECE4000B51BD /* AnotherAddressModel.swift */; };
 		EB6A579E2CF31B78007EB060 /* VerifyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A579D2CF31B78007EB060 /* VerifyProfileCell.swift */; };
 		EB6A57A12CF42F55007EB060 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A57A02CF42F55007EB060 /* CustomNavBar.swift */; };
 		EB6A57A42CF43F05007EB060 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6A57A32CF43F05007EB060 /* HeaderView.swift */; };
@@ -175,12 +197,34 @@
 		EB0E8A892CAE3076005839FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB0E8A8B2CAE3076005839FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB0E8A962CAF7C76005839FA /* MainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCell.swift; sourceTree = "<group>"; };
+		EB1E10BA2D5C6B3600BA230F /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; };
+		EB255B742D5B0FA500134371 /* EmptyAdressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyAdressView.swift; sourceTree = "<group>"; };
+		EB255B772D5B177100134371 /* CustomAdressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAdressView.swift; sourceTree = "<group>"; };
 		EB4F2C752CD1D40D00ECB7B1 /* VerificationViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewContent.swift; sourceTree = "<group>"; };
 		EB4F2C772CD1D45000ECB7B1 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		EB4F2C7A2CD1D47F00ECB7B1 /* FormViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewContent.swift; sourceTree = "<group>"; };
 		EB4F2C7C2CD1D4A100ECB7B1 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		EB4F2C7E2CD1D4E600ECB7B1 /* CreateAccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountCoordinator.swift; sourceTree = "<group>"; };
 		EB4F2C832CD1FD6100ECB7B1 /* CreateAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountModel.swift; sourceTree = "<group>"; };
+		EB645C922D2A916E000B51BD /* EditOrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderDetailsViewController.swift; sourceTree = "<group>"; };
+		EB645C942D2A9181000B51BD /* EditOrderDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderDetailsCoordinator.swift; sourceTree = "<group>"; };
+		EB645C962D2A9194000B51BD /* EditOrderDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderDetailsViewModel.swift; sourceTree = "<group>"; };
+		EB645C982D2A91A0000B51BD /* EditOrderDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderDetailsModel.swift; sourceTree = "<group>"; };
+		EB645C9A2D2AFC90000B51BD /* EditOrderDetailsCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOrderDetailsCustom.swift; sourceTree = "<group>"; };
+		EB645C9D2D2F06B7000B51BD /* FloristsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloristsViewController.swift; sourceTree = "<group>"; };
+		EB645C9F2D2F06C7000B51BD /* FloristsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloristsViewModel.swift; sourceTree = "<group>"; };
+		EB645CA12D2F06D2000B51BD /* FloristsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloristsCoordinator.swift; sourceTree = "<group>"; };
+		EB645CA32D2F06DC000B51BD /* Florist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Florist.swift; sourceTree = "<group>"; };
+		EB645CA62D2F0832000B51BD /* FloristCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloristCell.swift; sourceTree = "<group>"; };
+		EB645CA92D381485000B51BD /* UserAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressViewController.swift; sourceTree = "<group>"; };
+		EB645CAB2D381499000B51BD /* UserAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressViewModel.swift; sourceTree = "<group>"; };
+		EB645CAD2D3814A7000B51BD /* UserAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressModel.swift; sourceTree = "<group>"; };
+		EB645CAF2D3814B2000B51BD /* UserAddressCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressCoordinator.swift; sourceTree = "<group>"; };
+		EB645CB22D38C0B5000B51BD /* UserAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressCell.swift; sourceTree = "<group>"; };
+		EB645CB62D38ECBE000B51BD /* AnotherAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherAddressViewController.swift; sourceTree = "<group>"; };
+		EB645CB82D38ECCF000B51BD /* AnotherAddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherAddressViewModel.swift; sourceTree = "<group>"; };
+		EB645CBA2D38ECDA000B51BD /* AnotherAddressCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherAddressCoordinator.swift; sourceTree = "<group>"; };
+		EB645CBC2D38ECE4000B51BD /* AnotherAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherAddressModel.swift; sourceTree = "<group>"; };
 		EB6A579D2CF31B78007EB060 /* VerifyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyProfileCell.swift; sourceTree = "<group>"; };
 		EB6A57A02CF42F55007EB060 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		EB6A57A32CF43F05007EB060 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -316,6 +360,7 @@
 		12BF362B2CCD13BB00247D74 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EB645CA82D381460000B51BD /* Address */,
 				EB91C5912D2267330016FDE2 /* MyOrders */,
 				EB755EE32CFD6D0D000AD4B6 /* MySubscribes */,
 				EB6A57BD2CFC0C36007EB060 /* NetworkService */,
@@ -438,6 +483,22 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		EB1E10B92D5C6B2100BA230F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EB1E10BA2D5C6B3600BA230F /* AddressService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EB255B762D5B175B00134371 /* CustomAddressView */ = {
+			isa = PBXGroup;
+			children = (
+				EB255B772D5B177100134371 /* CustomAdressView.swift */,
+			);
+			path = CustomAddressView;
+			sourceTree = "<group>";
+		};
 		EB4F2C742CD1D3E200ECB7B1 /* VerifyContent */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +515,81 @@
 				EB4F2C7C2CD1D4A100ECB7B1 /* FormViewController.swift */,
 			);
 			path = FormModule;
+			sourceTree = "<group>";
+		};
+		EB645C912D2A9145000B51BD /* EditOrderDetails */ = {
+			isa = PBXGroup;
+			children = (
+				EB645C922D2A916E000B51BD /* EditOrderDetailsViewController.swift */,
+				EB645C942D2A9181000B51BD /* EditOrderDetailsCoordinator.swift */,
+				EB645C962D2A9194000B51BD /* EditOrderDetailsViewModel.swift */,
+				EB645C982D2A91A0000B51BD /* EditOrderDetailsModel.swift */,
+				EB645C9A2D2AFC90000B51BD /* EditOrderDetailsCustom.swift */,
+			);
+			path = EditOrderDetails;
+			sourceTree = "<group>";
+		};
+		EB645C9C2D2F069D000B51BD /* Florists */ = {
+			isa = PBXGroup;
+			children = (
+				EB645CA52D2F0811000B51BD /* Cell */,
+				EB645C9D2D2F06B7000B51BD /* FloristsViewController.swift */,
+				EB645C9F2D2F06C7000B51BD /* FloristsViewModel.swift */,
+				EB645CA12D2F06D2000B51BD /* FloristsCoordinator.swift */,
+				EB645CA32D2F06DC000B51BD /* Florist.swift */,
+			);
+			path = Florists;
+			sourceTree = "<group>";
+		};
+		EB645CA52D2F0811000B51BD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EB645CA62D2F0832000B51BD /* FloristCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EB645CA82D381460000B51BD /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				EB1E10B92D5C6B2100BA230F /* Service */,
+				EB645CB52D38E66A000B51BD /* AddNewAddress */,
+				EB645CB42D38E65D000B51BD /* UserAddress */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		EB645CB12D38C0A1000B51BD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EB645CB22D38C0B5000B51BD /* UserAddressCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EB645CB42D38E65D000B51BD /* UserAddress */ = {
+			isa = PBXGroup;
+			children = (
+				EB645CB12D38C0A1000B51BD /* Cell */,
+				EB645CA92D381485000B51BD /* UserAddressViewController.swift */,
+				EB645CAB2D381499000B51BD /* UserAddressViewModel.swift */,
+				EB645CAD2D3814A7000B51BD /* UserAddressModel.swift */,
+				EB645CAF2D3814B2000B51BD /* UserAddressCoordinator.swift */,
+				EB255B742D5B0FA500134371 /* EmptyAdressView.swift */,
+			);
+			path = UserAddress;
+			sourceTree = "<group>";
+		};
+		EB645CB52D38E66A000B51BD /* AddNewAddress */ = {
+			isa = PBXGroup;
+			children = (
+				EB255B762D5B175B00134371 /* CustomAddressView */,
+				EB645CB62D38ECBE000B51BD /* AnotherAddressViewController.swift */,
+				EB645CB82D38ECCF000B51BD /* AnotherAddressViewModel.swift */,
+				EB645CBA2D38ECDA000B51BD /* AnotherAddressCoordinator.swift */,
+				EB645CBC2D38ECE4000B51BD /* AnotherAddressModel.swift */,
+			);
+			path = AddNewAddress;
 			sourceTree = "<group>";
 		};
 		EB6A579C2CF31B59007EB060 /* Cell */ = {
@@ -673,6 +809,8 @@
 		EB91C5912D2267330016FDE2 /* MyOrders */ = {
 			isa = PBXGroup;
 			children = (
+				EB645C9C2D2F069D000B51BD /* Florists */,
+				EB645C912D2A9145000B51BD /* EditOrderDetails */,
 				EB91C5AD2D22EE3E0016FDE2 /* BouquetDetails */,
 				EB91C5A12D22AF3F0016FDE2 /* BouquetsGallery */,
 				EB91C59C2D22AB400016FDE2 /* Service */,
@@ -990,12 +1128,15 @@
 				EB7A88512CCB2FC700D60C24 /* MainTabBarController.swift in Sources */,
 				EB91C5B32D22EE9F0016FDE2 /* BouquetDetailsViewModel.swift in Sources */,
 				EBB9C2D92CEDACC200E6E880 /* VerifyProfileModel.swift in Sources */,
+				EB645C952D2A9181000B51BD /* EditOrderDetailsCoordinator.swift in Sources */,
 				EBB9C2AC2CE7DC3000E6E880 /* FaceIDCoordinator.swift in Sources */,
 				EB91C5A92D22AFBA0016FDE2 /* BouquetsGalleryViewController.swift in Sources */,
 				EB8001D72CE1CDF3003B6563 /* Account.swift in Sources */,
 				EB755EE62CFD6D50000AD4B6 /* MySubscribesViewController.swift in Sources */,
 				EB6A57AB2CF6DF26007EB060 /* CalendarViewModel.swift in Sources */,
+				EB645CA02D2F06C7000B51BD /* FloristsViewModel.swift in Sources */,
 				EBB9C2CA2CEC908000E6E880 /* CheckEmailViewModel.swift in Sources */,
+				EB1E10BB2D5C6B3600BA230F /* AddressService.swift in Sources */,
 				EBB9C2C12CEC6E1C00E6E880 /* ConfirmPasswordViewModel.swift in Sources */,
 				EB0E8A822CAE3074005839FA /* HomeViewController.swift in Sources */,
 				EB6A57A92CF6DF15007EB060 /* CalendarViewController.swift in Sources */,
@@ -1014,6 +1155,7 @@
 				EBB9C29D2CE71E4500E6E880 /* KeychainManager.swift in Sources */,
 				EB4F2C7B2CD1D47F00ECB7B1 /* FormViewContent.swift in Sources */,
 				EB755F1A2CFECC00000AD4B6 /* MonthsViewModel.swift in Sources */,
+				EB645C932D2A916E000B51BD /* EditOrderDetailsViewController.swift in Sources */,
 				EB91C5C42D25890A0016FDE2 /* AdditionalElementsCell.swift in Sources */,
 				EBB9C2AA2CE7DC1D00E6E880 /* FaceIDViewModel.swift in Sources */,
 				EBB9C2A32CE7272E00E6E880 /* CreatePinCoordinator.swift in Sources */,
@@ -1021,9 +1163,11 @@
 				EB8001D02CE19BFA003B6563 /* Countries.swift in Sources */,
 				EBB9C2B12CE7E8F600E6E880 /* PincodeViewModel.swift in Sources */,
 				EBBC1D062CE4E0730048E6A9 /* VerificationUserCoordinator.swift in Sources */,
+				EB645C9E2D2F06B7000B51BD /* FloristsViewController.swift in Sources */,
 				EBB9C2CC2CEC909500E6E880 /* CheckEmailCoordinator.swift in Sources */,
 				EBB9C2D52CEDAC6C00E6E880 /* VerifyProfileViewController.swift in Sources */,
 				EBB9C2C32CEC6E2C00E6E880 /* ConfrimPasswordCoordinator.swift in Sources */,
+				EB645C972D2A9194000B51BD /* EditOrderDetailsViewModel.swift in Sources */,
 				12BF36302CCD175100247D74 /* BasketViewCoordinator.swift in Sources */,
 				EB91C59B2D2277080016FDE2 /* CustomDetailsOrderView.swift in Sources */,
 				EB6A5ADE2CCA1C9800422156 /* CreateAccountViewController.swift in Sources */,
@@ -1036,7 +1180,9 @@
 				EBA30FCB2CC78B6E00038973 /* MainTabBarCoordinator.swift in Sources */,
 				EBB9C29A2CE70A7700E6E880 /* ResetCodeResponse.swift in Sources */,
 				EB755F252D018E1A000AD4B6 /* OrderDetailsCoordinator.swift in Sources */,
+				EB255B782D5B177100134371 /* CustomAdressView.swift in Sources */,
 				EB4F2C7D2CD1D4A100ECB7B1 /* FormViewController.swift in Sources */,
+				EB645CAA2D381485000B51BD /* UserAddressViewController.swift in Sources */,
 				EB91C5992D2267B20016FDE2 /* DetailsOrderViewController.swift in Sources */,
 				EB89A07C2CCF7DAF00E95A68 /* UITextField+Extension.swift in Sources */,
 				EBB9C2C82CEC906700E6E880 /* CheckEmailViewController.swift in Sources */,
@@ -1051,19 +1197,24 @@
 				EB8001C62CDE28E1003B6563 /* KeychainHelper.swift in Sources */,
 				EB91C5A52D22AF7C0016FDE2 /* BouquestsGalleryViewModel.swift in Sources */,
 				EB6A57C72CFC11B0007EB060 /* EndpointProvider.swift in Sources */,
+				EB645CA72D2F0832000B51BD /* FloristCell.swift in Sources */,
 				EB7C3FE72CBCCE3700A0DD13 /* HomeApiManager.swift in Sources */,
 				12DB9D6B2CCD2976000C6AD1 /* UIButton.swift in Sources */,
 				EB755F162CFEB626000AD4B6 /* MonthsViewController.swift in Sources */,
 				EBB9C2D72CEDAC9D00E6E880 /* VerifyProfileViewModel.swift in Sources */,
 				EBB9C2BA2CEA669200E6E880 /* ForgotPinPasswordViewModel.swift in Sources */,
 				EBB9C2A12CE71FA000E6E880 /* CreatePinViewController.swift in Sources */,
+				EB645CB72D38ECBE000B51BD /* AnotherAddressViewController.swift in Sources */,
 				EB6A57A62CF43F11007EB060 /* FooterView.swift in Sources */,
 				EB91C5C22D2588DB0016FDE2 /* CompositionBouquetCell.swift in Sources */,
+				EB645CB02D3814B2000B51BD /* UserAddressCoordinator.swift in Sources */,
 				EB0E8A7E2CAE3074005839FA /* AppDelegate.swift in Sources */,
 				EB6A57BF2CFC0C55007EB060 /* APIManager.swift in Sources */,
+				EB645CB32D38C0B5000B51BD /* UserAddressCell.swift in Sources */,
 				EB755EEF2CFD798D000AD4B6 /* CreateSubscribeViewModel.swift in Sources */,
 				EB91C5AC2D22BD4C0016FDE2 /* BouquetCell.swift in Sources */,
 				EB7A88492CCB2AEE00D60C24 /* Coordinator.swift in Sources */,
+				EB645CA22D2F06D2000B51BD /* FloristsCoordinator.swift in Sources */,
 				EBBC1D082CE5EDDD0048E6A9 /* ConfirmCodeRequest.swift in Sources */,
 				EB6A57AD2CF6DF35007EB060 /* CalendarModel.swift in Sources */,
 				EB91C5BE2D25875C0016FDE2 /* BouquetDetailsView.swift in Sources */,
@@ -1071,6 +1222,7 @@
 				EBBC1D042CE4DCF20048E6A9 /* VerificationUserViewModel.swift in Sources */,
 				EB8001C02CD88CC0003B6563 /* SignInModel.swift in Sources */,
 				12DB9D642CCD23E8000C6AD1 /* MenuViewModel.swift in Sources */,
+				EB645CAC2D38149A000B51BD /* UserAddressViewModel.swift in Sources */,
 				EB6A5AE02CCA1CB800422156 /* CreateAccountViewModel.swift in Sources */,
 				EB755F2F2D06DE17000AD4B6 /* MySubscribeAPIManager.swift in Sources */,
 				EBB9C2A82CE7DC0800E6E880 /* FaceIDViewController.swift in Sources */,
@@ -1083,8 +1235,10 @@
 				EB8001D22CE1A59C003B6563 /* CountriesViewModel.swift in Sources */,
 				12DB9D622CCD23E0000C6AD1 /* MenuViewCoordinator.swift in Sources */,
 				EB6A57C92CFC352A007EB060 /* APIConstants.swift in Sources */,
+				EB645CB92D38ECCF000B51BD /* AnotherAddressViewModel.swift in Sources */,
 				EBA30FD32CC7A67D00038973 /* SignInViewModel.swift in Sources */,
 				EB0E8A802CAE3074005839FA /* SceneDelegate.swift in Sources */,
+				EB645C9B2D2AFC90000B51BD /* EditOrderDetailsCustom.swift in Sources */,
 				EB8001BE2CD4B354003B6563 /* UserAPIManager.swift in Sources */,
 				EB755F182CFEB8A3000AD4B6 /* MonthCell.swift in Sources */,
 				EBB9C2DB2CEDACD900E6E880 /* VerifyProfileCoordinator.swift in Sources */,
@@ -1092,9 +1246,12 @@
 				EB6A57C52CFC1103007EB060 /* ServerError.swift in Sources */,
 				EBB9C2B32CE7E90500E6E880 /* PincodeCoordinator.swift in Sources */,
 				EB755EF32CFD79AC000AD4B6 /* CreateSubscribeCoordinator.swift in Sources */,
+				EB645CA42D2F06DC000B51BD /* Florist.swift in Sources */,
 				EB755F212D018E02000AD4B6 /* OrderDetailsModel.swift in Sources */,
 				EB6A57B52CF83053007EB060 /* CustomCalendarView.swift in Sources */,
+				EB645C992D2A91A0000B51BD /* EditOrderDetailsModel.swift in Sources */,
 				EB755EF52CFD79BC000AD4B6 /* CreateSubscribeViewController.swift in Sources */,
+				EB645CAE2D3814A7000B51BD /* UserAddressModel.swift in Sources */,
 				EB91C5B12D22EE8B0016FDE2 /* BouquetDetailsCoordinator.swift in Sources */,
 				EB755EEA2CFD6D73000AD4B6 /* MySubscribesModel.swift in Sources */,
 				EB91C5972D2267910016FDE2 /* DetailsOrderViewModel.swift in Sources */,
@@ -1107,9 +1264,12 @@
 				EB7C3FE52CBCCAB000A0DD13 /* HomeViewModel.swift in Sources */,
 				EB91C5B52D22EEAE0016FDE2 /* BouquetDetailsModel.swift in Sources */,
 				EBBC1D022CE4DCD30048E6A9 /* VerificationUserViewController.swift in Sources */,
+				EB645CBD2D38ECE4000B51BD /* AnotherAddressModel.swift in Sources */,
 				EB91C5A72D22AF980016FDE2 /* Bouquet.swift in Sources */,
 				EB755EE82CFD6D61000AD4B6 /* MySubscribesViewModel.swift in Sources */,
+				EB645CBB2D38ECDA000B51BD /* AnotherAddressCoordinator.swift in Sources */,
 				EB91C59E2D22AB610016FDE2 /* DetailOrdersService.swift in Sources */,
+				EB255B752D5B0FA500134371 /* EmptyAdressView.swift in Sources */,
 				EB91C58E2D0992D90016FDE2 /* CenterPresentationAnimator.swift in Sources */,
 				EB8001D52CE1A6C4003B6563 /* CountriesCoordinator.swift in Sources */,
 				EB91C5AF2D22EE650016FDE2 /* BouquetDetailsViewController.swift in Sources */,

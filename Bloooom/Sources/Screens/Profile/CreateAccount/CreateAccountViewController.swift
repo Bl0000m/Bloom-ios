@@ -213,8 +213,7 @@ final class CreateAccountViewController: UIViewController {
             }
         }
         
-        viewModel.didSignUpFailure = {
-            errorMessage in
+        viewModel.didSignUpFailure = { errorMessage in
             print(errorMessage)
         }
     }

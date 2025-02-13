@@ -2,6 +2,8 @@ import Foundation
 
 protocol BouquetDetailsViewModelProtocol: AnyObject {
     func getBouquetPhotos(id: Int)
+    func moveToFlorists(id: Int)
+    func goBack()
     var onBouquetsUpdated: ((Result<BouquetDetailsModel, Error>) -> Void)? { get set }
     var onError: ((String) -> Void)? { get set }
 }
@@ -28,5 +30,13 @@ class BouquetDetailsViewModel: BouquetDetailsViewModelProtocol {
                 }
             }
         }
+    }
+    
+    func goBack() {
+        coordinator.goBack()
+    }
+    
+    func moveToFlorists(id: Int) {
+        coordinator.goToFlorists(id: id)
     }
 }

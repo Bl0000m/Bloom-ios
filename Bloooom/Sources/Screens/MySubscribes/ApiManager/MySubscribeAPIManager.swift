@@ -1,9 +1,9 @@
 import Foundation
 
 protocol MySubscribeAPIManagerProtocol {
-   // func fetchOrderDetails(orderId: Int, accessToken: String, completion: @escaping (Result<OrderDetailsModel, Error>) -> Void) 
     func createSubscription(model: CreateSubscribeModel, accessToken: String, completion: @escaping (Result<ResponseData, Error>) -> Void)
-    func fetchOrderDetails(orderId: Int, accessToken: String, completion: @escaping (Result<[OrderDetailsModel], Error>) -> Void)
+    func fetchOrderDetails(orderId: Int, accessToken: String, completion: @escaping (Result<[EditOrderDetailsModel], Error>) -> Void)
+    func fetchUserOrder(orderId: Int, accessToken: String, completion: @escaping (Result<EditOrderDetailsModel, Error>) -> Void)
 }
 
 class MySubscribeAPIManager: MySubscribeAPIManagerProtocol {
@@ -64,7 +64,7 @@ class MySubscribeAPIManager: MySubscribeAPIManagerProtocol {
         task.resume()
     }
  
-    func fetchOrderDetails(orderId: Int, accessToken: String, completion: @escaping (Result<[OrderDetailsModel], Error>) -> Void) {
+    func fetchOrderDetails(orderId: Int, accessToken: String, completion: @escaping (Result<[EditOrderDetailsModel], Error>) -> Void) {
         guard let url = URL(string: "\(baseURL)/client/order/subscription/\(orderId)") else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Некорректный URL"])))
             return
@@ -95,7 +95,49 @@ class MySubscribeAPIManager: MySubscribeAPIManagerProtocol {
             }
             
             do {
-                let orderDetailsArray = try JSONDecoder().decode([OrderDetailsModel].self, from: data)
+                let orderDetailsArray = try JSONDecoder().decode([EditOrderDetailsModel].self, from: data)
+                completion(.success(orderDetailsArray))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func fetchUserOrder(orderId: Int, accessToken: String, completion: @escaping (Result<EditOrderDetailsModel, Error>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/client/order/\(orderId)") else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Некорректный URL"])))
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        // Добавляем токен доступа в заголовок Authorization
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+                let error = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "HTTP ошибка \(statusCode)"])
+                completion(.failure(error))
+                return
+            }
+            
+            
+            guard let data = data else {
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Данные не получены"])))
+                return
+            }
+            
+            do {
+                let orderDetailsArray = try JSONDecoder().decode(EditOrderDetailsModel.self, from: data)
                 completion(.success(orderDetailsArray))
             } catch {
                 completion(.failure(error))

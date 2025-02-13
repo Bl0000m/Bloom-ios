@@ -3,6 +3,7 @@ import Foundation
 protocol DetailOrdersServiceProtocol: AnyObject {
     func fetchBouquets(accessToken: String, completion: @escaping (Result<[Bouquet], Error>) -> Void)
     func fetchBouquetPhoto(id: Int, accessToken: String, completion: @escaping (Result<BouquetDetailsModel, Error>) -> Void)
+    func postClientOrder(model: Florist, accessToken: String, completion: @escaping (Result<Florist, Error>) -> Void)
 }
 
 class DetailOrdersService: DetailOrdersServiceProtocol {
@@ -99,6 +100,53 @@ class DetailOrdersService: DetailOrdersServiceProtocol {
             }
         }
         
+        task.resume()
+    }
+
+    func postClientOrder(model: Florist, accessToken: String, completion: @escaping (Result<Florist, Error>) -> Void) {
+        guard let url = URL(string: "\(baseURL)/client/order/") else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
+            return
+        }
+        
+        guard let jsonData = try? JSONEncoder().encode(model) else {
+            completion(.failure(NSError(domain: "Encoding error", code: 0, userInfo: nil)))
+            return
+        }
+        
+        
+        // Настраиваем запрос
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.httpBody = jsonData
+        
+        // Выполняем запрос
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                if let data = data {
+                    do {
+                        let responseData = try JSONDecoder().decode(Florist.self, from: data)
+                        completion(.success(responseData))
+                    } catch {
+                        completion(.failure(error))
+                        print("HTTP Status Code: \(httpResponse.statusCode)")
+                    }
+                } else {
+                    completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
+                }
+            } else {
+                let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
+                completion(.failure(NSError(domain: "Unexpected status code: \(statusCode)", code: statusCode, userInfo: nil)))
+            }
+        }
         task.resume()
     }
 

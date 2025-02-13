@@ -52,6 +52,6 @@ class CompositionBouquetCell: UITableViewCell {
     
     func configure(model: FlowerVariety) {
         compostionBouquetName.text = model.name
-        compostionBouquetNameCount.text = "\(model.quantity)"
+        compostionBouquetNameCount.text = "\(model.quantity) шт"
     }
 }

@@ -6,7 +6,7 @@ class BouquetDetailsCell: UICollectionViewCell {
     
     private let bouquetImage: UIImageView = {
         let bouquetIcon = UIImageView()
-        bouquetIcon.contentMode = .scaleToFill
+        bouquetIcon.contentMode = .scaleAspectFill
         bouquetIcon.translatesAutoresizingMaskIntoConstraints = false
         return bouquetIcon
     }()

@@ -52,6 +52,6 @@ class AdditionalElementsCell: UITableViewCell {
     
     func configure(model: AdditionalElement) {
         compostionBouquetName.text = model.name
-        compostionBouquetNameCount.text = "\(model.quantity)"
+        compostionBouquetNameCount.text = "\(model.quantity) ед.изм"
     }
 }

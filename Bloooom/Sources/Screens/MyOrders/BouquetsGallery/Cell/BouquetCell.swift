@@ -61,7 +61,7 @@ class BouquetCell: UICollectionViewCell {
     
     func configure(with bouquet: Bouquet) {
         bouquetName.text = bouquet.name
-        bouquetPrice.text = "\(bouquet.price) BLM"
+        bouquetPrice.text = "\(bouquet.price ?? 0.0) BLM"
         if let bouquetPhotos = bouquet.bouquetPhotos.first {
             bouquetImage.kf.setImage(with: URL(string: bouquetPhotos.url))
         }

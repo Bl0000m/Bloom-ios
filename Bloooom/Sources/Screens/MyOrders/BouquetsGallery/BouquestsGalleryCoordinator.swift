@@ -14,9 +14,13 @@ final class BouquestsGalleryCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func goToDetails(id: Int) {
-        let coordinator = BouquetDetailsCoordinator(navigationController: navigationController, id: id)
+    func goToDetails(id: Int, price: Double) {
+        let coordinator = BouquetDetailsCoordinator(navigationController: navigationController, id: id, price: price)
         childCoordinators.append(coordinator)
         coordinator.start()
+    }
+    
+    func goBack() {
+        navigationController.popViewController(animated: true)
     }
 }

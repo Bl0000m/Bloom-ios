@@ -6,13 +6,13 @@ protocol OrderDetailsViewModelProtocol {
     func goToOrderDetails()
     var onOrderDetailsUpdated: (([OrderDetailsModel]) -> Void)? { get set }
     var onError: (() -> Void)? { get set }
-    var onSubscriptionsFetched: ((Result<[OrderDetailsModel], Error>) -> Void)? { get set }
+    var onSubscriptionsFetched: ((Result<[EditOrderDetailsModel], Error>) -> Void)? { get set }
     
     var orderDetails: [OrderDetailsModel] { get set }
 }
 
 class OrderDetailsViewModel: OrderDetailsViewModelProtocol {
-    var onSubscriptionsFetched: ((Result<[OrderDetailsModel], Error>) -> Void)?
+    var onSubscriptionsFetched: ((Result<[EditOrderDetailsModel], Error>) -> Void)?
     var orderDetails: [OrderDetailsModel] = []
     var onOrderDetailsUpdated: (([OrderDetailsModel]) -> Void)?
     var onError: (() -> Void)?

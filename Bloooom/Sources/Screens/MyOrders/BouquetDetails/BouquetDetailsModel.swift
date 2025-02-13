@@ -5,12 +5,22 @@ import Foundation
 struct BouquetDetailsModel: Codable {
     let id: Int
     let name: String
-    let companyName: String
+    let author: String
     let bouquetPhotos: [BouquetPhotos]
-    let price: Double
+    let branchBouquetInfo: [BranchBouquetInfo]
+    let price: Double?
     let bouquetStyle: String
     let flowerVarietyInfo: [FlowerVariety]
     let additionalElements: [AdditionalElement]
+}
+
+struct BranchBouquetInfo: Codable {
+    let branchId: Int
+    let divisionType: String
+    let price: Double
+    let address: String?
+    let phoneNumber: String
+    let email: String
 }
 
 struct BouquetPhotos: Codable {

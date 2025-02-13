@@ -5,7 +5,8 @@ protocol BouquestsGalleryViewModelProtocol: AnyObject {
     var onError: ((String) -> Void)? { get set }
     
     func fetchBouquets()
-    func toDetails(id: Int)
+    func toDetails(id: Int, price: Double)
+    func toBack()
 }
 
 class BouquestsGalleryViewModel: BouquestsGalleryViewModelProtocol {
@@ -32,8 +33,12 @@ class BouquestsGalleryViewModel: BouquestsGalleryViewModelProtocol {
         }
     }
     
-    func toDetails(id: Int) {
-        coordinator.goToDetails(id: id)
+    func toDetails(id: Int, price: Double) {
+        coordinator.goToDetails(id: id, price: price)
+    }
+    
+    func toBack() {
+        coordinator.goBack()
     }
 }
 

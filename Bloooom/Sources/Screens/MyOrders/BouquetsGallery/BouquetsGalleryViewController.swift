@@ -26,6 +26,7 @@ class BouquetsGalleryViewController: UIViewController {
         setupLayout()
         bindViewModel()
         setupExtensions()
+        setupAction()
         view.backgroundColor = .white
     }
     
@@ -36,6 +37,14 @@ class BouquetsGalleryViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupAction() {
+        backButton.addTarget(self, action: #selector(moveBack), for: .touchUpInside)
+    }
+    
+    @objc private func moveBack() {
+        viewModel.toBack()
     }
     
     private func setupViews() {
@@ -97,6 +106,6 @@ extension BouquetsGalleryViewController: UICollectionViewDataSource {
 extension BouquetsGalleryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = model[indexPath.row]
-        viewModel.toDetails(id: data.id)
+        viewModel.toDetails(id: data.id, price: data.price ?? 0.0)
     }
 }

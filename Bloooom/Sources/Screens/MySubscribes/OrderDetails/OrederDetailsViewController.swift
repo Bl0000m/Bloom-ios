@@ -4,7 +4,7 @@ class OrederDetailsViewController: UIViewController {
 
     private var viewModel: OrderDetailsViewModelProtocol
     private let monthNames: [Date]
-    var orderDetails: [OrderDetailsModel] = []
+    var orderDetails: [EditOrderDetailsModel] = []
     private lazy var closeButton = UIButton(btnImage: "closeButton")
     private let fillOrderDetails = UILabel(text: "ЗАПОЛНИТЕ ДЕТАЛИ ЗАКАЗА", font: 16, textColor: .black)
     private let countOrdersTitle = UILabel(text: "ВСЕГО ЗАКАЗОВ: ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
@@ -146,7 +146,7 @@ extension OrederDetailsViewController: UITableViewDataSource {
 
         // Настроим DateFormatter для преобразования даты в строку
         let outputDateFormatter = DateFormatter()
-        outputDateFormatter.dateFormat = "dd MMMM yyyy"
+        outputDateFormatter.dateFormat = "d MMMM, EEEE"
         outputDateFormatter.locale = Locale(identifier: "ru_RU")
 
         if let date = inputDateFormatter.date(from: date.deliveryDate) {
