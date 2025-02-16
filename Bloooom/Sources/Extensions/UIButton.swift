@@ -32,5 +32,22 @@ extension UIButton {
         self.titleLabel?.font = .systemFont(ofSize: font, weight: .regular)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
+    
+    convenience init(
+        text: String,
+        setTitleColor: UIColor = .gray,
+        borderWidth: CGFloat = 0.5,
+        borderColor: UIColor = .gray,
+        font: CGFloat = 12
+    ) {
+        self.init()
+        self.setTitle(text, for: .normal)
+        self.setTitleColor(setTitleColor, for: .normal)
+        self.layer.borderWidth = borderWidth
+        self.layer.borderColor = borderColor.cgColor
+        self.titleLabel?.font = .systemFont(ofSize: font)
+        self.isEnabled = false
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
 }
 

@@ -7,6 +7,7 @@ protocol MySubscribeAPIManagerProtocol {
 }
 
 class MySubscribeAPIManager: MySubscribeAPIManagerProtocol {
+   
     private let baseURL = "http://api.bloooom.kz:8443/v1"
     
     static let shared = MySubscribeAPIManager()

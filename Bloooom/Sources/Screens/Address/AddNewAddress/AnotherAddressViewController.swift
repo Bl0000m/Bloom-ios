@@ -56,19 +56,25 @@ class AnotherAddressViewController: UIViewController {
     
     @objc private func sendAddress() {
         
-        let combineNumber = cobmbineNumber + userAddressView.phoneNumberTF.text!
+        guard let phoneNumber = userAddressView.phoneNumberTF.text, !phoneNumber.isEmpty else {
+            return
+        }
+
+        let combineNumber = cobmbineNumber + phoneNumber
+
         guard let city = userAddressView.cityNameLabel.text, !city.isEmpty,
               let street = userAddressView.streetTF.text, !street.isEmpty,
               let building = userAddressView.buildingTF.text, !building.isEmpty,
-              let appartment = userAddressView.appartmentTF.text,
-              let entrance = userAddressView.entranceTF.text,
-              let intercom = userAddressView.intercomTF.text,
-              let floor = userAddressView.floorTF.text,
-              !combineNumber.isEmpty,
-              let commnet = userAddressView.commentTF.text
+              !combineNumber.isEmpty
         else {
             return
         }
+
+        let appartment = userAddressView.appartmentTF.text ?? ""
+        let entrance = userAddressView.entranceTF.text ?? ""
+        let intercom = userAddressView.intercomTF.text ?? ""
+        let floor = userAddressView.floorTF.text ?? ""
+        let comment = userAddressView.commentTF.text ?? ""
         
         viewModel.sendAddressData(
             city: city,
@@ -79,7 +85,7 @@ class AnotherAddressViewController: UIViewController {
             intercom: intercom,
             floor: Int(floor),
             phoneNumber: combineNumber,
-            comment: commnet,
+            comment: comment,
             postalCode: nil,
             long: nil,
             lati: nil,
@@ -89,6 +95,18 @@ class AnotherAddressViewController: UIViewController {
     
     @objc private func selectedCountryCode() {
         viewModel.selectionCountryCode(delegate: self)
+    }
+    
+    private func disableConfirmButton() {
+        confirmButton.isEnabled = false
+        confirmButton.setTitleColor(.gray, for: .disabled)
+        confirmButton.layer.borderColor = UIColor.gray.cgColor
+    }
+
+    private func enableConfirmButton() {
+        confirmButton.isEnabled = true
+        confirmButton.setTitleColor(.black, for: .normal)
+        confirmButton.layer.borderColor = UIColor.black.cgColor
     }
     
     private func bindViewModel() {
@@ -227,7 +245,6 @@ extension AnotherAddressViewController: UITextFieldDelegate {
             userAddressView.streetLabel.isHidden = false
             userAddressView.streetLabel1.isHidden = true
         case userAddressView.buildingTF:
-            let isBuildingEmpty = (userAddressView.streetTF.text?.isEmpty ?? true)
             labelToAnimate = userAddressView.buildingLabel
             userAddressView.buildingLabel.isHidden = false
             userAddressView.buildingLabel1.isHidden = true

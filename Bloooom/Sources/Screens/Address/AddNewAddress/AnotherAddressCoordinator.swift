@@ -26,8 +26,12 @@ final class AnotherAddressCoordinator: Coordinator {
     }
     
     func goToDetailOrder() {
+        let orderId = UserDefaults.standard.integer(forKey: "orderId")
         let viewControllers = navigationController.viewControllers
         if viewControllers.count >= 3 {
+            if let detailOrderVC = viewControllers[viewControllers.count - 3] as? EditOrderDetailsViewController {
+                detailOrderVC.viewModel.fetchUserSubscriptions(id: orderId) // Обновляем данные перед возвратом
+            }
             navigationController.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
         } else {
             navigationController.popToRootViewController(animated: true)

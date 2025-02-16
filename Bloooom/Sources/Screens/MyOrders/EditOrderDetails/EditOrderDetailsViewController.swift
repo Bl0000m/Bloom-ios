@@ -3,8 +3,7 @@ import UIKit
 class EditOrderDetailsViewController: UIViewController {
 
     
-    private let viewModel: EditOrderDetailsViewModelProtocol
-    private var model: EditOrderDetailsModel?
+    let viewModel: EditOrderDetailsViewModelProtocol
     
     private let id: Int
     
@@ -103,13 +102,12 @@ class EditOrderDetailsViewController: UIViewController {
         viewModel.onSubscriptionsFetched = { [weak self] result in
             switch result {
             case .success(let order):
-                self?.model = order
                 let startTime = order.deliveryStartTime
                 let endTime = order.deliveryEndTime
                 let deliveryDate = order.deliveryDate
                 let formmatedDateString = self?.formatDeliveryDate(startTime: startTime, endTime: endTime, date: deliveryDate)
                 self?.dateDeliveryView.updateDescription(deliveryTime: formmatedDateString ?? "")
-                self?.addressDelivery.updateAddress(streetName: (order.address?.street.uppercased() ?? "") + " " + (order.address?.building ?? ""))
+                self?.addressDelivery.updateAddress(streetName: (order.address?.street.uppercased() ?? "ВЫБЕРИТЕ АДРЕС ДОСТАВКИ") + " " + (order.address?.building ?? ""))
                 self?.bouquetInfoView.configure(order, order.assemblyCost ?? 0.0)
                 print("\(order)")
             case .failure(let error):
