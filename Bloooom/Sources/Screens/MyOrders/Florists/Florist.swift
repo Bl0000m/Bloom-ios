@@ -5,5 +5,4 @@ struct Florist: Codable {
     let bouquetId: Int
     let branchDivisionId: Int
     let assemblyCost: Double
-    let address: String?
 }

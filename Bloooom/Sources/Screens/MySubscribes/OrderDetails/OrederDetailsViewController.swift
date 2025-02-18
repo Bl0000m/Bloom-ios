@@ -168,6 +168,8 @@ extension OrederDetailsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.goToOrderDetails()
+        let id = orderDetails[indexPath.row].id
+        viewModel.goToOrderDetails(id: id)
+        UserDefaults.standard.set(id, forKey: "UserId")
     }
 }

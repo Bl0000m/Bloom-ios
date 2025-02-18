@@ -15,6 +15,8 @@ class AnotherAddressViewController: UIViewController {
     
     private let userAddressView = CustomAdressView()
     private let confirmButton = UIButton(title: "ПОДТВЕРДИТЬ")
+    private let rulesStar = UILabel(text: "*", font: 12, textColor: .red)
+    private let rulesLabel = UILabel(text: "- Поля обязательные для заполнения", font: 12, textColor: .red)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -183,7 +185,7 @@ class AnotherAddressViewController: UIViewController {
     
     private func setupViews() {
         userAddressView.translatesAutoresizingMaskIntoConstraints = false
-        [backButton, mainTitle, userAddressView, confirmButton].forEach { view.addSubview($0) }
+        [backButton, mainTitle, userAddressView, rulesStar, rulesLabel, confirmButton].forEach { view.addSubview($0) }
     }
     
     private func setupLayout() {
@@ -206,6 +208,16 @@ class AnotherAddressViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
+            rulesStar.topAnchor.constraint(equalTo: userAddressView.bottomAnchor, constant: 15),
+            rulesStar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21)
+        ])
+        
+        NSLayoutConstraint.activate([
+            rulesLabel.topAnchor.constraint(equalTo: userAddressView.bottomAnchor, constant: 15),
+            rulesLabel.leadingAnchor.constraint(equalTo: rulesStar.trailingAnchor, constant: 5)
+        ])
+        
+        NSLayoutConstraint.activate([
             confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             confirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
             confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
@@ -215,7 +227,7 @@ class AnotherAddressViewController: UIViewController {
 }
 
 extension AnotherAddressViewController: UITextFieldDelegate {
-    
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        if textField == userAddressView.streetTF {
             userAddressView.buildingTF.becomeFirstResponder()
@@ -244,10 +256,12 @@ extension AnotherAddressViewController: UITextFieldDelegate {
             labelToAnimate = userAddressView.streetLabel
             userAddressView.streetLabel.isHidden = false
             userAddressView.streetLabel1.isHidden = true
+            userAddressView.streetStar.isHidden = true
         case userAddressView.buildingTF:
             labelToAnimate = userAddressView.buildingLabel
             userAddressView.buildingLabel.isHidden = false
             userAddressView.buildingLabel1.isHidden = true
+            userAddressView.buildingStar.isHidden = true
         case userAddressView.appartmentTF:
             let isAppartmentEmpty = (userAddressView.appartmentTF.text?.isEmpty ?? true)
             labelToAnimate = userAddressView.appartmentLabel
@@ -271,8 +285,9 @@ extension AnotherAddressViewController: UITextFieldDelegate {
         case userAddressView.phoneNumberTF:
             let isPhoneEmpty = (userAddressView.phoneNumberTF.text?.isEmpty ?? true)
             labelToAnimate = userAddressView.phoneNumberLabel
-            userAddressView.phoneNumberLabel.isHidden = !isPhoneEmpty
-            userAddressView.phoneNumberLabel1.isHidden = isPhoneEmpty
+            userAddressView.phoneNumberLabel.isHidden = false
+            userAddressView.phoneNumberLabel1.isHidden = true
+            userAddressView.phoneNumberStar.isHidden = true
         case userAddressView.commentTF:
             let isCommentEmpty = (userAddressView.commentTF.text?.isEmpty ?? true)
             labelToAnimate = userAddressView.commentLabel
@@ -290,13 +305,32 @@ extension AnotherAddressViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        
         if textField == userAddressView.phoneNumberTF {
-            let currentText = textField.text ?? ""
-            let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
-            return newText.count <= 10
+            // Ограничиваем ввод в `phoneNumberTF` максимум 10 символами
+            let isValidLength = newText.count <= 10
+            if isValidLength {
+                updateButtonState(text: newText)
+            }
+            return isValidLength
+        } else {
+            // Запрещаем пробелы в остальных полях
+            let isValidInput = !string.contains(" ")
+            if isValidInput {
+                updateButtonState(text: newText)
+            }
+            return isValidInput
         }
-        return true
     }
+
+    // Обновляем состояние кнопки
+    func updateButtonState(text: String? = nil) {
+        let currentText = text ?? userAddressView.phoneNumberTF.text ?? ""
+        confirmButton.isEnabled = currentText.count >= 10
+    }
+
 }
 
 extension AnotherAddressViewController: CountrySelectionDelegate {

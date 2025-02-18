@@ -2,11 +2,19 @@ import Foundation
 
 protocol VerifyProfileViewModelProtocol {
     var items: [VerifyProfileLocal] { get }
+    var onLogoutSuccess: (() -> Void)? { get set }
+    var onLogoutFailure: ((String) -> Void)? { get set }
     func moveToSubscribes()
     func fetchData()
+    func closeSession()
+    func removeUser()
+    func goToSignIn()
 }
 
 class VerifyProfileViewModel: VerifyProfileViewModelProtocol {
+    
+    var onLogoutSuccess: (() -> Void)?
+    var onLogoutFailure: ((String) -> Void)?
     
     var items: [VerifyProfileLocal] = [
         VerifyProfileLocal(profileCategoryImage: "order", profileCategoryTitle: "Мои заказы", profileExpandImage: "expandRight"),
@@ -53,4 +61,31 @@ class VerifyProfileViewModel: VerifyProfileViewModelProtocol {
         
         print("User data saved to UserDefaults")
     }
+    
+    func closeSession() {
+        UserAPIManager.shared.logoutUser(bearerToken: UserDefaults.standard.string(forKey: "userAccessToken")!) { [weak self] result in
+            switch result {
+            case .success:
+                self?.onLogoutSuccess?()
+            case .failure(let error):
+                self?.onLogoutFailure?(error.localizedDescription)
+            }
+        }
+    }
+    
+    func removeUser() {
+        UserAPIManager.shared.logoutUser(bearerToken: UserDefaults.standard.string(forKey: "userAccessToken")!) { [weak self] result in
+            switch result {
+            case .success:
+                self?.onLogoutSuccess?()
+            case .failure(let error):
+                self?.onLogoutFailure?(error.localizedDescription)
+            }
+        }
+    }
+    
+    func goToSignIn() {
+        coordinator.goToSignIn()
+    }
+    
 }

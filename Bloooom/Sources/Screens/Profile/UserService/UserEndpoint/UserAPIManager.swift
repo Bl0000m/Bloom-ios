@@ -9,7 +9,7 @@ protocol UserAPIManagerProtocol {
     func refreshAccessToken(refreshToken: String, completion: @escaping (Result<SignInTokenResponse, Error>) -> Void)
     func forgotPassword(email: String, newPassword: String, confirmNewPassword: String, completion: @escaping (Result<String, Error>) -> Void)
     func fetchUserData(bearerToken: String, completion: @escaping (Result<UserData, Error>) -> Void)
-}
+    func logoutUser(bearerToken: String, completion: @escaping (Result<Void, Error>) -> Void) }
 
 class UserAPIManager: UserAPIManagerProtocol {
     
@@ -104,6 +104,7 @@ class UserAPIManager: UserAPIManagerProtocol {
         
         task.resume()
     }
+
     
     func loadCountries(completion: @escaping (Result<[Country], Error>) -> Void) {
         guard let url = Bundle.main.url(forResource: "PhoneExtensions", withExtension: "json") else {
@@ -319,6 +320,47 @@ class UserAPIManager: UserAPIManagerProtocol {
         
         task.resume()
     }
+    
+    func logoutUser(bearerToken: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        // URL for the logout endpoint
+        guard let url = URL(string: baseURL + "/users/logout") else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 400, userInfo: nil)))
+            return
+        }
+        
+        // Create the request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"  // Assuming it's a POST request for logout
+        request.addValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        // Add any necessary headers here (e.g., authorization token)
+        // request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        // Perform the network request using URLSession
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+                return
+            }
+            
+            // Check if the response is valid (e.g., HTTP status code 200)
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                DispatchQueue.main.async {
+                    completion(.failure(NSError(domain: "Logout failed", code: 401, userInfo: nil)))
+                }
+                return
+            }
+            
+            // Remove user access token from UserDefaults
+            UserDefaults.standard.removeObject(forKey: "userAccessToken")
+            
+            DispatchQueue.main.async {
+                completion(.success(()))
+            }
+        }.resume()
+    }
+
 }
 
 

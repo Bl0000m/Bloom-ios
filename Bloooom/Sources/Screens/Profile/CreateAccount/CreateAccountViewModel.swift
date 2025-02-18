@@ -22,6 +22,7 @@ protocol CreateAccountViewModelProtocol {
     func validateConfirmPassword(_ password: String, _ confirmPassword: String) -> String?
     func validateUsername(_ username: String) -> String?
     func validatePhoneNumber(_ phoneNumber: String) -> String?
+    func isValidPhoneNumber(_ phone: String) -> Bool
     func validateName(_ name: String) -> String?
 }
 
@@ -142,6 +143,11 @@ final class CreateAccountViewModel: CreateAccountViewModelProtocol {
         return nil
     }
     
+    func isValidPhoneNumber(_ phone: String) -> Bool {
+        let cleanedPhone = phone.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        return cleanedPhone.count >= 10 && cleanedPhone.count <= 12
+    }
+    
     func validateName(_ name: String) -> String? {
         let nameRegex = "^[A-Za-zА-Яа-я]+$"
         let namePredicate = NSPredicate(format: "SELF MATCHES %@", nameRegex)
@@ -166,25 +172,97 @@ final class CreateAccountViewModel: CreateAccountViewModelProtocol {
         do {
             let encoder = JSONEncoder()
             let jsonData = try encoder.encode(signUpModel)
-
+            
             UserAPIManager.shared.signUpData(to: "/client/users", parameters: jsonData) { [weak self] result in
                 switch result {
                 case .success(let response):
-                    if let responseString = String(data: response, encoding: .utf8) {
-                        print("Response JSON: \(responseString)")
+                    // Попытка декодировать ошибку, если она есть
+                    do {
+                        let decoder = JSONDecoder()
+                        if let errorResponse = try? decoder.decode(ErrorResponse.self, from: response) {
+                            // Если удалось декодировать ошибку, обрабатываем её
+                            switch errorResponse.code {
+                            case "USER_EMAIL_ALREADY_EXIST":
+                                let errorMessage = "Этот email уже используется"
+                                print("❌ \(errorMessage)")
+                                self?.didSignUpFailure?(errorMessage)
+                            case "USER_PHONE_NUMBER_ALREADY_EXIST":
+                                let errorMessage = "Номер телефона уже зарегистрирован"
+                                print("❌ \(errorMessage)")
+                                self?.didSignUpFailure?(errorMessage)
+                            default:
+                                print("❌ Ошибка с сервера: \(errorResponse.message)")
+                                self?.didSignUpFailure?(errorResponse.message)
+                            }
+                        } else {
+                            // Если не удалось декодировать ошибку, считаем, что регистрация успешна
+                            print("✅ Регистрация успешна")
+                            self?.didSignUpSuccess?()
+                        }
+                    } catch {
+                        print("❌ Ошибка при обработке JSON-ответа: \(error.localizedDescription)")
+                        self?.didSignUpFailure?("Ошибка при обработке JSON-ответа")
                     }
-                    self?.didSignUpSuccess?()
+                    
                 case .failure(let error):
-                    print("Error", error.localizedDescription)
+                    print("❌ Ошибка запроса: \(error.localizedDescription)")
                     self?.didSignUpFailure?(error.localizedDescription)
                 }
             }
         } catch {
-            print("Error encoding parameters: \(error.localizedDescription)")
+            print("❌ Ошибка кодирования параметров: \(error.localizedDescription)")
+            self.didSignUpFailure?(error.localizedDescription)
         }
     }
-    
+
+
+
     func selectionCountryCode(delegate: CountrySelectionDelegate) {
         createAccountCoordinator?.startCountrySelectionFlow(delegate: delegate)
     }
 }
+
+
+
+//do {
+//    let encoder = JSONEncoder()
+//    let jsonData = try encoder.encode(signUpModel)
+//
+//    UserAPIManager.shared.signUpData(to: "/client/users", parameters: jsonData) { [weak self] result in
+//        switch result {
+//        case .success(let response):
+//            if let json = try? JSONSerialization.jsonObject(with: response, options: []) as? [String: Any] {
+//                if let errorCode = json["code"] as? String {
+//                    // Проверяем код ошибки
+//                    if errorCode == "USER_EMAIL_ALREADY_EXIST" {
+//                        let errorMessage = "Этот email уже используется"
+//                        print("❌ \(errorMessage)")
+//                        self?.didSignUpFailure?(errorMessage)
+//                    } else if errorCode == "USER_PHONE_NUMBER_ALREADY_EXIST" {
+//                        let errorMessage = "Неверный формат номера телефона. Пожалуйста, введите корректный номер."
+//                        print("❌ \(errorMessage)")
+//                        self?.didSignUpFailure?(errorMessage)
+//                    } else {
+//                        if let message = json["message"] as? String {
+//                            print("❌ Ошибка с сервера: \(message)")
+//                            self?.didSignUpFailure?(message)
+//                        }
+//                    }
+//                } else {
+//                    print("✅ Регистрация успешна")
+//                    self?.didSignUpSuccess?()
+//                }
+//            } else {
+//                print("❌ Некорректный JSON-ответ")
+//                self?.didSignUpFailure?("Некорректный JSON-ответ")
+//            }
+//
+//        case .failure(let error):
+//            print("❌ Ошибка запроса: \(error.localizedDescription)")
+//            self?.didSignUpFailure?(error.localizedDescription)
+//        }
+//    }
+//} catch {
+//    print("❌ Ошибка кодирования параметров: \(error.localizedDescription)")
+//    didSignUpFailure?(error.localizedDescription)
+//}

@@ -2,6 +2,8 @@ import UIKit
 
 class EditOrderDetailsCustom: UIView {
 
+    
+    var moveToGallery: (() -> Void)?
     private let bouquetView: UIView = {
         let view = UIView()
         view.layer.borderColor = UIColor.black.cgColor
@@ -21,7 +23,7 @@ class EditOrderDetailsCustom: UIView {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    private lazy var switchButton = UIButton(btnImage: "closeButton")
+    private lazy var closeButton = UIButton(btnImage: "closeButton")
     private let orderCodeLabel = UILabel(text: "", font: 12, textColor: .black)
     private let bouquetNameLabel = UILabel(text: "", font: 12, textColor: .black)
     private let floristCompanyName = UILabel(text: "", font: 12, textColor: .black)
@@ -32,6 +34,7 @@ class EditOrderDetailsCustom: UIView {
         super.init(frame: frame)
         setupViews()
         setupLayout()
+        setupAction()
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +44,15 @@ class EditOrderDetailsCustom: UIView {
     private func setupViews() {
         addSubview(bouquetView)
         [orderCodeLabel, bouquetNameLabel, floristCompanyName, bouquetPriceLabel, bouquetOrderStatus].forEach { bouquetInfoStack.addArrangedSubview($0) }
-        [bouquetImage, switchButton, bouquetInfoStack].forEach { addSubview($0) }
+        [bouquetImage, closeButton, bouquetInfoStack].forEach { addSubview($0) }
+    }
+    
+    private func setupAction() {
+        closeButton.addTarget(self, action: #selector(goToGallery), for: .touchUpInside)
+    }
+    
+    @objc private func goToGallery() {
+        moveToGallery?()
     }
     
     private func setupLayout() {
@@ -60,14 +71,14 @@ class EditOrderDetailsCustom: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            switchButton.topAnchor.constraint(equalTo: bouquetView.topAnchor, constant: 15),
-            switchButton.trailingAnchor.constraint(equalTo: bouquetView.trailingAnchor, constant: -13),
-            switchButton.heightAnchor.constraint(equalToConstant: 24),
-            switchButton.widthAnchor.constraint(equalToConstant: 24)
+            closeButton.topAnchor.constraint(equalTo: bouquetView.topAnchor, constant: 15),
+            closeButton.trailingAnchor.constraint(equalTo: bouquetView.trailingAnchor, constant: -13),
+            closeButton.heightAnchor.constraint(equalToConstant: 24),
+            closeButton.widthAnchor.constraint(equalToConstant: 24)
         ])
         
         NSLayoutConstraint.activate([
-            bouquetInfoStack.topAnchor.constraint(equalTo: switchButton.bottomAnchor, constant: 15),
+            bouquetInfoStack.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 15),
             bouquetInfoStack.leadingAnchor.constraint(equalTo: bouquetImage.trailingAnchor, constant: 10),
             bouquetInfoStack.trailingAnchor.constraint(equalTo: bouquetView.trailingAnchor, constant: -10),
             bouquetInfoStack.heightAnchor.constraint(equalToConstant: 200)

@@ -3,9 +3,11 @@ import UIKit
 final class MainTabBarCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     let tabBarController: UITabBarController
+    let navigationController: UINavigationController
     
-    init() {
+    init(navigationController: UINavigationController) {
         self.tabBarController = MainTabBarController()
+        self.navigationController = navigationController
     }
     
     func start() {
@@ -14,7 +16,7 @@ final class MainTabBarCoordinator: Coordinator {
             BasketViewCoordinator(), (
                 UserDefaults.standard.string(forKey: "userAccessToken") != nil
             ) ? VerifyProfileCoordinator() :
-                ProfileCoordinator()
+                ProfileCoordinator(navigationController: navigationController)
         ]
         
         setupTabControllers()

@@ -3,6 +3,7 @@ import UIKit
 class DetailsOrderViewController: UIViewController {
 
     private let viewModel: DetailsOrderViewModelProtocol
+    private let id: Int
     
     private lazy var closeButton = UIButton(btnImage: "closeButton")
     
@@ -21,13 +22,13 @@ class DetailsOrderViewController: UIViewController {
     private let dateDeliveryView = CustomDetailsOrderView(
         mainTitle: "ДАТА ДОСТАВКИ",
         image: "time",
-        descTitle: "ВЫБЕРИТЕ ВРЕМЯ И ДАТУ ДОСТАВКИ"
+        descTitle: ""
     )
     
     private let addressDeliveryView = CustomDetailsOrderView(
         mainTitle: "АДРЕС ДОСТАВКИ",
         image: "pin",
-        descTitle: "ВЫБЕРИТЕ АДРЕС ДОСТАВКИ"
+        descTitle: ""
     )
     
     private lazy var continueButton = UIButton(title: "ПРОДОЛЖИТЬ")
@@ -38,19 +39,76 @@ class DetailsOrderViewController: UIViewController {
         setupLayout()
         configureCustomViews()
         view.backgroundColor = .white
-        
+        bindViewModel()
+        setupAction()
         buquetView.moveToDetails = { [weak self] in
             self?.viewModel.goToGallery()
         }
     }
  
-    init(viewModel: DetailsOrderViewModelProtocol) {
+    init(viewModel: DetailsOrderViewModelProtocol, id: Int) {
         self.viewModel = viewModel
+        self.id = id
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupAction() {
+        closeButton.addTarget(self, action: #selector(goToOrder), for: .touchUpInside)
+    }
+    
+    @objc private func goToOrder() {
+        viewModel.goToListOrders()
+    }
+    
+    private func bindViewModel() {
+        viewModel.fetchUserSubscriptions(id: id)
+        
+        viewModel.onSubscriptionsFetched = { [weak self] result in
+            switch result {
+            case .success(let order):
+                let startTime = order.deliveryStartTime
+                let endTime = order.deliveryEndTime
+                let deliveryDate = order.deliveryDate
+                let formmatedDateString = self?.formatDeliveryDate(startTime: startTime, endTime: endTime, date: deliveryDate)
+                self?.dateDeliveryView.updateDescription(deliveryTime: formmatedDateString ?? "")
+                self?.addressDeliveryView.updateAddress(streetName: (order.address?.street.uppercased() ?? "ВЫБЕРИТЕ АДРЕС ДОСТАВКИ") + " " + (order.address?.building ?? ""))
+                print("\(order)")
+            case .failure(let error):
+                print("Ошибка при получении подписок: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
+    private func formatDeliveryDate(startTime: String, endTime: String, date: String) -> String {
+        let timeFormatter = DateFormatter()
+        timeFormatter.locale = Locale(identifier: "ru_RU")
+        timeFormatter.dateFormat = "HH:mm" // Формат для парсинга времени
+        
+        let startDate = timeFormatter.date(from: startTime)
+        let endDate = timeFormatter.date(from: endTime)
+        
+        let displayTimeFormatter = DateFormatter()
+        displayTimeFormatter.locale = Locale(identifier: "ru_RU")
+        displayTimeFormatter.dateFormat = "HH:mm" // Убираем нули
+        
+        let formattedStartTime = startDate.map { displayTimeFormatter.string(from: $0) } ?? startTime
+        let formattedEndTime = endDate.map { displayTimeFormatter.string(from: $0) } ?? endTime
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "yyyy-MM-dd" // Формат для парсинга даты
+        
+        let deliveryDate = dateFormatter.date(from: date) ?? Date()
+        dateFormatter.dateFormat = "d MMMM, EEEE" // Формат для отображения даты
+        
+        let formattedDate = dateFormatter.string(from: deliveryDate).uppercased()
+        
+        return "\(formattedStartTime) - \(formattedEndTime), \(formattedDate)"
     }
     
     private func configureCustomViews() {

@@ -24,7 +24,7 @@ final class AppCoordinator: Coordinator {
 
     
     private func showMainScreen() {
-        let tabBarCoordinator = MainTabBarCoordinator()
+        let tabBarCoordinator = MainTabBarCoordinator(navigationController: navigationController)
         childCoordinators.append(tabBarCoordinator)
         tabBarCoordinator.start()
         

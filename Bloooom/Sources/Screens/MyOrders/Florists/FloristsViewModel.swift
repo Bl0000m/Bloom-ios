@@ -8,7 +8,6 @@ protocol FloristsViewModelProtocol: AnyObject {
         bouquetId: Int,
         branchDivisionId: Int,
         assemblyCost: Double,
-        address: String,
         completion: @escaping (Result<Florist, Error>) -> Void
     )
     func selectedFlorist(bouquetId: Int, branchId: Int)
@@ -54,15 +53,13 @@ class FloristsViewModel:  FloristsViewModelProtocol {
         bouquetId: Int,
         branchDivisionId: Int,
         assemblyCost: Double,
-        address: String,
         completion: @escaping (Result<Florist, Error>) -> Void
     ) {
         let model = Florist(
             id: orderId,
             bouquetId: bouquetId,
             branchDivisionId: branchDivisionId,
-            assemblyCost: assemblyCost,
-            address: address
+            assemblyCost: assemblyCost
         )
         guard let token = UserDefaults.standard.string(forKey: "userAccessToken") else { return }
         DetailOrdersService.shared.postClientOrder(model: model, accessToken: token) { result in

@@ -2,13 +2,17 @@ import Foundation
 
 protocol CountriesViewModelProtocol {
     var reloadTableView: (() -> Void)? { get set }
+    var onDataUpdated: (() -> Void)? { get set }
     func numberOfCountries() -> Int
     func countryName(at index: Int) -> Country
+    var filteredCountries: [Country] { get set }
+    func filterCountries(by searchText: String)
 }
 
 final class CountriesViewModel: CountriesViewModelProtocol {
-    
+    var onDataUpdated: (() -> Void)?
     private(set) var countries: [Country] = []
+    var filteredCountries: [Country] = []
     var reloadTableView: (() -> Void)?
     private weak var countriesCoordinator: CountriesCoordinator?
     
@@ -18,11 +22,11 @@ final class CountriesViewModel: CountriesViewModelProtocol {
     }
     
     func numberOfCountries() -> Int {
-        return countries.count
+        return filteredCountries.isEmpty ? countries.count : filteredCountries.count
     }
     
     func countryName(at index: Int) -> Country {
-        return countries[index]
+        return filteredCountries.isEmpty ? countries[index] : filteredCountries[index]
     }
     
     private func fetchCountries() {
@@ -30,10 +34,22 @@ final class CountriesViewModel: CountriesViewModelProtocol {
             switch result {
             case .success(let countries):
                 self?.countries = countries
+                self?.filteredCountries = countries
                 self?.reloadTableView?()
             case .failure(let error):
                 print("Failed to load countries: \(error)")
             }
         }
+    }
+    
+    func filterCountries(by searchText: String) {
+        if searchText.isEmpty {
+            filteredCountries = countries
+        } else {
+            filteredCountries = countries.filter {
+                $0.nameRu.range(of: searchText, options: .caseInsensitive) != nil
+            }
+        }
+        onDataUpdated?()
     }
 }

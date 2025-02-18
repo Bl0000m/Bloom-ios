@@ -1,6 +1,7 @@
 import Foundation
 
 protocol EditOrderDetailsViewModelProtocol: AnyObject {
+    func moveToFlowersGallery()
     func fetchUserSubscriptions(id: Int)
     func getBoquetInfo(id: Int)
     func goToAddress()
@@ -8,11 +9,9 @@ protocol EditOrderDetailsViewModelProtocol: AnyObject {
     var onSubscriptionsFetched: ((Result<EditOrderDetailsModel, Error>) -> Void)? { get set }
     var onBouquetInfoUpdated: ((Result<BouquetDetailsModel, Error>) -> Void)? { get set }
     var onError: ((String) -> Void)? { get set }
-    var onDataUpdated: (() -> Void)? { get set }
 }
 
 class EditOrderDetailsViewModel: EditOrderDetailsViewModelProtocol {
-    var onDataUpdated: (() -> Void)?
     var onSubscriptionsFetched: ((Result<EditOrderDetailsModel, Error>) -> Void)?
     var onBouquetInfoUpdated: ((Result<BouquetDetailsModel, Error>) -> Void)?
     let coordinator: EditOrderDetailsCoordinator
@@ -29,7 +28,6 @@ class EditOrderDetailsViewModel: EditOrderDetailsViewModelProtocol {
                 switch result {
                 case .success:
                     self?.onSubscriptionsFetched?(result)
-                    self?.onDataUpdated?()
                 case .failure(let error):
                     print("Error - \(error.localizedDescription)")
                 }
@@ -57,5 +55,9 @@ class EditOrderDetailsViewModel: EditOrderDetailsViewModelProtocol {
     
     func goToListOrders() {
         coordinator.goToOrdersList()
+    }
+    
+    func moveToFlowersGallery() {
+        coordinator.goToGallery()
     }
 }

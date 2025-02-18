@@ -95,8 +95,7 @@ class FloristsViewController: UIViewController {
             orderId: id,
             bouquetId: model.id,
             branchDivisionId: model.branchBouquetInfo.first?.branchId ?? 0,
-            assemblyCost: model.branchBouquetInfo.first?.price ?? 0,
-            address: model.branchBouquetInfo.first?.address ?? "Адреса нет") { [weak self] result in
+            assemblyCost: model.branchBouquetInfo.first?.price ?? 0) { [weak self] result in
                 switch result {
                 case .success(let response):
                     print("\(response)")

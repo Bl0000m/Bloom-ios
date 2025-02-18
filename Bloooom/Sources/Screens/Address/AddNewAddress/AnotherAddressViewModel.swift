@@ -2,6 +2,7 @@ import Foundation
 
 protocol AnotherAddressViewModelProtocol: AnyObject {
     func fetchAddress(id: Int)
+    func validatePhoneNumber(_ phoneNumber: String) -> String?
     func moveToDetailOrder()
     func sendAddressData(city: String,
                          street: String,
@@ -117,5 +118,16 @@ class AnotherAddressViewModel: AnotherAddressViewModelProtocol {
     
     func goBack() {
         coordinator.goBack()
+    }
+    
+    func validatePhoneNumber(_ phoneNumber: String) -> String? {
+        let phoneNumberRegex = "^\\d{10,15}$" // 10-15 цифр без знака "+" и кода страны
+        let phoneNumberPredicate = NSPredicate(format: "SELF MATCHES %@", phoneNumberRegex)
+        
+        if !phoneNumberPredicate.evaluate(with: phoneNumber) {
+            return "Введите номер в международном формате"
+        }
+       
+        return nil
     }
 }

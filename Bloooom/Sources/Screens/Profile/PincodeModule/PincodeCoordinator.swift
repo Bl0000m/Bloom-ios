@@ -22,7 +22,7 @@ final class PincodeCoordinator: Coordinator {
     }
     
     func moveToMain() {
-        let coordinator = MainTabBarCoordinator()
+        let coordinator = MainTabBarCoordinator(navigationController: navigationController)
         childCoordinators.append(coordinator)
         coordinator.start()
         coordinator.tabBarController.hidesBottomBarWhenPushed = true

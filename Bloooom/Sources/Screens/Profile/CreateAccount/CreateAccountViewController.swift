@@ -122,6 +122,48 @@ final class CreateAccountViewController: UIViewController {
         textField.rightViewMode = .never // Изначально кнопка скрыта
     }
     
+    func showSnackbar(message: String) {
+        // Создаем лейбл для сообщения
+        let snackbarLabel = UILabel()
+        snackbarLabel.text = message
+        snackbarLabel.textAlignment = .left
+        snackbarLabel.textColor = .red
+        snackbarLabel.numberOfLines = 0
+        
+        // Создаем изображение
+        let imageView = UIImageView(image: UIImage(named: "ic_Danger_24px"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24) // Размер картинки
+        
+        // Создаем StackView для размещения картинки и текста
+        let stackView = UIStackView(arrangedSubviews: [imageView, snackbarLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 5 // Расстояние между картинкой и текстом
+        stackView.alignment = .center
+        
+        // Создаем сам snackbar
+        let snackbar = UIView()
+        snackbar.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        snackbar.layer.borderWidth = 0.5
+        snackbar.layer.borderColor = UIColor.red.cgColor
+        snackbar.frame = CGRect(x: 21, y: 60, width: UIScreen.main.bounds.width - 42, height: 58)
+        
+        // Добавляем StackView в snackbar
+        stackView.frame = snackbar.bounds
+        snackbar.addSubview(stackView)
+        
+        if let window = UIApplication.shared.windows.first {
+            window.addSubview(snackbar)
+            
+            // Анимация скрытия snackbar
+            UIView.animate(withDuration: 0.3, delay: 2, options: .curveEaseOut, animations: {
+                snackbar.alpha = 0
+            }) { _ in
+                snackbar.removeFromSuperview()
+            }
+        }
+    }
+    
     @objc func togglePasswordVisibility() {
         isPasswordVisible.toggle()
         passwordTF.isSecureTextEntry = !isPasswordVisible
@@ -171,6 +213,9 @@ final class CreateAccountViewController: UIViewController {
             return
         }
 
+        let phoneNumber = phoneNumberTF.text ?? ""
+        let isValid = viewModel.isValidPhoneNumber(phoneNumber)
+        
         viewModel.signUp(
             name: name,
             email: email,
@@ -213,8 +258,10 @@ final class CreateAccountViewController: UIViewController {
             }
         }
         
-        viewModel.didSignUpFailure = { errorMessage in
-            print(errorMessage)
+        viewModel.didSignUpFailure = { [weak self] errorMessage in
+            DispatchQueue.main.async {
+                self?.showSnackbar(message: errorMessage)
+            }
         }
     }
     
@@ -572,7 +619,13 @@ extension CreateAccountViewController: UITextFieldDelegate {
             textField.rightViewMode = newText.isEmpty ? .never : .always
         }
         
-        return true
+        if textField == phoneNumberTF {
+            let currentText = textField.text ?? ""
+            let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            return newText.count <= 10
+        }
+        
+        return !string.contains(" ")
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

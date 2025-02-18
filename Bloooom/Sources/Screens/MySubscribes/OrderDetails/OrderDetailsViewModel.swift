@@ -3,7 +3,7 @@ import Foundation
 protocol OrderDetailsViewModelProtocol {
     func moveToSubscribers()
     func fetchUserSubscriptions(id: Int)
-    func goToOrderDetails()
+    func goToOrderDetails(id: Int)
     var onOrderDetailsUpdated: (([OrderDetailsModel]) -> Void)? { get set }
     var onError: (() -> Void)? { get set }
     var onSubscriptionsFetched: ((Result<[EditOrderDetailsModel], Error>) -> Void)? { get set }
@@ -41,7 +41,7 @@ class OrderDetailsViewModel: OrderDetailsViewModelProtocol {
         }
     }
     
-    func goToOrderDetails() {
-        coordinator.moveToOrderDetails()
+    func goToOrderDetails(id: Int) {
+        coordinator.moveToOrderDetails(id: id)
     }
 }

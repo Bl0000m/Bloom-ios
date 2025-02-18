@@ -42,8 +42,8 @@ class EditOrderDetailsViewController: UIViewController {
         setupActions()
         view.backgroundColor = .white
         viewModel.getBoquetInfo(id: id)
-        let orderId = UserDefaults.standard.integer(forKey: "orderId")
-        viewModel.fetchUserSubscriptions(id: orderId)
+        let userID = UserDefaults.standard.integer(forKey: "UserId")
+        viewModel.fetchUserSubscriptions(id: userID)
     }
     
     private func setupViews() {
@@ -84,6 +84,10 @@ class EditOrderDetailsViewController: UIViewController {
         
         dateDeliveryView.moveToDetails = {
             
+        }
+        
+        bouquetInfoView.moveToGallery = { [weak self] in
+            self?.viewModel.moveToFlowersGallery()
         }
         
         continueButton.addTarget(self, action: #selector(goToListOrders), for: .touchUpInside)

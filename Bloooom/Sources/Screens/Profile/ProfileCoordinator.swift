@@ -4,8 +4,8 @@ final class ProfileCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     let navigationController: UINavigationController
     
-    init() {
-        self.navigationController = .init()
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
     }
     
     func start() {
@@ -64,7 +64,7 @@ final class ProfileCoordinator: Coordinator {
     func moveToAccount() {
         let successView = VerificationViewController(
             model: .success) { [weak self] in
-                let coordinator = MainTabBarCoordinator()
+                let coordinator = MainTabBarCoordinator(navigationController: self!.navigationController)
                 self?.childCoordinators.append(coordinator)
                 coordinator.start()
                 

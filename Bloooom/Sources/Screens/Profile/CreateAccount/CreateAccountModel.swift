@@ -88,3 +88,8 @@ struct CreateAccountModel: Codable {
         return phonePredicate.evaluate(with: phone)
     }
 }
+
+struct ErrorResponse: Codable {
+    let code: String
+    let message: String
+}

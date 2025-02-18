@@ -32,4 +32,13 @@ final class EditOrderDetailsCoordinator: Coordinator {
             navigationController.popToRootViewController(animated: true)
         }
     }
+    
+    func goToGallery() {
+        let viewControllers = navigationController.viewControllers
+        if viewControllers.count >= 4 {
+            navigationController.popToViewController(viewControllers[viewControllers.count - 4], animated: true)
+        } else {
+            navigationController.popToRootViewController(animated: true)
+        }
+    }
 }

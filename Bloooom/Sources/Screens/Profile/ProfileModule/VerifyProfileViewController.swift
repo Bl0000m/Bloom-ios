@@ -2,7 +2,7 @@ import UIKit
 
 class VerifyProfileViewController: UIViewController {
 
-    private let viewModel: VerifyProfileViewModelProtocol
+    private var viewModel: VerifyProfileViewModelProtocol
     
     private let navBar = CustomNavBar()
     private let profileTableView: UITableView = {
@@ -93,6 +93,33 @@ extension VerifyProfileViewController: UITableViewDataSource {
             withIdentifier: FooterView.footerID
         ) as? FooterView else {
             return UITableViewHeaderFooterView()
+        }
+        
+        footerView.closeSessionClosure = { [weak self] in
+            self?.viewModel.closeSession()
+            self?.viewModel.removeUser()
+            self?.viewModel.onLogoutSuccess = {
+                DispatchQueue.main.async {
+                    self?.viewModel.goToSignIn()
+                }
+            }
+            
+            self?.viewModel.onLogoutFailure = { error in
+                print(error)
+            }
+        }
+        
+        footerView.deleteUserClosure = { [weak self] in
+            self?.viewModel.removeUser()
+            self?.viewModel.onLogoutSuccess = {
+                DispatchQueue.main.async {
+                    self?.viewModel.goToSignIn()
+                }
+            }
+            
+            self?.viewModel.onLogoutFailure = { error in
+                print(error)
+            }
         }
         return footerView
     }

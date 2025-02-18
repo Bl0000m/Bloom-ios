@@ -2,6 +2,9 @@ import UIKit
 
 class FooterView: UITableViewHeaderFooterView {
 
+    var closeSessionClosure: (() -> Void)?
+    var deleteUserClosure: (() -> Void)?
+    
     static let footerID = "footerID"
     
     private let mainStack = UIStackView(
@@ -36,7 +39,9 @@ class FooterView: UITableViewHeaderFooterView {
         setupLayout()
         setupAction()
         mainStack.backgroundColor = .white
-        backgroundColor = .red
+        closeSessionStack.backgroundColor = .white
+        removeAccountStack.backgroundColor = .white
+        contentView.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {
@@ -68,10 +73,10 @@ class FooterView: UITableViewHeaderFooterView {
     }
     
     @objc private func closeSessionAction() {
-        
+        closeSessionClosure?()
     }
     
     @objc private func removeAccountAction() {
-        
+        deleteUserClosure?()
     }
 }

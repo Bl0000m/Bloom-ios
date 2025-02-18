@@ -9,12 +9,14 @@ class CustomAdressView: UIView {
     private let streetView = UIView(backgroundColor: .clear)
     let streetLabel = UILabel(text: "УЛИЦА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     let streetLabel1 = UILabel(text: "УЛИЦА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    let streetStar = UILabel(text: "*", font: 12, textColor: .red)
     let streetTF = UITextField(placeHolder: "", keyboard: .default)
     private let streetSeperator = UIView(backgroundColor: .black)
     private let buildingView = UIView(backgroundColor: .clear)
     let buildingLabel = UILabel(text: "ДОМ/ЗДАНИЕ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     let buildingLabel1 = UILabel(text: "ДОМ/ЗДАНИЕ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
-    let buildingTF = UITextField(placeHolder: "", keyboard: .numberPad)
+    let buildingStar = UILabel(text: "*", font: 12, textColor: .red)
+    let buildingTF = UITextField(placeHolder: "", keyboard: .default)
     private let buildingSeperator = UIView(backgroundColor: .black)
     private let appartmentView = UIView(backgroundColor: .clear)
     let appartmentLabel = UILabel(text: "КВАРТИРА/ОФИС", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
@@ -45,6 +47,7 @@ class CustomAdressView: UIView {
     private let phoneNumberSeperator = UIView(backgroundColor: .black)
     let phoneNumberLabel = UILabel(text: "НОМЕР ТЕЛЕФОНА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     let phoneNumberLabel1 = UILabel(text: "НОМЕР ТЕЛЕФОНА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
+    let phoneNumberStar = UILabel(text: "*", font: 12, textColor: .red)
     private let commentView = UIView(backgroundColor: .clear)
     let commentLabel = UILabel(text: "КОМЕНТАРИЙ К ДОСТАВКЕ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     let commentLabel1 = UILabel(text: "КОМЕНТАРИЙ К ДОСТАВКЕ", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
@@ -64,14 +67,14 @@ class CustomAdressView: UIView {
     
     private func setupViews() {
         [cityLabel, cityNameLabel, citySeperator].forEach { cityView.addSubview($0) }
-        [streetLabel, streetLabel1, streetTF, streetSeperator].forEach { streetView.addSubview($0) }
-        [buildingLabel, buildingLabel1, buildingTF, buildingSeperator].forEach { buildingView.addSubview($0) }
+        [streetLabel, streetLabel1, streetStar, streetTF, streetSeperator].forEach { streetView.addSubview($0) }
+        [buildingLabel, buildingLabel1, buildingStar, buildingTF, buildingSeperator].forEach { buildingView.addSubview($0) }
         [appartmentLabel, appartmentLabel1, appartmentTF, appartmentSeperator].forEach { appartmentView.addSubview($0) }
         [entranceLabel, entranceLabel1, entranceTF, entranceSeperator].forEach { entranceView.addSubview($0) }
         [intercomeLabel, intercomeLabel1, intercomTF, intercomSeperator].forEach { intercomeView.addSubview($0) }
         [floorLabel, floorLabel1, floorTF, floorSeperator].forEach { floorView.addSubview($0) }
         [internationalCodeTF, internationCodeBtn, internationCodeSeperator].forEach { internationalCodeView.addSubview($0) }
-        [phoneNumberLabel, phoneNumberLabel1, phoneNumberTF, phoneNumberSeperator].forEach { phoneNumberView.addSubview($0) }
+        [phoneNumberLabel, phoneNumberLabel1, phoneNumberStar, phoneNumberTF, phoneNumberSeperator].forEach { phoneNumberView.addSubview($0) }
         [commentLabel, commentLabel1, commentTF, commentSeperator].forEach { commentView.addSubview($0) }
         
         [
@@ -128,6 +131,9 @@ class CustomAdressView: UIView {
             streetView.trailingAnchor.constraint(equalTo: trailingAnchor),
             streetView.heightAnchor.constraint(equalToConstant: 46),
             
+            streetStar.topAnchor.constraint(equalTo: streetView.topAnchor, constant: 7),
+            streetStar.leadingAnchor.constraint(equalTo: streetLabel1.trailingAnchor, constant: 3),
+            
             streetLabel1.centerYAnchor.constraint(equalTo: streetView.centerYAnchor),
             
             streetLabel.topAnchor.constraint(equalTo: streetView.topAnchor),
@@ -149,6 +155,9 @@ class CustomAdressView: UIView {
             buildingView.leadingAnchor.constraint(equalTo: leadingAnchor),
             buildingView.heightAnchor.constraint(equalToConstant: 46),
             buildingView.widthAnchor.constraint(equalToConstant: 167),
+            
+            buildingStar.topAnchor.constraint(equalTo: buildingView.topAnchor, constant: 7),
+            buildingStar.leadingAnchor.constraint(equalTo: buildingLabel1.trailingAnchor, constant: 3),
             
             buildingLabel1.centerYAnchor.constraint(equalTo: buildingView.centerYAnchor),
             
@@ -284,6 +293,9 @@ class CustomAdressView: UIView {
             phoneNumberView.heightAnchor.constraint(equalToConstant: 46),
             
             phoneNumberLabel1.centerYAnchor.constraint(equalTo: phoneNumberView.centerYAnchor),
+            
+            phoneNumberStar.topAnchor.constraint(equalTo: phoneNumberView.topAnchor, constant: 7),
+            phoneNumberStar.leadingAnchor.constraint(equalTo: phoneNumberLabel1.trailingAnchor, constant: 3),
             
             phoneNumberLabel.topAnchor.constraint(equalTo: phoneNumberView.topAnchor),
             phoneNumberLabel.leadingAnchor.constraint(equalTo: phoneNumberView.leadingAnchor),

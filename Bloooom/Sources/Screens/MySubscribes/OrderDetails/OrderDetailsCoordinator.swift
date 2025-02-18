@@ -31,8 +31,8 @@ final class OrderDetailsCoordinator: Coordinator {
            }
        }
     
-    func moveToOrderDetails() {
-        let coordinator = DetailsOrderCoordinator(navigationController: navigationController)
+    func moveToOrderDetails(id: Int) {
+        let coordinator = DetailsOrderCoordinator(navigationController: navigationController, id: id)
         childCoordinators.append(coordinator)
         coordinator.start()
     }

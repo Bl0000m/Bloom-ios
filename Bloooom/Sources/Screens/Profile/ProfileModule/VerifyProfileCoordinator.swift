@@ -21,4 +21,10 @@ final class VerifyProfileCoordinator: Coordinator {
         coordinator.start()
     }
     
+    func goToSignIn() {
+        let coordinator = ProfileCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+    
 }

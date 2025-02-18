@@ -20,7 +20,7 @@ final class ConfrimPasswordCoordinator: Coordinator {
     func goToMain() {
         let successView = VerificationViewController(
             model: .passwordChanged) { [weak self] in
-                let coordinator = MainTabBarCoordinator()
+                let coordinator = MainTabBarCoordinator(navigationController: self!.navigationController)
                 self?.childCoordinators.append(coordinator)
                 coordinator.start()
                 
