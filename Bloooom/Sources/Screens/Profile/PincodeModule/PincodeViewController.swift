@@ -83,10 +83,15 @@ class PincodeViewController: UIViewController {
     
     private func buttonAction() {
         forgotPinPasswordButton.addTarget(self, action: #selector(onForgotTap), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(moveToFaceID), for: .touchUpInside)
     }
     
     @objc private func onForgotTap() {
         viewModel.moveToForgot()
+    }
+    
+    @objc private func moveToFaceID() {
+        viewModel.moveToFaceId()
     }
     
     private func processString(_ input: String) {

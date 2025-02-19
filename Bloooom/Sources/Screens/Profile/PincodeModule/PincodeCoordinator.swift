@@ -32,4 +32,10 @@ final class PincodeCoordinator: Coordinator {
         )
     }
     
+    func goToFaceId() {
+        let coordinator = FaceIDCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+    
 }
