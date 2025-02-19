@@ -40,6 +40,15 @@ class VerifyProfileViewController: UIViewController {
         view.addSubview(navBar)
     }
     
+    private func removeData() {
+        let defaults = UserDefaults.standard
+        
+        defaults.removeObject(forKey: "userId")
+        defaults.removeObject(forKey: "userName")
+        defaults.removeObject(forKey: "userPhoneNumber")
+        defaults.removeObject(forKey: "userEmail")
+    }
+    
     private func setupLayout() {
         navBar.translatesAutoresizingMaskIntoConstraints = false
         
@@ -98,6 +107,8 @@ extension VerifyProfileViewController: UITableViewDataSource {
         footerView.closeSessionClosure = { [weak self] in
             self?.viewModel.closeSession()
             self?.viewModel.removeUser()
+            KeychainManager.shared.handleFirstLaunch()
+            self?.removeData()
             self?.viewModel.onLogoutSuccess = {
                 DispatchQueue.main.async {
                     self?.viewModel.goToSignIn()
@@ -111,6 +122,8 @@ extension VerifyProfileViewController: UITableViewDataSource {
         
         footerView.deleteUserClosure = { [weak self] in
             self?.viewModel.removeUser()
+            KeychainManager.shared.handleFirstLaunch()
+            self?.removeData()
             self?.viewModel.onLogoutSuccess = {
                 DispatchQueue.main.async {
                     self?.viewModel.goToSignIn()

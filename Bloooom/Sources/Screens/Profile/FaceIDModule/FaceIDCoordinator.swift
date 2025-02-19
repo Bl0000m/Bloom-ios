@@ -21,4 +21,15 @@ final class FaceIDCoordinator: Coordinator {
         coordinator.start()
     }
     
+    func moveToWelcome() {
+        let page = VerificationViewController(
+            model: .success,
+            buttonAction: {
+                let coordinator = CreatePinCoordinator(navigationController: self.navigationController)
+                self.childCoordinators.append(coordinator)
+                coordinator.start()
+            }
+        )
+        navigationController.pushViewController(page, animated: true)
+    }
 }

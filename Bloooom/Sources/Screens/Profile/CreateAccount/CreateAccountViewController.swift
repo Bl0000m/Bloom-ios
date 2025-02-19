@@ -5,6 +5,12 @@ final class CreateAccountViewController: UIViewController {
     var isPasswordVisible = false
     var isConfirmPasswordVisible = false
     
+    private var isChecked = false {
+        didSet {
+            updateAppearance()
+        }
+    }
+    
     private var viewModel: CreateAccountViewModelProtocol
     private let checkStack = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 10)
     private let stackView = UIStackView(axis: .horizontal, distribution: .fill, alignment: .center, spacing: 0)
@@ -110,6 +116,7 @@ final class CreateAccountViewController: UIViewController {
         createAccountButton.addTarget(self, action: #selector(createAccountAction), for: .touchUpInside)
         showPasswordButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
         showRepeatPasswordButton.addTarget(self, action: #selector(toggleConfirmPasswordVisibility), for: .touchUpInside)
+        checkBoxButton.addTarget(self, action: #selector(toggleCheckbox), for: .touchUpInside)
     }
     
     func addClearButton(to textField: UITextField) {
@@ -162,6 +169,10 @@ final class CreateAccountViewController: UIViewController {
                 snackbar.removeFromSuperview()
             }
         }
+    }
+    
+    @objc private func toggleCheckbox() {
+            isChecked.toggle()
     }
     
     @objc func togglePasswordVisibility() {
@@ -226,6 +237,14 @@ final class CreateAccountViewController: UIViewController {
         
         if password == repeatPassword {
             bindViewModel(email: email)
+        }
+    }
+    
+    private func updateAppearance() {
+        if isChecked {
+            checkBoxButton.backgroundColor = .black
+        } else {
+            checkBoxButton.backgroundColor = .white
         }
     }
     

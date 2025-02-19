@@ -21,8 +21,6 @@ final class VerificationUserCoordinator: Coordinator {
         navigationController.popViewController(animated: true)
     }
     
-    
-    
     func successVerification() {
         let page = VerificationViewController(
             model: .success,

@@ -48,7 +48,14 @@ class FaceIDViewController: UIViewController {
     }
     
     @objc private func moveToPincode() {
-        viewModel.goPincode()
+        let savedPin = KeychainManager.shared.getSavedPin(for: "pinKey")
+        print("Saved PIN: \(savedPin ?? "nil")")
+        
+        if (KeychainManager.shared.getSavedPin(for: "pinKey") != nil) {
+            viewModel.goPincode()
+        } else {
+            viewModel.goToWelcome()
+        }
     }
     
     private func setupLayout() {

@@ -2,6 +2,7 @@ import Foundation
 
 protocol FaceIDViewModelProtocol {
     func goPincode()
+    func goToWelcome()
 }
 
 class FaceIDViewModel: FaceIDViewModelProtocol {
@@ -14,5 +15,9 @@ class FaceIDViewModel: FaceIDViewModelProtocol {
     
     func goPincode() {
         coordinator.goPincodeScreen()
+    }
+    
+    func goToWelcome() {
+        coordinator.moveToWelcome()
     }
 }
