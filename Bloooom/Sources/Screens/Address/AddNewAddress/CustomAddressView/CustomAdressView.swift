@@ -44,7 +44,7 @@ class CustomAdressView: UIView {
     private let internationCodeSeperator = UIView(backgroundColor: .black)
     private let phoneNumberView = UIView(backgroundColor: .clear)
     let phoneNumberTF = UITextField(placeHolder: "", keyboard: .numberPad)
-    private let phoneNumberSeperator = UIView(backgroundColor: .black)
+    let phoneNumberSeperator = UIView(backgroundColor: .black)
     let phoneNumberLabel = UILabel(text: "НОМЕР ТЕЛЕФОНА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     let phoneNumberLabel1 = UILabel(text: "НОМЕР ТЕЛЕФОНА", font: 12, textColor: #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1))
     let phoneNumberStar = UILabel(text: "*", font: 12, textColor: .red)

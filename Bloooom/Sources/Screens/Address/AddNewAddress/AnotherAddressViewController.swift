@@ -311,6 +311,7 @@ extension AnotherAddressViewController: UITextFieldDelegate {
         if textField == userAddressView.phoneNumberTF {
             // Ограничиваем ввод в `phoneNumberTF` максимум 10 символами
             let isValidLength = newText.count <= 10
+            userAddressView.phoneNumberSeperator.backgroundColor = .red
             if isValidLength {
                 updateButtonState(text: newText)
             }
@@ -329,6 +330,12 @@ extension AnotherAddressViewController: UITextFieldDelegate {
     func updateButtonState(text: String? = nil) {
         let currentText = text ?? userAddressView.phoneNumberTF.text ?? ""
         confirmButton.isEnabled = currentText.count >= 10
+        if currentText.count <= 10 {
+            userAddressView.phoneNumberSeperator.backgroundColor = .red
+        } else if currentText.count == 10 {
+            userAddressView.phoneNumberSeperator.backgroundColor = .black
+        }
+        
     }
 
 }

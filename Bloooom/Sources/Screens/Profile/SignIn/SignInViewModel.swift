@@ -93,28 +93,6 @@ final class SignInViewModel: SignInViewModelProtocol {
             print("❌ Ошибка кодирования параметров: \(error.localizedDescription)")
             didLoginFailure?(error.localizedDescription)
         }
-        
-        
-//                do {
-//                    // Преобразуем SignInModel в JSON
-//                    let encoder = JSONEncoder()
-//                    let jsonData = try encoder.encode(signInModel)
-//                    let parameters = (try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any])!
-//        
-//                    // Отправляем запрос с сериализованными параметрами
-//                    UserAPIManager.shared.postRequest(to: "/users/login", parameters: parameters) { [weak self] result in
-//                        switch result {
-//                        case .success(let response):
-//                            print("Response JSON:", response)
-//                            self?.didLoginSuccess?()
-//                        case .failure(let error):
-//                            print("Error:", error.localizedDescription)
-//                            self?.didLoginFailure?(error.localizedDescription)  // Вызов ошибки
-//                        }
-//                    }
-//                } catch {
-//                    print("Error encoding parameters: \(error.localizedDescription)")
-//                }
     }
     
     func validateEmail(_ email: String) -> String? {
@@ -152,49 +130,3 @@ final class SignInViewModel: SignInViewModelProtocol {
         return nil
     }
 }
-
-
-
-
-//do {
-//    let encoder = JSONEncoder()
-//    let jsonData = try encoder.encode(signUpModel)
-//
-//    UserAPIManager.shared.signUpData(to: "/client/users", parameters: jsonData) { [weak self] result in
-//        switch result {
-//        case .success(let response):
-//            if let json = try? JSONSerialization.jsonObject(with: response, options: []) as? [String: Any] {
-//                if let errorCode = json["code"] as? String {
-//                    // Проверяем код ошибки
-//                    if errorCode == "USER_EMAIL_ALREADY_EXIST" {
-//                        let errorMessage = "Этот email уже используется"
-//                        print("❌ \(errorMessage)")
-//                        self?.didSignUpFailure?(errorMessage)
-//                    } else if errorCode == "USER_PHONE_NUMBER_ALREADY_EXIST" {
-//                        let errorMessage = "Неверный формат номера телефона. Пожалуйста, введите корректный номер."
-//                        print("❌ \(errorMessage)")
-//                        self?.didSignUpFailure?(errorMessage)
-//                    } else {
-//                        if let message = json["message"] as? String {
-//                            print("❌ Ошибка с сервера: \(message)")
-//                            self?.didSignUpFailure?(message)
-//                        }
-//                    }
-//                } else {
-//                    print("✅ Регистрация успешна")
-//                    self?.didSignUpSuccess?()
-//                }
-//            } else {
-//                print("❌ Некорректный JSON-ответ")
-//                self?.didSignUpFailure?("Некорректный JSON-ответ")
-//            }
-//
-//        case .failure(let error):
-//            print("❌ Ошибка запроса: \(error.localizedDescription)")
-//            self?.didSignUpFailure?(error.localizedDescription)
-//        }
-//    }
-//} catch {
-//    print("❌ Ошибка кодирования параметров: \(error.localizedDescription)")
-//    didSignUpFailure?(error.localizedDescription)
-//}
