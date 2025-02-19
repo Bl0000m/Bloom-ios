@@ -9,6 +9,8 @@ protocol PinViewModelProtocol {
     
     func didPressKey(_ key: String)
     func moveToFaceID()
+    func closeAction()
+    func moveBack()
 }
 
 class PinViewModel: PinViewModelProtocol {
@@ -45,5 +47,13 @@ class PinViewModel: PinViewModelProtocol {
     
     private func handlePinEntry() {
         
+    }
+    
+    func moveBack() {
+        createPinCoordinator.goBack()
+    }
+    
+    func closeAction() {
+        createPinCoordinator.close()
     }
 }

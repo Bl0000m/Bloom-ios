@@ -22,10 +22,14 @@ final class CreatePinCoordinator: Coordinator {
     }
     
     func goBack() {
-        
+        let coordinator = FaceIDCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
     
     func close() {
-        
+        let coordinator = FaceIDCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }

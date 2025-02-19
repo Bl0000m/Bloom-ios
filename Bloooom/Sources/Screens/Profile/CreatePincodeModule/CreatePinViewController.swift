@@ -35,7 +35,7 @@ class CreatePinViewController: UIViewController {
         setupUI()
         bindViewModel()
         keypatTappedAction()
-        
+        setupAction()
         usePinLabel.textAlignment = .center
         createPinCode.textAlignment = .center
     }
@@ -107,6 +107,19 @@ class CreatePinViewController: UIViewController {
         viewModel.showError = { [weak self] message in
             self?.showErrorAlert(message)
         }
+    }
+    
+    private func setupAction() {
+        backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
+    }
+    
+    @objc private func back() {
+        viewModel.moveBack()
+    }
+    
+    @objc private func close() {
+        viewModel.closeAction()
     }
     
     func processString(_ input: String) {
